@@ -1,25 +1,25 @@
-- [REALIZZARE UNA CRUD](#realizzare-una-crud)
-  - [Creare il Resource Model](#creare-il-resource-model)
-  - [Creare la Migration](#creare-la-migration)
-  - [Creare il Seeder](#creare-il-seeder)
-  - [Gestire le rotte](#gestire-le-rotte)
-  - [Il Resource Controller](#il-resource-controller)
-    - [R - READ](#r---read)
-      - [index - Lista](#index---lista)
-      - [show - Dettaglio](#show---dettaglio)
-    - [C - CREATE](#c---create)
-      - [create - Form](#create---form)
-      - [store - Inserimento](#store---inserimento)
-    - [U - UPDATE](#u---update)
-      - [edit - Form](#edit---form)
-      - [update - Modifica](#update---modifica)
-    - [D - DELETE](#d---delete)
-      - [delete - Form e modale](#delete---form-e-modale)
-      - [destroy - Eliminazione](#destroy---eliminazione)
-  - [La validazione](#la-validazione)
-    - [Il metodo validate](#il-metodo-validate)
-    - [Validazione nel controller](#validazione-nel-controller)
-    - [Validazione nelle viste](#il-metodo-validate)
+-   [REALIZZARE UNA CRUD](#realizzare-una-crud)
+    -   [Creare il Resource Model](#creare-il-resource-model)
+    -   [Creare la Migration](#creare-la-migration)
+    -   [Creare il Seeder](#creare-il-seeder)
+    -   [Gestire le rotte](#gestire-le-rotte)
+    -   [Il Resource Controller](#il-resource-controller)
+        -   [R - READ](#r---read)
+            -   [index - Lista](#index---lista)
+            -   [show - Dettaglio](#show---dettaglio)
+        -   [C - CREATE](#c---create)
+            -   [create - Form](#create---form)
+            -   [store - Inserimento](#store---inserimento)
+        -   [U - UPDATE](#u---update)
+            -   [edit - Form](#edit---form)
+            -   [update - Modifica](#update---modifica)
+        -   [D - DELETE](#d---delete)
+            -   [delete - Form e modale](#delete---form-e-modale)
+            -   [destroy - Eliminazione](#destroy---eliminazione)
+    -   [La validazione](#la-validazione)
+        -   [Il metodo validate](#il-metodo-validate)
+        -   [Validazione nel controller](#validazione-nel-controller)
+        -   [Validazione nelle viste](#il-metodo-validate)
 
 # REALIZZARE UNA CRUD
 
@@ -174,7 +174,6 @@ Route::resource('pastas', PastaController::class);
 ```
 
 ## Il Resource Controller
-
 
 Usando il parametro `-r` nella creazione del modello, questo risulterà già importato nel controller. Diversamente dovremo accertarci che lo sia
 
@@ -387,7 +386,6 @@ In ultimo va creato il link al form di creazione
 </table>
 ```
 
-
 #### store - Inserimento
 
 Va predisposto il modello a ricevere dati da form con la variabile d'istanza protetta `$fillable`
@@ -592,7 +590,7 @@ NB: l'attributo `data-bs-target` collegherà il `button` alla modale con `id` co
                 <a href="{{ route('pastas.edit', $pasta) }}">Modifica</a>
 
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal-{{ $pasta->id }}">
-                  Elimina              
+                  Elimina
                 </button>
             </td>
         </tr>
@@ -601,7 +599,7 @@ NB: l'attributo `data-bs-target` collegherà il `button` alla modale con `id` co
 </table>
 ```
 
-Vanno poi generate le modali corrispondenti ai bottoni, da posizionare prima della chiusura del tag `body`. 
+Vanno poi generate le modali corrispondenti ai bottoni, da posizionare prima della chiusura del tag `body`.
 
 Il pulsante "Elimina" in ogni modale dovrà essere all'interno di un vero e proprio `form` contenente:
 
@@ -688,10 +686,9 @@ private function validation($data) {
 
 Nel metodo statico `make` del `Validator`:
 
-- il primo parametro saranno i dati da validare (array associativo)
-- il secondo parametro saranno le regole di validazione (array associativo)
-- il terzo parametro (opzionale) saranno messaggi di errore customizzati (array associativo)
-
+-   il primo parametro saranno i dati da validare (array associativo)
+-   il secondo parametro saranno le regole di validazione (array associativo)
+-   il terzo parametro (opzionale) saranno messaggi di errore customizzati (array associativo)
 
 ```php
 // App/Http/Controllers/PastaController.php
@@ -709,7 +706,7 @@ private function validation($data) {
 }
 ```
 
-Al metodo make dovrà essere concatenato un metodo `->validate()` per eseguire la validazione, ed il risultato sarà ritornato dal nostro metodo privato. 
+Al metodo make dovrà essere concatenato un metodo `->validate()` per eseguire la validazione, ed il risultato sarà ritornato dal nostro metodo privato.
 
 ```php
 // App/Http/Controllers/PastaController.php
@@ -757,15 +754,15 @@ private function validation($data) {
       'type.required' => 'Il tipo è obbligatorio',
       'type.string' => 'Il tipo deve essere una stringa',
       'type.in' => 'Il tipo deve un valore compreso tra "lunga", "corta", "cortissima"',
-      
+
       'cooking_time.required' => 'Il tempo di cottura è obbligatorio',
       'cooking_time.integer' => 'Il tempo di cottura deve essere un numero',
-      
+
       'weight.required' => 'Il peso è obbligatorio',
       'weight.integer' => 'Il peso deve essere un numero',
-      
+
       'img.string' => 'L\'immagine deve essere una stringa',
-      
+
       'description.string' => 'La descrizione deve essere una stringa',
     ]
   )->validate();
@@ -844,22 +841,22 @@ E' possibile stampare in via generica tutti gli errori di validazione:
 @endif
 ```
 
-tuttavia vanno specificati i valori `old` (ossia quelli dell'inserimento la cui validazione è fallita) per ognuno degli input dei form. 
+tuttavia vanno specificati i valori `old` (ossia quelli dell'inserimento la cui validazione è fallita) per ognuno degli input dei form.
 
 #### create
 
 Per ogni input:
 
-- La direttiva `@error('field_name')` permette di verificare la validazione dei singoli input. Può essere usata per stampare la classe `is-invalid` di BS
-- Va aggiunto il valore `old` come default
-- Va aggiunto il messaggio di errore nel `div.invalid-feedback` successivo all'input (la variabile `$message` è generata automaticamente dalla direttiva `@error`)
+-   La direttiva `@error('field_name')` permette di verificare la validazione dei singoli input. Può essere usata per stampare la classe `is-invalid` di BS
+-   Va aggiunto il valore `old` come default
+-   Va aggiunto il messaggio di errore nel `div.invalid-feedback` successivo all'input (la variabile `$message` è generata automaticamente dalla direttiva `@error`)
 
 ```blade
-<input 
-  type="text" 
-  class="form-control @error('number') is-invalid @enderror" 
-  id="number" 
-  name="number" 
+<input
+  type="text"
+  class="form-control @error('number') is-invalid @enderror"
+  id="number"
+  name="number"
   value="{{ old('number') }}"
 >
 @error('number')
@@ -875,11 +872,11 @@ Per ogni input vale quanto descritto precedentemente nella sezione `create`.
 A differenza del `create` possiamo sfruttare il null coalescent operator per i valori di default degli input:
 
 ```blade
-<input 
-  type="text" 
-  class="form-control @error('number') is-invalid @enderror" 
-  id="number" 
-  name="number" 
+<input
+  type="text"
+  class="form-control @error('number') is-invalid @enderror"
+  id="number"
+  name="number"
   value="{{ old('number') ?? $pasta->number }}"
 >
 @error('number')
