@@ -1,0 +1,10 @@
+@import "./partials/bootstrap_loader.scss";
+
+main {
+    min-height: 100vh;
+    padding-top: 70px;
+}
+
+.jumbotron {
+    min-height: calc(100vh - 70px);
+}
