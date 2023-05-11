@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('email');
-            $table->string('name', 60);
-            $table->string('surname', 60);
-            $table->text('message');
-            $table->timestamps();
+        Schema::table('messages', function (Blueprint $table) {
+            $table->foreignId('apartment_id')
+            ->after('id')
+            ->nullable()
+            ->constrained()
+            ->cascadeOnDelete();
         });
     }
 
@@ -31,6 +29,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::table('messages', function (Blueprint $table) {
+            $table->dropColumn('apartment_id');
+        });
     }
 };
