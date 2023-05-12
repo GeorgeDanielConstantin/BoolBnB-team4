@@ -55,7 +55,11 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false" v-pre>
+                @if (Auth::user()->name)
                 {{ Auth::user()->name }}
+                @else
+                {{ Auth::user()->email }}
+                @endif
               </a>
 
               <div class="dropdown-menu dropdown-menu-right dropdown-menu-dark">
