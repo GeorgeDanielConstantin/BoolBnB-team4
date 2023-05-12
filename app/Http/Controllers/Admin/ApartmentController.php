@@ -141,9 +141,5 @@ class ApartmentController extends Controller
             ]
         )->validate();
         return $validator;
-<<<<<<< HEAD
-    
+    }
 }
-=======
-}
->>>>>>> 475782d8869ed86538b5ac0a58471b24fb9f0f8b

@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
         'password',
     ];
@@ -45,5 +46,9 @@ class User extends Authenticatable
     public function apartments()
     {
         return $this->hasMany(Apartment::class);
+    }
+
+    protected function setPasswordAttribute($value) {
+        $this->attributes['password'] =bcrypt($value);
     }
 }
