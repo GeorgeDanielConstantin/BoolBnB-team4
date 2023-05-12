@@ -18,17 +18,19 @@ class MessageSeeder extends Seeder
     {
         $apartments = Apartment::all();
 
+        for ($i = 1; $i <= count($apartments); $i++) {
 
             $message = new Message();
 
-            $message->apartment_id
-            $message->name="mario"
-            $message->"rossi"
-            $message->""
-            $message->
+            $message->apartment_id = $i;
+            $message->email =  "mario.rossi@mail.com";
+            $message->name = "mario";
+            $message->surname = "rossi";
+            $message->message = "Vorrei ulteriori informazioni sull'appartamento";
 
 
             $message->save();
+        }
 
     }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->ipAddress('ip_address');
-            $table->date('yyyy-mm-dd')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }
