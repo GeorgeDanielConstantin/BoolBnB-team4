@@ -19,4 +19,12 @@ class Apartment extends Model
     public function apartmentsponsor() {
         return $this->hasMany(ApartmentSponsor::class);
     }
+
+    public function views() {
+        return $this->hasMany(View::class);
+    }
+
+    public function service() {
+        return $this->belongsMany(Service::class);
+    }
 }

@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('apartment_sponsor', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
 
-            $table->date('starting_date');
-            $table->date('ending_date');
+            $table->string('type');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apartment_sponsor');
+        Schema::dropIfExists('services');
     }
 };

@@ -17,10 +17,6 @@ return new class extends Migration
 
             $table->id();
             
-            $table->foreignId('user_id')
-            ->default(0)
-            ->constrained()
-            ->cascadeOnDelete();
             $table->string('title', 60);
             $table->text('description')->nullable();
             $table->text('image')->nullable();
@@ -46,6 +42,5 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('apartments');
-        Schema::dropColumn('user_id');
     }
 };

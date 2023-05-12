@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('apartment_sponsor', function (Blueprint $table) {
+        Schema::create('views', function (Blueprint $table) {
             $table->id();
 
-            $table->date('starting_date');
-            $table->date('ending_date');
+            $table->ipAddress('ip_address');
+            $table->date('yyyy-mm-dd')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apartment_sponsor');
+        Schema::dropIfExists('views');
     }
 };

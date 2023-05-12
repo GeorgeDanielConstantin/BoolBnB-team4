@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('apartment_sponsor', function (Blueprint $table) {
-            $table->id();
-
-            $table->date('starting_date');
-            $table->date('ending_date');
-            $table->timestamps();
+        Schema::table('apartments', function (Blueprint $table) {
+            $table->foreignId('user_id')
+            ->after('id')
+            ->nullable()
+            ->constrained()
+            ->nullOnDelete();
         });
     }
 
@@ -29,6 +29,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apartment_sponsor');
+        Schema::table('apartments', function (Blueprint $table) {
+            $table->dropForeign('apartments_user_id_foreign');
+            $table->dropColumn('user_id');
+        });
     }
 };

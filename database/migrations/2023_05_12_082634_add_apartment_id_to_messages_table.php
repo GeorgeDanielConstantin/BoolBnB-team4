@@ -18,7 +18,7 @@ return new class extends Migration
             ->after('id')
             ->nullable()
             ->constrained()
-            ->cascadeOnDelete();
+            ->nullOnDelete();
         });
     }
 
@@ -30,6 +30,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('messages', function (Blueprint $table) {
+            $table->dropForeign('messages_apartment_id_foreign');
             $table->dropColumn('apartment_id');
         });
     }
