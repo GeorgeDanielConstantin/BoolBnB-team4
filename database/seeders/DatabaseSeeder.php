@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(SponsorSeeder::class);
         $this->call(ApartmentSeeder::class);
-        $this->call(MessageSeeder::class);
         $this->call(ViewSeeder::class);
         $this->call(ServiceSeeder::class);
+        $this->call(MessageSeeder::class);
     }
 }

@@ -23,7 +23,7 @@ class MessageSeeder extends Seeder
             $message = new Message();
 
             $message->apartment_id = $i;
-            $message->email =  "mario@rossi@mail.com";
+            $message->email =  "mario.rossi@mail.com";
             $message->name = "mario";
             $message->surname = "rossi";
             $message->message = "Vorrei ulteriori informazioni sull'appartamento";
