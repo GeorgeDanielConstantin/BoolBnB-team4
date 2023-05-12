@@ -19,7 +19,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($Aapartments as $apartment)
+        @foreach ($apartments as $apartment)
         <tr>
             <th scope="row">{{ $apartment->id }}</th>
             <td>{{ $apartment->title }}</td>
@@ -32,6 +32,9 @@
             <td>{{ $apartment->beds }}</td>
             <td>{{ $apartment->square_meters }}</td>
             <td>{{ $apartment->visibility }}</td>
+             <td>
+                <a href="{{ route('apartments.show', $apartment) }}"> Dettaglio </a>
+            </td>
 
         </tr>
         @endforeach
