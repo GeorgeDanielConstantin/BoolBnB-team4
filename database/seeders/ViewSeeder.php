@@ -20,13 +20,13 @@ class ViewSeeder extends Seeder
         $apartments = Apartment::all()->pluck('id');
 
 
-        for ($i = 1; $i <= 3000; $i++) {
+        for ($i = 1; $i <= 500; $i++) {
 
             $view = new View();
 
             $view->apartment_id = $faker->randomElement($apartments);
-            $view->ipAddress = $faker->ip();
-            $view->date = $faker->dateTimeBetween('-4 month', '-2 days');
+            $view->ip_address = $faker->ipv4();
+            $view->date = $faker->dateTimeBetween('-4 month', '-1 days');
 
             $view->save();
 

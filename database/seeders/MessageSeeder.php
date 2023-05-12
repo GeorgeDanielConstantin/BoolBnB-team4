@@ -26,7 +26,7 @@ class MessageSeeder extends Seeder
             $message->email =  "mario@rossi@mail.com";
             $message->name = "mario";
             $message->surname = "rossi";
-            $message->text = "Vorrei ulteriori informazioni sull'appartamento";
+            $message->message = "Vorrei ulteriori informazioni sull'appartamento";
 
 
             $message->save();
