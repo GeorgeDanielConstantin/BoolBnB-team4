@@ -74,3 +74,5 @@
         </div>
     @endforeach
 @endsection
+
+<!-- RISOLUZIONE INDEX -->
