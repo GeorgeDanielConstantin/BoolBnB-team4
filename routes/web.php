@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
+use App\Models\Apartment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 // # Guest route
-Route::get( '/',    [GuestHomeController::class,    'homepage'  ])->name('homepage');
+Route::get('/',    [GuestHomeController::class,    'homepage'])->name('homepage');
+
+// # Apartment route
+Route::resource('apartments', Apartment::class);
 
 // # Protected routes
 Route::middleware('auth')
@@ -25,7 +29,7 @@ Route::middleware('auth')
     ->name('admin.')    // * routes name start with "admin." 
     ->group(
         function () {
-            Route::get( '/dashboard',   [AdminHomeController::class,    'dashboard' ])->name('dashboard');
+            Route::get('/dashboard',   [AdminHomeController::class,    'dashboard'])->name('dashboard');
         }
     );
 
@@ -36,9 +40,9 @@ Route::middleware('auth')
     ->name('profile.')       // * routes name start with "profile." 
     ->group(
         function () {
-            Route::get(     '/', [ProfileController::class, 'edit'      ])->name('edit');
-            Route::patch(   '/', [ProfileController::class, 'update'    ])->name('update');
-            Route::delete(  '/', [ProfileController::class, 'destroy'   ])->name('destroy');
+            Route::get('/', [ProfileController::class, 'edit'])->name('edit');
+            Route::patch('/', [ProfileController::class, 'update'])->name('update');
+            Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
         }
     );
 
