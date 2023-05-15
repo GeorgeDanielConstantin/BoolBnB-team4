@@ -15,14 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // $user = new User;
-        // $user->name = 'admin';
-        // $user->surname = 'admin';
-        // $user->email = 'admin@mail.it';
-        // $user->password = 'admin';
-        // $user->date_of_birth = '2000-01-01';
-        // $user->save();
-
+        
         $user = new User;
         $user->name = 'Paolo';
         $user->surname = 'Cardinale';
@@ -30,7 +23,7 @@ class UserSeeder extends Seeder
         $user->password = 'admin';
         $user->date_of_birth = '1981-01-01';
         $user->save();
-
+        
         $user = new User;
         $user->name = 'Daniele';
         $user->surname = 'Marino';
@@ -38,7 +31,7 @@ class UserSeeder extends Seeder
         $user->password = 'admin';
         $user->date_of_birth = '1998-01-01';
         $user->save();
-
+        
         $user = new User;
         $user->name = 'Simone';
         $user->surname = 'Lombardi';
@@ -46,7 +39,7 @@ class UserSeeder extends Seeder
         $user->password = 'admin';
         $user->date_of_birth = '2002-01-01';
         $user->save();
-
+        
         $user = new User;
         $user->name = 'Riccardo';
         $user->surname = 'Pietrobon';
@@ -54,13 +47,21 @@ class UserSeeder extends Seeder
         $user->password = 'admin';
         $user->date_of_birth = '1996-01-01';
         $user->save();
-    
+        
         $user = new User;
         $user->name = 'Daniel';
         $user->surname = 'Constantin';
         $user->email = 'danielgconstantin@gmail.com';
         $user->password = 'admin';
         $user->date_of_birth = '1997-01-01';
+        $user->save();
+        
+        $user = new User;
+        $user->name = 'admin';
+        $user->surname = 'admin';
+        $user->email = 'admin@mail.it';
+        $user->password = 'admin';
+        $user->date_of_birth = '2000-01-01';
         $user->save();
     }
 }
