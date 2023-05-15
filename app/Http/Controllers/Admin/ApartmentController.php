@@ -22,7 +22,7 @@ class ApartmentController extends Controller
     {
         $user_id = Auth::user();
         // dd($user_id);
-        $apartments = Apartment::where('user_id', $user_id->id)->get();
+        $apartments = Apartment::where('user_id', $user_id->id)->paginate(6);
         return view('admin.apartments.index', compact('apartments'));
     }
 
