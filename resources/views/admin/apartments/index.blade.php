@@ -16,9 +16,20 @@
 
 @section('content')
 
-<div class="container">
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Address</th>
+            <th scope="col">Latitude</th>
+            <th scope="col">Longitude</th>
+            <th scope="col">Rooms</th>
+            <th scope="col">Bathrooms</th>
+            <th scope="col">Beds</th>
+            <th scope="col">Square_meters</th>
+            <th scope="col">Visibility</th>
 
-<<<<<<< HEAD
         </tr>
     </thead>
     <div class="">
@@ -26,40 +37,10 @@
         @foreach ($apartments as $apartment)
         <tr class="card p-5 text-center bg-info">
             <th class="text-light" scope="row">{{ $apartment->id }}</th>
-=======
-    
-    <td>
-        <a href="{{ route('admin.apartments.create' ) }}" role="button" class="btn btn-primary">Crea appartamento</a>
-    </td>
-    
-    <table class="table">
-        <thead>
-            <tr>
-                <!-- <th scope="col">ID</th>
-                <th scope="col">Image</th>
-                <th scope="col">Title</th>
-                <th scope="col">Address</th>
-                <th scope="col">Latitude</th>
-                <th scope="col">Longitude</th>
-                <th scope="col">Rooms</th>
-                <th scope="col">Bathrooms</th>
-                <th scope="col">Beds</th>
-                <th scope="col">Square_meters</th>
-                <th scope="col">Visibility</th> -->
-                
-            </tr>
-        </thead>
-        <tbody class="d-flex flex-column align-items-center gap-5 text-center">
-            @foreach ($apartments as $apartment)
-            <tr class="card p-5 text-center bg-info">
-            <!-- <th class="text-light" scope="row">{{ $apartment->id }}</th> -->
-            <td class="img-fluid"><img src="{{url($apartment->image)}}" alt=""></td>
->>>>>>> 490cc95bf01fb3c320988d6bcd7ca8a3fb00b1a5
             <td class="text-secondary">{{ $apartment->title }}</td>
             <td><img src="{{$apartment->image}}" alt="" width="400px" height="300px" ></td>
             <!--<td class="descriptionindex">{{ $apartment->description }}</td>-->
             <td class="text-light">{{ $apartment->address }}</td>
-<<<<<<< HEAD
             <!--<td class="text-secondary">{{ $apartment->latitude }}</td>
             <td class="text-secondary">{{ $apartment->longitude }}</td>-->
             <!--<td class="text-light">Stanze:{{ $apartment->rooms }}</td>
@@ -72,29 +53,9 @@
                 <a href="{{ route('apartments.create') }}" role="button" ><i class="fa-solid fa-square-plus"></i></a>
                 <a href="{{ route('apartments.edit', $apartment) }}"><i class="fa-solid fa-pen-to-square"></i></a>
             </td>
-=======
-            <!-- <td class="text-secondary">{{ $apartment->latitude }}</td>
-            <td class="text-secondary">{{ $apartment->longitude }}</td> -->
-            <td class="text-light">Rooms:{{ $apartment->rooms }}</td>
-            <td class="text-light">Bathrooms:{{ $apartment->bathrooms }}</td>
-            <td class="text-light">Beds{{ $apartment->beds }}</td>
-            <td class="text-light">Square meters:{{ $apartment->square_meters }}</td>
-            <td class="text-light">Active sponsor:{{ $apartment->visibility }}</td>
-            <td>
-                <a href="{{ route('admin.apartments.show', $apartment) }}"> Dettaglio </a>
-            </td>
-            <td>
-                <a href="{{ route('admin.apartments.create') }}" role="button" class="btn btn-primary">Crea appartamento</a>
-                 <a href="{{ route('admin.apartments.edit', $apartment) }}" role="button" class="btn btn-primary">Modifica appartamento</a>
-            </td>
-            
-
->>>>>>> 490cc95bf01fb3c320988d6bcd7ca8a3fb00b1a5
         </tr>
         
         @endforeach
-        
-        
     </tbody>
     </div>
     
@@ -111,30 +72,29 @@
 
 {{-- modale --}}
 @section('modals')
-@foreach ($apartments as $apartment)
-<div class="modal fade" id="delete-apartment-modal-{{ $apartment->id }}" tabindex="-1" aria-labelledby="delete-apartment-modal-{{ $apartment->id }}-label" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="delete-apartment-modal-{{ $apartment->id }}-label">Elimina l'appartamento n°{{ $apartment->id }}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                L'appartamento <strong>{{ $apartment->title }}</strong> sarà eliminato. Sei sicuro?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, annulla</button>
-                <form method="POST" action="{{ route('admin.apartments.destroy', $apartment)}}">
-                    @method('delete')
-                    @csrf
-                    <button type="submit" class="btn btn-primary">Sì, elimina</button>
-                </form>
+    @foreach ($apartments as $apartment)
+        <div class="modal fade" id="delete-apartment-modal-{{ $apartment->id }}" tabindex="-1" aria-labelledby="delete-apartment-modal-{{ $apartment->id }}-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="delete-apartment-modal-{{ $apartment->id }}-label">Elimina l'appartamento n°{{ $apartment->id }}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    L'appartamento <strong>{{ $apartment->title }}</strong> sarà eliminato. Sei sicuro?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, annulla</button>
+                    <form method="POST" action="{{ route('apartments.destroy', $apartment)}}">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Sì, elimina</button>
+                    </form>
+                </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-@endforeach
-</div>
+    @endforeach
 @endsection
 
 <!-- RISOLUZIONE INDEX -->
