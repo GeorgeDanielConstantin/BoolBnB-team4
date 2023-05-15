@@ -1,18 +1,104 @@
 @extends('layouts.app')
+
+@section('title', $apartment->title)
+
 @section('content')
 
+  <section class="card py-2">
+    <div class="card-body">
 
-    <strong>Titolo: </strong> {{ $apartment->title }} <br />
-    <strong>Descrizione: </strong> {{ $apartment->description }} <br />
-    <strong>Indirizzo: </strong> {{ $apartment->address }} <br />
-    <strong>Latitudine: </strong> {{ $apartment->latitude }} <br />
-    <strong>Longitudine: </strong> {{ $apartment->longitude }} <br />
-    <strong>Stanze:</strong> {{ $apartment->rooms  }} <br />
-    <strong>Bagni:</strong> {{ $apartment->bathrooms }} <br />
-    <strong>Letti:</strong> {{ $apartment->beds }} <br />
-    <strong>Metri quadri:</strong> {{ $apartment->square_meters }} <br />
+        <div class="row mb-3">
+            <div class="col-md-2 text-end">
+            <label for="title" class="form-label"></label>
+            </div>
+            <div class="col-md-10">
+            <img class="img-fluid" src="{{url($apartment->image)}}" alt="">
+            </div>
+        </div>
 
-    <a href="{{ route('admin.apartments.index') }}" class="btn btn-outline-primary my-5 mx-3">
-        Back to list
-    </a>
+        <div class="row mb-3">
+            <div class="col-md-2 text-end">
+            <label for="title" class="form-label">Nome Appartamento</label>
+            </div>
+            <div class="col-md-10">
+            <h2>{{$apartment->title}}</h2>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-2 text-end">
+            <label for="address" class="form-label">Indirizzo</label>
+            </div>
+            <div class="col-md-10">
+            <h2>{{$apartment->address}}</h2>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-2 text-end">
+            <label for="rooms" class="form-label">Numero di Stanze</label>
+            </div>
+            <div class="col-md-10">
+            <h2>{{$apartment->rooms}}</h2>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-2 text-end">
+            <label for="beds" class="form-label">Numero di letti</label>
+            </div>
+            <div class="col-md-10">
+            <h2>{{$apartment->beds}}</h2>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-2 text-end">
+            <label for="bathrooms" class="form-label">Numero di bagni</label>
+            </div>
+            <div class="col-md-10">
+            <h2>{{$apartment->bathrooms}}</h2>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-2 text-end">
+            <label for="square_meters" class="form-label">Metri quadrati</label>
+            </div>
+            <div class="col-md-10">
+            <h2>{{$apartment->square_meters}}</h2>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-2 text-end">
+            <label for="visibility" class="form-label">Visibilità</label>
+            </div>
+            <div class="col-md-10">
+            <h2>{{$apartment->visibility}}</h2>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-2 text-end">
+            <label for="image" class="form-label">Immagine</label>
+            </div>
+            <div class="col-md-8 position-relative">
+            <img src="{{ $apartment->getImageUri() }}" class="img-fluid" alt="" id="image-preview">
+            </div>
+
+            
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-2 text-end">
+            <label for="description" class="form-label">Descrizione Appartamento</label>
+            </div>
+            <div class="col-md-10">
+            <p>{{$apartment->description}}</p>
+            </div>
+        </div>
+        
+    </div>
+  </section>
 @endsection

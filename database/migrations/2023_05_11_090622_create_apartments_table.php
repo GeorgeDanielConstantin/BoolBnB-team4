@@ -27,7 +27,7 @@ return new class extends Migration
             $table->integer('bathrooms')->unsigned();
             $table->integer('beds')->unsigned();
             $table->integer('square_meters')->unsigned();
-            $table->boolean('visibility');
+            $table->boolean('visibility')->default(0);
         
             // timestamps() genera le colonne created_at ed updated_at
             $table->timestamps();

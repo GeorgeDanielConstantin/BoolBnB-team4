@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class ApartmentController extends Controller
@@ -27,6 +30,7 @@ class ApartmentController extends Controller
      */
     public function create(Apartment $apartment)
     {
+        $apartment = new Apartment;
         return view('admin.apartments.form', compact('apartment'));
     }
 
@@ -38,11 +42,31 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $this->validation($request->all());
+
+        //API KEY MIA - DANIELE
+        $response = Http::get('https://api.tomtom.com/search/2/geocode/' . $data['address'] . '.json?key=RRPZC1QxF3OriyrpAx5Cbd2ap0dpAhAk');
+        $jsonData = $response->json();
+        $results = $jsonData['results'];
+        $position = $results[0]['position'];
+
+
+
+
+        if (Arr::exists($data, 'image')) {
+            $img_path = Storage::put('uploads/shoes', $data['image']);
+            $data['image'] = $img_path;
+        } else {
+            $data['image'] = 'images/no-image.webp';
+        }
+
         $apartment = new Apartment;
         $apartment->fill($data);
+        $apartment->latitude = $position['lat'];
+        $apartment->longitude = $position['lon'];
         $apartment->save();
-        return redirect()->route('apartments.show', $apartment);
+        return redirect()->route('admin.apartments.show', $apartment)
+            ->with('message_content', "Project $apartment->id creato con successo");
     }
 
     /**
@@ -53,7 +77,7 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        return view('apartments.show', compact('apartment'));
+        return view('admin.apartments.show', compact('apartment'));
     }
 
     /**
@@ -64,7 +88,7 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        return view('apartments.edit', compact('apartment'));
+        return view('admin.apartments.form', compact('apartment'));
     }
 
     /**
@@ -76,9 +100,27 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-       $data = $request->all();
-       $apartment->update($data);
-       return redirect()->route('apartments.show', $apartment);
+        $data = $this->validation($request->all());
+
+        $response = Http::get('https://api.tomtom.com/search/2/geocode/' . $data['address'] . '.json?key=RRPZC1QxF3OriyrpAx5Cbd2ap0dpAhAk');
+        $jsonData = $response->json();
+        $results = $jsonData['results'];
+        $position = $results[0]['position'];
+
+
+        if (Arr::exists($data, 'image')) {
+            $img_path = Storage::put('uploads/shoes', $data['image']);
+            $data['image'] = $img_path;
+        } else {
+            $data['image'] = 'images/no-image.webp';
+        }
+
+        $apartment->fill($data);
+        $apartment->latitude = $position['lat'];
+        $apartment->longitude = $position['lon'];
+        $apartment->save();
+
+        return redirect()->route('admin.apartments.index');
     }
 
     /**
@@ -102,13 +144,13 @@ class ApartmentController extends Controller
                 'description' => 'min:5',
                 'image' => 'image|mimes:jpg,png,jpeg,gif,svg',
                 'address' => 'required|max:70',
-                'latitude' => 'required|max:18',
-                'longitude' => 'required|max:18',
+                'latitude' => 'max:18',
+                'longitude' => 'max:18',
                 'rooms' => 'required|min:1',
                 'bathrooms' => 'required|min:1',
                 'beds' => 'required|min:1',
                 'square_meters' => 'required|min:1',
-                'visibility' => 'required',
+                'visibility' => '',
             ],
 
             [
@@ -120,8 +162,8 @@ class ApartmentController extends Controller
                 'image.image' => 'Must be an image.',
                 'image.mimes' => 'The image must be JPG, PNG, JPEG, GIF or SVG format.',
 
-                'address.required' => 'The title is required.',
-                'address.max' => 'The title must have a maximum of 70 characters.',
+                'address.required' => 'The address is required.',
+                'address.max' => 'The address must have a maximum of 70 characters.',
 
                 'latitude.required' => 'The latitude is required.',
                 'latitude.max' => 'The latitude must have a maximum of 18 characters.',
