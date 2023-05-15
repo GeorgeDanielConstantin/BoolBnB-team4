@@ -20,8 +20,17 @@
   </header>
 
   <main>
-    <div class="py-5">
-      @yield('content')
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-start">
+        <h1>
+          @yield('title')
+        </h1>
+      </div>
+
+      <div class="py-3">
+        @yield('content')
+      </div>
     </div>
   </main>
 </body>

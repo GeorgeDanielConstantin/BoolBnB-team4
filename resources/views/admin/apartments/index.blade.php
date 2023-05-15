@@ -1,35 +1,30 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
     @extends('layouts.app')
 
+
+
+    @section('title', 'Apartments list')
+        
+
+
 @section('content')
+<a class="btn btn-primary my-3 "  href="{{ route('admin.apartments.create') }}" role="button" >Add apartment</a>
+<div class="row row-cols-2 ">
+    @foreach ($apartments as $apartment)
+    <div class="card col" >
+        
+        <img src="{{ $apartment->image }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ $apartment->title }}</h5>
+            <p class="card-text">{{ $apartment->address }}</p>
+            <a href="{{ route('admin.apartments.show', $apartment) }}" class="btn btn-primary">Details</a>
+            <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-primary">Edit</a>
+        </div>
+    </div>
+    @endforeach
+</div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">Address</th>
-            <th scope="col">Latitude</th>
-            <th scope="col">Longitude</th>
-            <th scope="col">Rooms</th>
-            <th scope="col">Bathrooms</th>
-            <th scope="col">Beds</th>
-            <th scope="col">Square_meters</th>
-            <th scope="col">Visibility</th>
-
-        </tr>
-    </thead>
+{{-- <table class="table">
+  
     <div class="">
     <tbody class="indexcard d-flex flex-row flex-wrap align-items-center gap-5 text-center">
         @foreach ($apartments as $apartment)
@@ -57,7 +52,9 @@
     </tbody>
     </div>
     
-</table>
+</table> --}}
+
+@endsection
 
 {{ $apartments->links() }}
 
@@ -96,5 +93,3 @@
 @endsection
 
 <!-- RISOLUZIONE INDEX -->
-</body>
-</html>
