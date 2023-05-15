@@ -1,4 +1,18 @@
-@extends('layouts.app')
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    @extends('layouts.app')
 
 @section('content')
 
@@ -18,34 +32,36 @@
 
         </tr>
     </thead>
-    <tbody class="d-flex flex-column align-items-center gap-5 text-center">
+    <div class="">
+    <tbody class="indexcard d-flex flex-row flex-wrap align-items-center gap-5 text-center">
         @foreach ($apartments as $apartment)
         <tr class="card p-5 text-center bg-info">
             <th class="text-light" scope="row">{{ $apartment->id }}</th>
             <td class="text-secondary">{{ $apartment->title }}</td>
-            <td class="descriptionindex">{{ $apartment->description }}</td>
+            <td><img src="{{$apartment->image}}" alt="" width="400px" height="300px" ></td>
+            <!--<td class="descriptionindex">{{ $apartment->description }}</td>-->
             <td class="text-light">{{ $apartment->address }}</td>
-            <td class="text-secondary">{{ $apartment->latitude }}</td>
-            <td class="text-secondary">{{ $apartment->longitude }}</td>
-            <td class="text-light">Stanze:{{ $apartment->rooms }}</td>
+            <!--<td class="text-secondary">{{ $apartment->latitude }}</td>
+            <td class="text-secondary">{{ $apartment->longitude }}</td>-->
+            <!--<td class="text-light">Stanze:{{ $apartment->rooms }}</td>
             <td class="text-light">Bagni:{{ $apartment->bathrooms }}</td>
-            <td class="text-light">Letti{{ $apartment->beds }}</td>
+            <td class="text-light">Letti{{ $apartment->beds }}</td>-->
             <td class="text-light">Metri quadri:{{ $apartment->square_meters }}</td>
             <td class="text-light">Visibilità:{{ $apartment->visibility }}</td>
-             <td>
-                <a href="{{ route('apartments.show', $apartment) }}"> Dettaglio </a>
+             <td class="d-flex flex-row gap-3 align-items-center justify-content-center">
+                <a href="{{ route('apartments.show', $apartment) }}"> <i class="fa-solid fa-circle-info"></i> </a>
+                <a href="{{ route('apartments.create') }}" role="button" ><i class="fa-solid fa-square-plus"></i></a>
+                <a href="{{ route('apartments.edit', $apartment) }}"><i class="fa-solid fa-pen-to-square"></i></a>
             </td>
-            <td>
-                <a href="{{ route('apartments.create') }}" role="button" class="btn btn-primary">Crea appartamento</a>
-            </td>
-            <td>
-                <a href="{{ route('apartments.edit', $apartment) }}">Modifica</a>
-            </td>
-
         </tr>
+        
         @endforeach
     </tbody>
+    </div>
+    
 </table>
+
+{{ $apartments->links() }}
 
 
 
@@ -82,3 +98,5 @@
 @endsection
 
 <!-- RISOLUZIONE INDEX -->
+</body>
+</html>
