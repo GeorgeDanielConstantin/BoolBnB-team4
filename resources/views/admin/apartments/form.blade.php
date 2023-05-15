@@ -240,13 +240,13 @@
 
 
       {{-- TO DO DEFINIRE LA ROUTE ADMIN.APARTMENTS.DELETE-IMAGE --}}
-      @if ($apartment->image)
+      {{-- @if ($apartment->image)
         <form id="delete-apartment-image-form" method="POST" action="{{ route('admin.apartments.delete-image', $apartment) }}">
           @method('delete')
           @csrf
 
         </form>
-      @endif
+      @endif --}}
     </div>
   </section>
 @endsection

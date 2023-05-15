@@ -46,6 +46,7 @@
             </td>
             <td>
                 <a href="{{ route('apartments.create') }}" role="button" class="btn btn-primary">Crea appartamento</a>
+                 <a href="{{ route('apartments.edit', $apartment) }}" role="button" class="btn btn-primary">modifica appartamento</a>
             </td>
             <td>
                 <a href="{{ route('apartments.edit', $apartment) }}">Modifica</a>

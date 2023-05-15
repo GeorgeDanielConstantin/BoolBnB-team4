@@ -7,6 +7,7 @@ use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use App\Models\Apartment;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,7 @@ Route::get('/',    [GuestHomeController::class,    'homepage'])->name('homepage'
 // # Apartment route
 Route::resource('apartments', ApartmentController::class);
 
+
 // # Protected routes
 Route::middleware('auth')
     ->prefix('admin')   // * routes url start with "/admin." 
@@ -31,7 +33,9 @@ Route::middleware('auth')
     ->group(
         function () {
             Route::get('/dashboard',   [AdminHomeController::class,    'dashboard'])->name('dashboard');
+            Route::resource('apartments', ApartmentController::class) ;
         }
+
     );
 
 // ! Generated routes, do not touch
