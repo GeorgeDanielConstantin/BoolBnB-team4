@@ -65,6 +65,8 @@ class ApartmentController extends Controller
             $data['image'] = 'images/no-image.webp';
         }
 
+
+
         $user_id = Auth::user()->id;
         $apartment = new Apartment;
         $apartment->fill($data);
@@ -72,6 +74,8 @@ class ApartmentController extends Controller
         $apartment->longitude = $position['lon'];
         $apartment->user_id = $user_id;
         $apartment->save();
+
+        if (Arr::exists($data, "services")) $apartment->service()->attach($data["services"]);
         return redirect()->route('admin.apartments.show', $apartment)
             ->with('message_content', "Project $apartment->id creato con successo");
     }
@@ -96,8 +100,7 @@ class ApartmentController extends Controller
     public function edit(Apartment $apartment)
     {
         $services = Service::all();
-        $apartment_services = $apartment->services->pluck('id')->toArray();
-        dd($apartment_services);
+        $apartment_services = $apartment->service->pluck('id')->toArray();
         return view('admin.apartments.form', compact('apartment', 'services', 'apartment_services'));
     }
 
@@ -130,7 +133,12 @@ class ApartmentController extends Controller
         $apartment->longitude = $position['lon'];
         $apartment->save();
 
-        return redirect()->route('admin.apartments.show');
+        if (Arr::exists($data, "services"))
+            $apartment->service()->sync($data["services"]);
+        else
+            $apartment->service()->detach();
+
+        return redirect()->route('admin.apartments.show', compact('apartment'));
     }
 
     /**
@@ -161,6 +169,7 @@ class ApartmentController extends Controller
                 'beds' => 'required|min:1',
                 'square_meters' => 'required|min:1',
                 'visibility' => '',
+                'services' => 'nullable|exists:services,id'
             ],
 
             [
@@ -195,7 +204,8 @@ class ApartmentController extends Controller
                 'square_meters.required' => 'The square_meters  is required.',
                 'square_meters.min' => 'The square_meters must be at least 1',
 
-                'visibility.required' => 'The visibility is required.'
+                'visibility.required' => 'The visibility is required.',
+                'services.exists' => 'I servizi selezionati non sono validi'
 
             ]
         )->validate();
