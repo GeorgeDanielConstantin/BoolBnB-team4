@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -109,7 +110,7 @@ class ApartmentController extends Controller
                 'title.max' => 'The title must have a maximum of 60 characters.',
 
                 'description.min' => 'The description must have a minimum of 5 characters.',
-                
+
                 'image.image' => 'Must be an image.',
                 'image.mimes' => 'The image must be JPG, PNG, JPEG, GIF or SVG format.',
 
@@ -141,9 +142,5 @@ class ApartmentController extends Controller
             ]
         )->validate();
         return $validator;
-<<<<<<< HEAD
-    
+    }
 }
-=======
-}
->>>>>>> 475782d8869ed86538b5ac0a58471b24fb9f0f8b

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',    [GuestHomeController::class,    'homepage'])->name('homepage');
 
 // # Apartment route
-Route::resource('apartments', Apartment::class);
+Route::resource('apartments', ApartmentController::class);
 
 // # Protected routes
 Route::middleware('auth')
