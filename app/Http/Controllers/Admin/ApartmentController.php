@@ -25,9 +25,9 @@ class ApartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Apartment $apartment)
     {
-         return view('apartments.create');
+        return view('admin.apartments.form', compact('apartment'));
     }
 
     /**
