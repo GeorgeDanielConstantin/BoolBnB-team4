@@ -64,7 +64,7 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        //
+        return view('apartments.edit', compact('apartment'));
     }
 
     /**
@@ -76,7 +76,9 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-        //
+       $data = $request->all();
+       $apartment->update($data);
+       return redirect()->route('apartments.show', $apartment);
     }
 
     /**
