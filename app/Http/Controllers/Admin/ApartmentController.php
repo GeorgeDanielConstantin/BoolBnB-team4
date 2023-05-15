@@ -38,7 +38,11 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $apartment = new Apartment;
+        $apartment->fill($data);
+        $apartment->save();
+        return redirect()->route('apartments.show', $apartment);
     }
 
     /**
