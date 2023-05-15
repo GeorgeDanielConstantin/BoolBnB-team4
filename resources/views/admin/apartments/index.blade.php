@@ -44,9 +44,9 @@
 
 
 {{-- bottone per la modale --}}
-<a href="{{ route('admin.projects.edit', $project) }}" class="text-danger" data-bs-toggle="modal" data-bs-target="#delete-project-modal-{{ $project->id }}">
+{{-- <a href="{{ route('admin.apartments.edit', $apartment) }}" class="text-danger" data-bs-toggle="modal" data-bs-target="#delete-project-modal-{{ $apartment->id }}">
     <i class="bi bi-trash mx-1"></i>
-</a>
+</a> --}}
 
 {{-- modale --}}
 @section('modals')
@@ -63,7 +63,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, annulla</button>
-                    <form method="POST" action="{{ route('admin.apartments.destroy', $apartment)}}">
+                    <form method="POST" action="{{ route('apartments.destroy', $apartment)}}">
                         @method('delete')
                         @csrf
                         <button type="submit" class="btn btn-primary">Sì, elimina</button>

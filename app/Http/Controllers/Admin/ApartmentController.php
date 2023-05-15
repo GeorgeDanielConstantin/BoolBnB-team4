@@ -17,7 +17,7 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Apartment::paginate(6);
-        return view('apartments.index', compact('apartments'));
+        return view('admin.apartments.index', compact('apartments'));
     }
 
     /**
@@ -84,7 +84,7 @@ class ApartmentController extends Controller
     public function destroy(Apartment $apartment)
     {
         $apartment->delete();
-        return redirect()->route('apartments.index');
+        return redirect()->route('admin.apartments.index');
     }
 
     private function validation($data)
