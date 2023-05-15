@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Service;
 
 class ApartmentController extends Controller
 {
@@ -34,7 +35,8 @@ class ApartmentController extends Controller
     public function create(Apartment $apartment)
     {
         $apartment = new Apartment;
-        return view('admin.apartments.form', compact('apartment'));
+        $services = Service::all();
+        return view('admin.apartments.form', compact('apartment', 'services'));
     }
 
     /**
@@ -57,7 +59,7 @@ class ApartmentController extends Controller
 
 
         if (Arr::exists($data, 'image')) {
-            $img_path = Storage::put('uploads/shoes', $data['image']);
+            $img_path = Storage::put('uploads/apartments', $data['image']);
             $data['image'] = $img_path;
         } else {
             $data['image'] = 'images/no-image.webp';
@@ -93,7 +95,8 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        return view('admin.apartments.form', compact('apartment'));
+        $services = Service::all();
+        return view('admin.apartments.form', compact('apartment', 'services'));
     }
 
     /**
@@ -125,7 +128,7 @@ class ApartmentController extends Controller
         $apartment->longitude = $position['lon'];
         $apartment->save();
 
-        return redirect()->route('admin.apartments.index');
+        return redirect()->route('admin.apartments.show');
     }
 
     /**
