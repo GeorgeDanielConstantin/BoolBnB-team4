@@ -12,4 +12,9 @@ class Message extends Model
     public function apartment() {
         return $this->belongsTo(Apartment::class);
     }
+
+
+    public function getAbstract($max = 20) {
+        return substr($this->text, 0 , $max) . "...";
+    }
 }

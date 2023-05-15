@@ -1,8 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Messages;
+use App\Http\Controllers\Controller;
+
+use App\Models\Message;
+use App\Models\Apartment;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 
 class MessagesController extends Controller
@@ -12,30 +17,24 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Apartment $apartment)
     {
-        //
-    }
+        $user = Auth::user();
+        $apartment_id = $request->input('apartment_id');
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        $messages = Message::whereHas('apartment', function ($query) use ($user) {
+            $query->where('user_id', '=', $user->id)
+                ->orderBy('created_at', 'desc');
+            });
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        if ($apartment_id) {
+            $messages = $messages->where('apartment_id', $apartment_id);
+        }
+
+        $messages = $messages->get();
+
+        return view('admin.messages.index', compact('messages'));
+
     }
 
     /**
@@ -44,32 +43,9 @@ class MessagesController extends Controller
      * @param  \App\Models\Messages  $messages
      * @return \Illuminate\Http\Response
      */
-    public function show(Messages $messages)
+    public function show(Message $message)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Messages  $messages
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Messages $messages)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Messages  $messages
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Messages $messages)
-    {
-        //
+        return view('admin.messages.show', compact('message'));
     }
 
     /**
@@ -78,7 +54,7 @@ class MessagesController extends Controller
      * @param  \App\Models\Messages  $messages
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Messages $messages)
+    public function destroy(Message $message)
     {
         //
     }

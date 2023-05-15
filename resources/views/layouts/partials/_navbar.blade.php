@@ -16,7 +16,10 @@
             <a class="nav-link" href="{{ route('homepage') }}">{{ __('Home') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('apartments.index') }}">{{ __('Appartments') }}</a>
+            <a class="nav-link" href="{{route('apartments.index') }}">{{ __('Apartments') }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('messages.index') }}">{{ __('Messages') }}</a>
           </li>
         </ul>
 
