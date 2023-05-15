@@ -45,10 +45,10 @@ class ApartmentController extends Controller
         $data = $this->validation($request->all());
 
         //API KEY MIA - DANIELE
-        // $response = Http::get('https://api.tomtom.com/search/2/geocode/' . $data['address'] . '.json?key=RRPZC1QxF3OriyrpAx5Cbd2ap0dpAhAk');
-        // $jsonData = $response->json();
-        // $results = $jsonData['results'];
-        // $position = $results[0]['position'];
+        $response = Http::get('https://api.tomtom.com/search/2/geocode/' . $data['address'] . '.json?key=RRPZC1QxF3OriyrpAx5Cbd2ap0dpAhAk');
+        $jsonData = $response->json();
+        $results = $jsonData['results'];
+        $position = $results[0]['position'];
 
 
 
@@ -102,10 +102,10 @@ class ApartmentController extends Controller
     {
         $data = $this->validation($request->all());
 
-        // $response = Http::get('https://api.tomtom.com/search/2/geocode/' . $data['address'] . '.json?key=RRPZC1QxF3OriyrpAx5Cbd2ap0dpAhAk');
-        // $jsonData = $response->json();
-        // $results = $jsonData['results'];
-        // $position = $results[0]['position'];
+        $response = Http::get('https://api.tomtom.com/search/2/geocode/' . $data['address'] . '.json?key=RRPZC1QxF3OriyrpAx5Cbd2ap0dpAhAk');
+        $jsonData = $response->json();
+        $results = $jsonData['results'];
+        $position = $results[0]['position'];
 
 
         if (Arr::exists($data, 'image')) {
@@ -120,7 +120,7 @@ class ApartmentController extends Controller
         $apartment->longitude = $position['lon'];
         $apartment->save();
 
-        return redirect()->route('apartments.index');
+        return redirect()->route('admin.apartments.index');
     }
 
     /**
