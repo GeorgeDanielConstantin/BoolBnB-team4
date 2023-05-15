@@ -9,6 +9,15 @@
 
         <div class="row mb-3">
             <div class="col-md-2 text-end">
+            <label for="title" class="form-label"></label>
+            </div>
+            <div class="col-md-10">
+            <img class="img-fluid" src="{{url($apartment->image)}}" alt="">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-2 text-end">
             <label for="title" class="form-label">Nome Appartamento</label>
             </div>
             <div class="col-md-10">
