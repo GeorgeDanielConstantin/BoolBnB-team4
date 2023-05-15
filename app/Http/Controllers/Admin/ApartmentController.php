@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class ApartmentController extends Controller
@@ -39,8 +40,19 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+        //API KEY MIA - DANIELE
+        $response = Http::get('https://api.tomtom.com/search/2/geocode/' . $data['address'] . '.json?key=RRPZC1QxF3OriyrpAx5Cbd2ap0dpAhAk');
+        $jsonData = $response->json();
+        $results = $jsonData['results'];
+        $position = $results[0]['position'];
+
+
+
         $apartment = new Apartment;
         $apartment->fill($data);
+        $apartment->latitude = $position['lat'];
+        $apartment->longitude = $position['lon'];
         $apartment->save();
         return redirect()->route('apartments.show', $apartment);
     }
