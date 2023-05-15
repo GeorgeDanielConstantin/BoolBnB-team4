@@ -200,7 +200,7 @@
 
         {{-- TO DO DEFINIRE IL GETTER getImageUri() NEL MODEL APARTMENT --}}
         <div class="col-2 position-relative">
-          <img src="{{ $apartment->getImageUri() }}" class="img-fluid" alt="" id="image-preview">
+          <img src="{{ $apartment->getImageUri() }}" class="img-fluid w-100" alt="" id="image-preview">
 
           @if ($apartment->image)
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
