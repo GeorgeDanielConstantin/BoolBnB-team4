@@ -9,6 +9,8 @@ class Apartment extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["title", "description", "address", "latitude", "longitude", "rooms", "bathrooms","beds","square_meters"];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
