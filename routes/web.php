@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',    [GuestHomeController::class,    'homepage'])->name('homepage');
 
 // # Apartment route
-Route::resource('apartments', ApartmentController::class);
+// Route::resource('apartments', ApartmentController::class);
 
 
 // # Protected routes
@@ -33,7 +33,7 @@ Route::middleware('auth')
     ->group(
         function () {
             Route::get('/dashboard',   [AdminHomeController::class,    'dashboard'])->name('dashboard');
-            Route::resource('apartments', ApartmentController::class) ;
+            Route::resource('apartments', ApartmentController::class);
         }
 
     );

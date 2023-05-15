@@ -16,7 +16,7 @@
             <a class="nav-link" href="{{ route('homepage') }}">{{ __('Home') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('apartments.index') }}">{{ __('Appartments') }}</a>
+            <a class="nav-link" href="{{route('admin.apartments.index') }}">{{ __('Appartments') }}</a>
           </li>
         </ul>
 

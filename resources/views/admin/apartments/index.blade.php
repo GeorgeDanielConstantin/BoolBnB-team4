@@ -6,7 +6,7 @@
 
     
     <td>
-        <a href="{{ route('apartments.create') }}" role="button" class="btn btn-primary">Crea appartamento</a>
+        <a href="{{ route('admin.apartments.create' ) }}" role="button" class="btn btn-primary">Crea appartamento</a>
     </td>
     
     <table class="table">
@@ -42,15 +42,13 @@
             <td class="text-light">Square meters:{{ $apartment->square_meters }}</td>
             <td class="text-light">Active sponsor:{{ $apartment->visibility }}</td>
             <td>
-                <a href="{{ route('apartments.show', $apartment) }}"> Dettaglio </a>
+                <a href="{{ route('admin.apartments.show', $apartment) }}"> Dettaglio </a>
             </td>
             <td>
-                <a href="{{ route('apartments.create') }}" role="button" class="btn btn-primary">Crea appartamento</a>
-                 <a href="{{ route('apartments.edit', $apartment) }}" role="button" class="btn btn-primary">modifica appartamento</a>
+                <a href="{{ route('admin.apartments.create') }}" role="button" class="btn btn-primary">Crea appartamento</a>
+                 <a href="{{ route('admin.apartments.edit', $apartment) }}" role="button" class="btn btn-primary">Modifica appartamento</a>
             </td>
-            <td>
-                <a href="{{ route('apartments.edit', $apartment) }}">Modifica</a>
-            </td>
+            
 
         </tr>
         @endforeach
@@ -81,7 +79,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, annulla</button>
-                <form method="POST" action="{{ route('apartments.destroy', $apartment)}}">
+                <form method="POST" action="{{ route('admin.apartments.destroy', $apartment)}}">
                     @method('delete')
                     @csrf
                     <button type="submit" class="btn btn-primary">Sì, elimina</button>

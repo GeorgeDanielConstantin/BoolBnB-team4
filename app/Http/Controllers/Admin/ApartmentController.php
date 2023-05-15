@@ -42,8 +42,7 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-        $data = $request->all();
+        $data = $this->validation($request->all());
 
         //API KEY MIA - DANIELE
         $response = Http::get('https://api.tomtom.com/search/2/geocode/' . $data['address'] . '.json?key=RRPZC1QxF3OriyrpAx5Cbd2ap0dpAhAk');
@@ -52,24 +51,22 @@ class ApartmentController extends Controller
         $position = $results[0]['position'];
 
 
-=======
-       
-        $data = $this->validation($request->all());
+
+
         if (Arr::exists($data, 'image')) {
             $img_path = Storage::put('uploads/shoes', $data['image']);
             $data['image'] = $img_path;
         } else {
             $data['image'] = 'images/no-image.webp';
         }
->>>>>>> validation
 
         $apartment = new Apartment;
         $apartment->fill($data);
         $apartment->latitude = $position['lat'];
         $apartment->longitude = $position['lon'];
         $apartment->save();
-        return redirect()->route('apartments.show', $apartment)
-        ->with('message_content', "Project $apartment->id creato con successo");
+        return redirect()->route('admin.apartments.show', $apartment)
+            ->with('message_content', "Project $apartment->id creato con successo");
     }
 
     /**
@@ -91,11 +88,7 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-<<<<<<< HEAD
-        return view('apartments.edit', compact('apartment'));
-=======
         return view('admin.apartments.form', compact('apartment'));
->>>>>>> validation
     }
 
     /**
@@ -107,24 +100,26 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-<<<<<<< HEAD
-       $data = $request->all();
-       $apartment->update($data);
-       return redirect()->route('apartments.show', $apartment);
-=======
         $data = $this->validation($request->all());
-        
+
+        $response = Http::get('https://api.tomtom.com/search/2/geocode/' . $data['address'] . '.json?key=RRPZC1QxF3OriyrpAx5Cbd2ap0dpAhAk');
+        $jsonData = $response->json();
+        $results = $jsonData['results'];
+        $position = $results[0]['position'];
+
         if (Arr::exists($data, 'image')) {
             $img_path = Storage::put('uploads/shoes', $data['image']);
             $data['image'] = $img_path;
         } else {
             $data['image'] = 'images/no-image.webp';
         }
-      
-        $apartment->update($data);
+
+        $apartment->fill($data);
+        $apartment->latitude = $position['lat'];
+        $apartment->longitude = $position['lon'];
+        $apartment->save();
 
         return redirect()->route('apartments.index');
->>>>>>> validation
     }
 
     /**
