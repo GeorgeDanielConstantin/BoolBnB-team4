@@ -18,20 +18,20 @@
 
         </tr>
     </thead>
-    <tbody>
+    <tbody class="d-flex flex-column align-items-center gap-5 text-center">
         @foreach ($apartments as $apartment)
-        <tr>
-            <th scope="row">{{ $apartment->id }}</th>
-            <td>{{ $apartment->title }}</td>
-            <td>{{ $apartment->description }}</td>
-            <td>{{ $apartment->address }}</td>
-            <td>{{ $apartment->latitude }}</td>
-            <td>{{ $apartment->longitude }}</td>
-            <td>{{ $apartment->rooms }}</td>
-            <td>{{ $apartment->bathrooms }}</td>
-            <td>{{ $apartment->beds }}</td>
-            <td>{{ $apartment->square_meters }}</td>
-            <td>{{ $apartment->visibility }}</td>
+        <tr class="card p-5 text-center bg-info">
+            <th class="text-light" scope="row">{{ $apartment->id }}</th>
+            <td class="text-secondary">{{ $apartment->title }}</td>
+            <td class="descriptionindex">{{ $apartment->description }}</td>
+            <td class="text-light">{{ $apartment->address }}</td>
+            <td class="text-secondary">{{ $apartment->latitude }}</td>
+            <td class="text-secondary">{{ $apartment->longitude }}</td>
+            <td class="text-light">Stanze:{{ $apartment->rooms }}</td>
+            <td class="text-light">Bagni:{{ $apartment->bathrooms }}</td>
+            <td class="text-light">Letti{{ $apartment->beds }}</td>
+            <td class="text-light">Metri quadri:{{ $apartment->square_meters }}</td>
+            <td class="text-light">Visibilità:{{ $apartment->visibility }}</td>
              <td>
                 <a href="{{ route('apartments.show', $apartment) }}"> Dettaglio </a>
             </td>
