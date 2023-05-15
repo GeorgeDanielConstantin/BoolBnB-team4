@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
@@ -19,7 +20,9 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::paginate(6);
+        $user_id = Auth::user();
+        // dd($user_id);
+        $apartments = Apartment::where('user_id', $user_id->id)->get();
         return view('admin.apartments.index', compact('apartments'));
     }
 
@@ -60,10 +63,12 @@ class ApartmentController extends Controller
             $data['image'] = 'images/no-image.webp';
         }
 
+        $user_id = Auth::user()->id;
         $apartment = new Apartment;
         $apartment->fill($data);
         $apartment->latitude = $position['lat'];
         $apartment->longitude = $position['lon'];
+        $apartment->user_id = $user_id;
         $apartment->save();
         return redirect()->route('admin.apartments.show', $apartment)
             ->with('message_content', "Project $apartment->id creato con successo");
