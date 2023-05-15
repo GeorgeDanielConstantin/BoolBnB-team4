@@ -175,7 +175,7 @@
         </div>
         <div class="col-md-10">
           <input type="checkbox" name="visibility" id="visibility"
-            class="form-check-control @error('visibility') is-invalid @enderror" @checked(old('visibility', $post->visibility))
+            class="form-check-control @error('visibility') is-invalid @enderror" @checked(old('visibility', $apartment->visibility))
             value="1" />
           @error('visibility')
             <div class="invalid-feedback">
