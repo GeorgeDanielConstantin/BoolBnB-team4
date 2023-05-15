@@ -29,7 +29,7 @@
             <td class="text-secondary">{{ $apartment->longitude }}</td>
             <td class="text-light">Stanze:{{ $apartment->rooms }}</td>
             <td class="text-light">Bagni:{{ $apartment->bathrooms }}</td>
-            <td class="text-light">Letti{{ $apartment->beds }}</td>
+            <td class="text-light">Letti:{{ $apartment->beds }}</td>
             <td class="text-light">Metri quadri:{{ $apartment->square_meters }}</td>
             <td class="text-light">Visibilità:{{ $apartment->visibility }}</td>
              <td>
@@ -37,6 +37,7 @@
             </td>
             <td>
                 <a href="{{ route('apartments.create') }}" role="button" class="btn btn-primary">Crea appartamento</a>
+                 <a href="{{ route('apartments.edit', $apartment) }}" role="button" class="btn btn-primary">modifica appartamento</a>
             </td>
 
         </tr>
