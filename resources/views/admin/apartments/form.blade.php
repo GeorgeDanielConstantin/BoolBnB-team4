@@ -4,12 +4,12 @@
 
 @section('actions')
   <div>
-    <a href="{{ route('admin.apartments.index') }}" class="btn btn-primary mx-1">
+    <a href="{{ route('apartments.index') }}" class="btn btn-primary mx-1">
       Torna alla lista
     </a>
 
-    @if ($post->id)
-      <a href="{{ route('admin.apartments.show', $post) }}" class="btn btn-primary mx-1">
+    @if ($apartment->id)
+      <a href="{{ route('apartments.show', $apartment) }}" class="btn btn-primary mx-1">
         Mostra Appartamento
       </a>
     @endif
@@ -24,10 +24,10 @@
     <div class="card-body">
 
       @if ($apartment->id)
-        <form method="POST" action="{{ route('admin.apartments.update', $apartment) }}" enctype="multipart/form-data" class="row">
+        <form method="POST" action="{{ route('apartments.update', $apartment) }}" enctype="multipart/form-data" class="row">
           @method('put')
         @else
-          <form method="POST" action="{{ route('admin.apartments.store') }}" enctype="multipart/form-data" class="row">
+          <form method="POST" action="{{ route('apartments.store') }}" enctype="multipart/form-data" class="row">
       @endif
 
       @csrf
@@ -175,7 +175,7 @@
         </div>
         <div class="col-md-10">
           <input type="checkbox" name="visibility" id="visibility"
-            class="form-check-control @error('visibility') is-invalid @enderror" @checked(old('visibility', $post->visibility))
+            class="form-check-control @error('visibility') is-invalid @enderror" @checked(old('visibility', $apartment->visibility))
             value="1" />
           @error('visibility')
             <div class="invalid-feedback">
