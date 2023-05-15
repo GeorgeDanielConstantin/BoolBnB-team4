@@ -124,17 +124,17 @@
 
       {{-- <div class="row mb-3">
         <div class="col-md-2 text-end">
-          <label for="category_id" class="form-label">Categoria</label>
+          <label for="service_id" class="form-label">Servizi:</label>
         </div>
         <div class="col-md-10">
-          <select name="category_id" id="category_id" class="form-select @error('category_id') is-invalid @enderror">
-            <option value="">Non categorizzato</option>
-            @foreach ($categories as $category)
-              <option @if (old('category_id', $post->category_id) == $category->id) selected @endif value="{{ $category->id }}">{{ $category->label }}
+          <select name="service_id" id="service_id" class="form-select @error('service_id') is-invalid @enderror">
+            <option value="">Nessun Servizio</option>
+            @foreach ($services as $service)
+              <option @if (old('service_id', $apartment->service_id) == $service->id) selected @endif value="{{ $service->id }}">{{ $service->name }}
               </option>
             @endforeach
           </select>
-          @error('category_id')
+          @error('service_id')
             <div class="invalid-feedback">
               {{ $message }}
             </div>
@@ -142,31 +142,31 @@
         </div>
       </div> --}}
 
-      {{-- <div class="row mb-3">
+      <div class="row mb-3">
         <div class="col-md-2 text-end">
-          <label class="form-label">Tags</label>
+          <label class="form-label">Servizi</label>
         </div>
         <div class="col-md-10">
 
-          <div class="form-check @error('tags') is-invalid @enderror p-0">
+          <div class="form-check @error('services') is-invalid @enderror p-0">
 
-            @foreach ($tags as $tag)
-              <input type="checkbox" id="tag-{{ $tag->id }}" value="{{ $tag->id }}" name="tags[]"
-                class="form-check-control" @if (in_array($tag->id, old('tags', $post_tags ?? []))) checked @endif>
-              <label for="tag-{{ $tag->id }}">{{ $tag->label }}</label>
+            @foreach ($services as $service)
+              <input type="checkbox" id="service-{{ $service->id }}" value="{{ $service->id }}" name="services[]"
+                class="form-check-control" @if (in_array($service->id, old('services', $apartment_services ?? []))) checked @endif>
+              <label for="service-{{ $service->id }}">{{ $service->name }}</label>
               <br>
             @endforeach
 
 
           </div>
 
-          @error('tags')
+          @error('services')
             <div class="invalid-feedback">
               {{ $message }}
             </div>
           @enderror
         </div>
-      </div> --}}
+      </div>
 
 
       <div class="row mb-3">
