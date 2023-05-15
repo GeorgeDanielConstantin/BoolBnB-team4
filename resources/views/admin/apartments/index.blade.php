@@ -44,6 +44,13 @@
             <td>
                 <a href="{{ route('apartments.show', $apartment) }}"> Dettaglio </a>
             </td>
+            <td>
+                <a href="{{ route('apartments.create') }}" role="button" class="btn btn-primary">Crea appartamento</a>
+            </td>
+            <td>
+                <a href="{{ route('apartments.edit', $apartment) }}">Modifica</a>
+            </td>
+
         </tr>
         @endforeach
         
