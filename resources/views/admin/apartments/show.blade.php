@@ -86,21 +86,24 @@
             </div>
         </div>
 
-        {{-- <div>
+        <div>
             <p>Servizi</p>
             <ul>
                 @forelse ($apartment->services as $service)
                 <li>
-                {{service->type}} 
+                    <span>
+                        {{service->type}} 
+                    </span>
+                    <span>
+                        {{service->name}}
+                    </span>    
                 </li>
-                <li>
-                    {{service->name}}
-                </li>
+
                 @empty
                 Nessun servizio
                 @endforelse
             </ul>
-        </div> --}}
+        </div>
         
     </div>
   </section>

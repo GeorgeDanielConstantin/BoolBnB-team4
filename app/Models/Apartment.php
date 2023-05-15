@@ -32,7 +32,7 @@ class Apartment extends Model
 
     public function service()
     {
-        return $this->belongsMany(Service::class);
+        return $this->belongsToMany(Service::class);
     }
 
 
