@@ -89,13 +89,13 @@
         <div>
             <p>Servizi</p>
             <ul>
-                @forelse ($apartment->services as $service)
+                @forelse ($apartment->service as $service)
                 <li>
                     <span>
-                        {{service->type}} 
+                        {{$service->type}} 
                     </span>
                     <span>
-                        {{service->name}}
+                        {{$service->name}}
                     </span>    
                 </li>
 
