@@ -31,10 +31,15 @@
                         </a>
                     </td>
                 </tr>
+                @empty
+                <tr>
+                    <td scope="row">Nessun risultato</td>
+                </tr>
             @endforelse
         </tbody>
     </table>
 
+    {{ $messages->links() }}
 
 </section>
 

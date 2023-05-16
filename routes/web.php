@@ -36,7 +36,7 @@ Route::middleware('auth')
             Route::resource('apartments', ApartmentController::class);
 
             // # Messages route
-            Route::resource('messages', MessagesController::class);
+            Route::resource('messages', MessagesController::class)->only(['index', 'show']);
         }
     );
 
