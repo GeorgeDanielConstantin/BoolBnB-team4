@@ -39,7 +39,8 @@ Route::middleware('auth')
             // # Apartment route
             Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartments.index');
             Route::get('/apartments/create', [ApartmentController::class, 'create'])->name('apartments.create');
-            Route::resource('apartments', ApartmentController::class)->middleware('can:update,apartment')->except(['index', 'create']);
+            Route::post('/apartments/create', [ApartmentController::class, 'store'])->name('apartments.store');
+            Route::resource('apartments', ApartmentController::class)->middleware('can:update,apartment')->except(['index', 'create', 'store']);
             // # Messages route
             Route::resource('messages', MessagesController::class)->only(['index', 'show']);
         }
