@@ -39,8 +39,7 @@
         </tbody>
     </table>
 
-    {{ $messages->links() }}
-
+    
 </section>
 
 @endsection

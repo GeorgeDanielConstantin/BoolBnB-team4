@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-body">
                 <p>
-                    {{$message->text}}
+                    {{$message->message}}
                 </p>
             </div>
         </div>

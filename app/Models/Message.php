@@ -14,7 +14,7 @@ class Message extends Model
     }
 
 
-    public function getAbstract($max = 20) {
-        return substr($this->text, 0 , $max) . "...";
+    public function getAbstract($max = 40) {
+        return substr($this->message, 0 , $max) . "...";
     }
 }
