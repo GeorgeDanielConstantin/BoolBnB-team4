@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\MessagesController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use App\Models\Apartment;
+use App\Models\Message;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,7 +35,12 @@ Route::middleware('auth')
     ->group(
         function () {
             Route::get('/dashboard',   [AdminHomeController::class,    'dashboard'])->name('dashboard');
+
+            // # Apartment route
             Route::resource('apartments', ApartmentController::class);
+
+            // # Messages route
+            Route::resource('messages', MessagesController::class)->only(['index', 'show']);
         }
 
     );

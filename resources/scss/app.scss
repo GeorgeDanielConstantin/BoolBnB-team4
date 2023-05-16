@@ -9,9 +9,14 @@ main {
     min-height: calc(100vh - 70px);
 }
 
-.descriptionindex{
+.descriptionindex {
     font-size: 10px;
     margin-top: 8px;
     margin-bottom: 8px;
     color: white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
