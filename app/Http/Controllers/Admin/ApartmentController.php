@@ -123,11 +123,9 @@ class ApartmentController extends Controller
 
 
         if (Arr::exists($data, 'image')) {
-            $img_path = Storage::put('uploads/shoes', $data['image']);
+            $img_path = Storage::put('uploads/apartments', $data['image']);
             $data['image'] = $img_path;
-        } else {
-            $data['image'] = 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
-        }
+        } 
 
         $apartment->fill($data);
         $apartment->latitude = $position['lat'];
