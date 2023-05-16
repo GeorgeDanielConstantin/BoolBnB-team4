@@ -90,9 +90,11 @@
             </div>
         </div>
 
-        <div>
-            <p>Servizi</p>
-            <ul>
+        <div class="row mb-3">
+            <div class="col-md-3 text-end">
+                <label for="description" class="form-label"><strong>Servizi</strong></label>
+            </div>
+            <ul class="col-md-5 mx-2">
                 @forelse ($apartment->service as $service)
                 <li>
                     <span>
