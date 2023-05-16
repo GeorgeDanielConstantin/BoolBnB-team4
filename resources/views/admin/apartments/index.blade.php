@@ -21,6 +21,7 @@
             <p class="card-text">{{ $apartment->address }}</p>
             <a href="{{ route('admin.apartments.show', $apartment) }}" class="btn btn-primary">Details</a>
             <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-primary">Edit</a>
+            <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-project-modal-{{ $apartment->id }}">Delete</a>
         </div>
     </div>
     @endforeach
@@ -64,9 +65,7 @@
 
 
 {{-- bottone per la modale --}}
-{{-- <a href="{{ route('admin.apartments.edit', $apartment) }}" class="text-danger" data-bs-toggle="modal" data-bs-target="#delete-project-modal-{{ $apartment->id }}">
-    <i class="bi bi-trash mx-1"></i>
-</a> --}}
+
 
 {{-- modale --}}
 @section('modals')

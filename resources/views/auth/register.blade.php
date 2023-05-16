@@ -42,6 +42,21 @@
               </div>
 
               <div class="mb-4 row">
+                <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">{{ __('Date of birth') }}</label>
+
+                <div class="col-md-8">
+                  <input id="date_of_birth" type="date" class="form-control @error('date_of_birth') is-invalid @enderror"
+                    name="date_of_birth" value="{{ old('date_of_birth') }}" autofocus>
+
+                  @error('date_of_birth')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                </div>
+              </div>
+
+              <div class="mb-4 row">
                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                 <div class="col-md-8">
