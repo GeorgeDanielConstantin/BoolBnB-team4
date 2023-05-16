@@ -42,16 +42,19 @@ class RegisteredUserController extends Controller
         [
             'name.string' => 'Il nome deve essere una stringa',
             'name.max' => 'Il nome puo contenere massimo 255 caratteri',
+            'surname.string' => 'Il cognome deve essere una stringa',
+            'surname.max' => 'Il cognome puù contenere massimo 255 caratteri',
+            'date_of_birth.date_format' => 'La data deve avere il formato Y-m-d',
             'email.required' => 'L\'email è obbligatoria',
             'email.string' => 'L\'email deve essere una stringa',
             'email.email' => 'L\'email deve essere un\'indirizzo email valido',
             'email.max' => 'L\'email può contenere al massimo 255 caratteri',
             'email.unique' => 'Esiste già questo indirizzo email',
+            'password.required' => 'La password è obbligatoria',
+            'password.min' => 'La password deve essere di almeno 8 caratteri',
+            'password.confirmed' => 'La password non corrisponde',
 
-            'surname.string' => 'Il cognome deve essere una stringa',
-            'surname.max' => 'Il cognome puù contenere massimo 255 caratteri',
 
-            'date_of_birth.date_format' => 'La data deve avere il formato Y-m-d',
         ]);
 
         $validated_user_data = $validator->validated();
@@ -60,7 +63,7 @@ class RegisteredUserController extends Controller
             // 'name' => $request->name,
             // 'surname' => $request->surname,
             'email' => $validated_user_data['email'],
-            'password' => Hash::make($validated_user_data['password']),
+            'password' => $validated_user_data['password'],
         ]);
 
         event(new Registered($user));

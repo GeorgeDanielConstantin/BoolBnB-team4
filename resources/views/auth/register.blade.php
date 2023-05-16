@@ -8,7 +8,7 @@
           <div class="card-header">{{ __('Register') }}</div>
 
           <div class="card-body">
-            <form method="POST" action="{{ route('register') }}">
+            <form id="registration-form" method="POST" action="{{ route('register') }}">
               @csrf
 
               <div class="mb-4 row">
@@ -63,6 +63,8 @@
                   <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                     name="email" value="{{ old('email') }}" required autocomplete="email">
 
+                    <!-- <span id="email-error"></span> -->
+
                   @error('email')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -76,7 +78,7 @@
 
                 <div class="col-md-8">
                   <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                    name="password" required autocomplete="new-password">
+                    name="password" required autocomplete="new-password" minlength="8">
 
                   @error('password')
                     <span class="invalid-feedback" role="alert">
@@ -92,7 +94,7 @@
 
                 <div class="col-md-8">
                   <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
-                    autocomplete="new-password">
+                    autocomplete="new-password" minlength="8">
                 </div>
               </div>
 
@@ -110,3 +112,20 @@
     </div>
   </div>
 @endsection
+
+<!-- @section('script')
+
+<script>
+    const form = document.getElementById('registration-form');
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+
+    form.addEventListener('submit', function(event) {
+        if (!emailInput.validity.valid) {
+            event.preventDefault();
+            emailError.textContent = 'Please enter a valid email address.';
+        }
+    });
+</script>
+
+@endsection -->
