@@ -43,9 +43,9 @@ class MessagesController extends Controller
      * @param  \App\Models\Messages  $messages
      * @return \Illuminate\Http\Response
      */
-    public function show(Message $message)
+    public function show(Message $message, Apartment $apartment)
     {
-        return view('admin.messages.show', compact('message'));
+        return view('admin.messages.show', compact('message', 'apartment'));
     }
 
     /**

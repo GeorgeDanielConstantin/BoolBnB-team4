@@ -5,7 +5,7 @@
 
         <h1 class="my-4">Messaggio da {{$message->email}}</h1>
 
-        <div class="card my-4">
+        <div class="card">
             <div class="card-body">
                 <p>
                     {{$message->text}}
