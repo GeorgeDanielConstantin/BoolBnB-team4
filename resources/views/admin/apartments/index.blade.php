@@ -11,7 +11,9 @@
 <div class="row row-cols-2 ">
     @foreach ($apartments as $apartment)
     <div class="card col" >
-        @if ($apartment->image)
+        @dump($apartment->image)
+        @dump(str_starts_with($apartment->image, 'http'))
+        @if ($apartment->image && str_starts_with($apartment->image, 'http'))
         <img src="{{ $apartment->image }}" class="card-img-top" alt="...">
         @else
         <img src="{{ url('storage/' .$apartment->image) }}" class="card-img-top" alt="...">
