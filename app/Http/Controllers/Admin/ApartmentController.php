@@ -62,7 +62,7 @@ class ApartmentController extends Controller
             $img_path = Storage::put('uploads/apartments', $data['image']);
             $data['image'] = $img_path;
         } else {
-            $data['image'] = 'images/no-image.webp';
+            $data['image'] = 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
         }
 
 
@@ -77,7 +77,7 @@ class ApartmentController extends Controller
 
         if (Arr::exists($data, "services")) $apartment->service()->attach($data["services"]);
         return redirect()->route('admin.apartments.show', $apartment)
-            ->with('message_content', "Project $apartment->id creato con successo");
+            ->with('message_content', "Apartment $apartment->id creato con successo");
     }
 
     /**
@@ -101,7 +101,8 @@ class ApartmentController extends Controller
     {
         $services = Service::all();
         $apartment_services = $apartment->service->pluck('id')->toArray();
-        return view('admin.apartments.form', compact('apartment', 'services', 'apartment_services'));
+        return view('admin.apartments.form', compact('apartment', 'services', 'apartment_services'))
+        ->with('message_content', "Apartment $apartment->id creato con successo");
     }
 
     /**
@@ -125,7 +126,7 @@ class ApartmentController extends Controller
             $img_path = Storage::put('uploads/shoes', $data['image']);
             $data['image'] = $img_path;
         } else {
-            $data['image'] = 'images/no-image.webp';
+            $data['image'] = 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
         }
 
         $apartment->fill($data);
@@ -138,7 +139,8 @@ class ApartmentController extends Controller
         else
             $apartment->service()->detach();
 
-        return redirect()->route('admin.apartments.show', compact('apartment'));
+        return redirect()->route('admin.apartments.show', compact('apartment'))
+        ->with('message_content', "Post $apartment->id modificato con successo");
     }
 
     /**

@@ -39,6 +39,12 @@ class Apartment extends Model
     // GETTERS
     public function getImageUri()
     {
-        return $this->image ? url('storage/' . $this->image) : 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
+        if ($this->image && str_starts_with($this->image, 'http')) {
+            return $this->image;
+        } else {
+            return $this->image ? url('storage/' . $this->image) : 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
+        }
     }
+    
+
 }
