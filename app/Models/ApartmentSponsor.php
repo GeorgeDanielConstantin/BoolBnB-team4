@@ -9,6 +9,8 @@ class ApartmentSponsor extends Model
 {
     use HasFactory;
 
+    protected $table = "apartment_sponsor";
+
     public function apartment() {
         return $this->belongsTo(Apartment::class);
     }
