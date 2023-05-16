@@ -8,11 +8,9 @@
     <div class="card-body">
 
         <figure class="float-end ms-5 mb-3">
-            @if ($apartment->image && str_starts_with($apartment->image, 'http'))
-                <img src="{{ $apartment->image }}" class="card-img-top" alt="...">
-            @else
-                <img src="{{ url('storage/' .$apartment->image) }}" class="img-fluid" alt="" id="image-preview"  width="400px" height="300px">
-            @endif
+         
+                <img src="{{ $apartment->getImageUri() }}" class="img-fluid" alt="..." width="300">
+          
             <figcaption>
                 <p class="text-secondary m-0"><strong></strong></p>
             </figcaption>
