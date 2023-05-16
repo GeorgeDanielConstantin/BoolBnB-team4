@@ -37,8 +37,9 @@ Route::middleware('auth')
             Route::get('/dashboard',   [AdminHomeController::class,    'dashboard'])->name('dashboard');
 
             // # Apartment route
-            Route::resource('apartments', ApartmentController::class)->middleware('can:update,apartment')->except(['index']);
             Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartments.index');
+            Route::get('/apartments/create', [ApartmentController::class, 'create'])->name('apartments.create');
+            Route::resource('apartments', ApartmentController::class)->middleware('can:update,apartment')->except(['index', 'create']);
             // # Messages route
             Route::resource('messages', MessagesController::class)->only(['index', 'show']);
         }
