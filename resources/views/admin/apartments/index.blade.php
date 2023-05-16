@@ -11,8 +11,11 @@
 <div class="row row-cols-2 ">
     @foreach ($apartments as $apartment)
     <div class="card col" >
-        
+        @if ($apartment->image)
         <img src="{{ $apartment->image }}" class="card-img-top" alt="...">
+        @else
+        <img src="{{ url('storage/' .$apartment->image) }}" class="card-img-top" alt="...">
+        @endif
         <div class="card-body">
             <h5 class="card-title">{{ $apartment->title }}</h5>
             <p class="card-text">{{ $apartment->address }}</p>

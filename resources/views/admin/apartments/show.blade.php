@@ -8,7 +8,7 @@
     <div class="card-body">
 
         <figure class="float-end ms-5 mb-3">
-            <img src="{{url($apartment->image)}}" class="img-fluid" alt="" id="image-preview"  width="400px" height="300px" >
+            <img src="{{ url('storage/' .$apartment->image) }}" class="img-fluid" alt="" id="image-preview"  width="400px" height="300px" >
             <figcaption>
                 <p class="text-secondary m-0"><strong>Immagine</strong></p>
             </figcaption>
