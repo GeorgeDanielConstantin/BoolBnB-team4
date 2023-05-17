@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $apartment->id ? 'Modifica un Appartamento ' . $apartment->title : 'Inserisci un Appartamento')
+@section('title', $apartment->id ? 'Edit Apartment: ' . $apartment->title : 'Add new Apartment')
 
 @section('actions')
   <div>
@@ -10,7 +10,7 @@
 
     @if ($apartment->id)
       <a href="{{ route('admin.apartments.show', $apartment) }}" class="btn btn-primary mx-1">
-        Mostra Appartamento
+        Show Apartment
       </a>
     @endif
   </div>
@@ -34,11 +34,15 @@
 
       <div class="row mb-3">
         <div class="col-md-2 text-end">
-          <label for="title" class="form-label">Nome Appartamento</label>
+          <label for="title" class="form-label">Name*</label>
         </div>
         <div class="col-md-10">
-          <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror"
-            value="{{ old('title', $apartment->title) }}" />
+          <input type="text" 
+          name="title" 
+          id="title" 
+          class="form-control @error('title') is-invalid @enderror"
+          value="{{ old('title', $apartment->title) }}" 
+          placeholder="Enter apartment name"/>
           @error('title')
             <div class="invalid-feedback">
               {{ $message }}
@@ -49,13 +53,17 @@
 
       <div class="row mb-3">
         <div class="col-md-2 text-end">
-          <label for="address" class="form-label">Indirizzo</label>
+          <label for="address" class="form-label">Address*</label>
         </div>
         <div class="col-md-3">
-          <label for="street">Via</label>
-          <br>
-          <input type="text" name="street" id="street"  class="form-control @error('street') is-invalid @enderror"
-            value="{{ old('street', $apartment->street) }}" />
+          
+          <input type="text" 
+          name="street" 
+          id="street"  
+          class="form-control @error('street') is-invalid @enderror"
+          value="{{ old('street', $apartment->street) }}" 
+          placeholder="Street"/>
+          
           @error('street')
             <div class="invalid-feedback">
               {{ $message }}
@@ -63,10 +71,13 @@
           @enderror
         </div>
         <div class="col-md-1">
-          <label for="house_number">N° Civico</label>
-          <br>
-          <input type="text" name="house_number" id="house_number"  class="form-control @error('house_number') is-invalid @enderror"
-            value="{{ old('house_number', $apartment->house_number) }}" />
+          
+          <input type="text" 
+          name="house_number" 
+          id="house_number"  
+          class="form-control @error('house_number') is-invalid @enderror"
+          value="{{ old('house_number', $apartment->house_number) }}" 
+          placeholder="N°"/>
           @error('house_number')
             <div class="invalid-feedback">
               {{ $message }}
@@ -74,10 +85,13 @@
           @enderror
         </div>
         <div class="col-md-3">
-          <label for="city">Città</label>
-          <br>
-          <input type="text" name="city" id="city"  class="form-control @error('city') is-invalid @enderror"
-            value="{{ old('city', $apartment->city) }}" />
+          
+          <input type="text" 
+          name="city" 
+          id="city"  
+          class="form-control @error('city') is-invalid @enderror"
+          value="{{ old('city', $apartment->city) }}" 
+          placeholder="City"/>
           @error('city')
             <div class="invalid-feedback">
               {{ $message }}
@@ -85,10 +99,14 @@
           @enderror
         </div>
         <div class="col-md-3">
-          <label for="postal_code">CAP</label>
-          <br>
-          <input type="text" name="postal_code" id="postal_code"  class="form-control @error('postal_code') is-invalid @enderror"
-            value="{{ old('postal_code', $apartment->postal_code) }}" />
+  
+          
+          <input type="text" 
+          name="postal_code" 
+          id="postal_code"  
+          class="form-control @error('postal_code') is-invalid @enderror"
+          value="{{ old('postal_code', $apartment->postal_code) }}" 
+          placeholder="Zip code"/>
           @error('postal_code')
             <div class="invalid-feedback">
               {{ $message }}
@@ -99,11 +117,16 @@
 
       <div class="row mb-3">
         <div class="col-md-2 text-end">
-          <label for="rooms" class="form-label">Numero di Stanze</label>
+          <label for="rooms" class="form-label">Bedrooms*</label>
         </div>
         <div class="col-md-10">
-          <input type="number" name="rooms" id="rooms" min="1" class="form-control @error('rooms') is-invalid @enderror"
-            value="{{ old('rooms', $apartment->rooms) }}" />
+          <input type="number" 
+          name="rooms" 
+          id="rooms" 
+          min="1" 
+          class="form-control @error('rooms') is-invalid @enderror"
+          value="{{ old('rooms', $apartment->rooms) }}"
+          placeholder="N° of bedrooms" />
           @error('rooms')
             <div class="invalid-feedback">
               {{ $message }}
@@ -114,11 +137,16 @@
 
       <div class="row mb-3">
         <div class="col-md-2 text-end">
-          <label for="beds" class="form-label">Numero di letti</label>
+          <label for="beds" class="form-label">Beds*</label>
         </div>
         <div class="col-md-10">
-          <input type="number" name="beds" id="beds" min="1" class="form-control @error('beds') is-invalid @enderror"
-            value="{{ old('beds', $apartment->beds) }}" />
+          <input type="number" 
+          name="beds" 
+          id="beds" 
+          min="1" 
+          class="form-control @error('beds') is-invalid @enderror"
+          value="{{ old('beds', $apartment->beds) }}" 
+          placeholder="N° of beds"/>
           @error('beds')
             <div class="invalid-feedback">
               {{ $message }}
@@ -129,11 +157,16 @@
 
       <div class="row mb-3">
         <div class="col-md-2 text-end">
-          <label for="bathrooms" class="form-label">Numero di bagni</label>
+          <label for="bathrooms" class="form-label">Bathrooms*</label>
         </div>
         <div class="col-md-10">
-          <input type="number" name="bathrooms" id="bathrooms" min="1" class="form-control @error('bathrooms') is-invalid @enderror"
-            value="{{ old('bathrooms', $apartment->bathrooms) }}" />
+          <input type="number" 
+          name="bathrooms" 
+          id="bathrooms" 
+          min="1" 
+          class="form-control @error('bathrooms') is-invalid @enderror"
+          value="{{ old('bathrooms', $apartment->bathrooms) }}"
+          placeholder="N° of bathrooms" />
           @error('bathrooms')
             <div class="invalid-feedback">
               {{ $message }}
@@ -144,11 +177,16 @@
 
       <div class="row mb-3">
         <div class="col-md-2 text-end">
-          <label for="square_meters" class="form-label">Metri quadrati</label>
+          <label for="square_meters" class="form-label">Square meters*</label>
         </div>
         <div class="col-md-10">
-          <input type="number" name="square_meters" id="square_meters" min="1" class="form-control @error('square_meters') is-invalid @enderror"
-            value="{{ old('square_meters', $apartment->square_meters) }}" />
+          <input type="number" 
+          name="square_meters" 
+          id="square_meters" 
+          min="1" 
+          class="form-control @error('square_meters') is-invalid @enderror"
+          value="{{ old('square_meters', $apartment->square_meters) }}" 
+          placeholder="N° of square meters"/>
           @error('square_meters')
             <div class="invalid-feedback">
               {{ $message }}
@@ -179,19 +217,20 @@
 
       <div class="row mb-3">
         <div class="col-md-2 text-end">
-          <label class="form-label">Servizi</label>
+          <label class="form-label">Amenities</label>
         </div>
         <div class="col-md-10">
-
           <div class="form-check @error('services') is-invalid @enderror p-0">
 
             @foreach ($services as $service)
-              <input type="checkbox" id="service-{{ $service->id }}" value="{{ $service->id }}" name="services[]"
-                class="form-check-control" @if (in_array($service->id, old('services', $apartment_services ?? []))) checked @endif>
+              <input type="checkbox" 
+              id="service-{{ $service->id }}" 
+              value="{{ $service->id }}" 
+              name="services[]"
+              class="form-check-control" @if (in_array($service->id, old('services', $apartment_services ?? []))) checked @endif>
               <label for="service-{{ $service->id }}">{{ $service->name }}</label>
               <br>
             @endforeach
-
 
           </div>
 
@@ -206,11 +245,12 @@
 
       <div class="row mb-3">
         <div class="col-md-2 text-end">
-          <label for="visibility" class="form-label">Visibilità</label>
+          <label for="visibility" class="form-label">Visibility</label>
         </div>
         <div class="col-md-10">
-          <input type="checkbox" name="visibility" id="visibility"
-            class="form-check-control @error('visibility') is-invalid @enderror" @checked(old('visibility', $apartment->visibility))
+          <input type="checkbox" 
+            name="visibility" id="visibility"
+            class="form-check-control @error('visibility') is-invalid         @enderror" @checked(old('visibility', $apartment->visibility))
             value="1" />
           @error('visibility')
             <div class="invalid-feedback">
@@ -222,10 +262,13 @@
 
       <div class="row mb-3">
         <div class="col-md-2 text-end">
-          <label for="image" class="form-label">Immagine</label>
+          <label for="image" class="form-label">Imagine</label>
         </div>
         <div class="col-md-8">
-          <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror" />
+          <input type="file" 
+            name="image" 
+            id="image" 
+            class="form-control @error('image') is-invalid @enderror" />
           @error('image')
             <div class="invalid-feedback">
               {{ $message }}
@@ -251,12 +294,15 @@
 
       <div class="row mb-3">
         <div class="col-md-2 text-end">
-          <label for="description" class="form-label">Descrizione Appartamento</label>
+          <label for="description" class="form-label">Description*</label>
         </div>
         <div class="col-md-10">
-          <textarea name="description" id="description" class="form-control
+          <textarea name="description" 
+            id="description" 
+            class="form-control
              @error('description') is-invalid @enderror"
-            rows="5">{{ old('description', $apartment->description) }}</textarea>
+            rows="5"
+            placeholder="Enter the description...">{{ old('description', $apartment->description) }}</textarea>
           @error('description')
             <div class="invalid-feedback">
               {{ $message }}
@@ -265,12 +311,18 @@
         </div>
       </div>
 
-
+      
+      
       <div class="row">
         <div class="offset-2 col-8">
-          <input type="submit" class="btn btn-primary" value="Salva" />
+          <input type="submit" class="btn btn-primary" value="Add apartment" />
         </div>
       </div>
+      <p class="my-4">
+        <i class="text-muted">
+          * The fields marked with an (*) are required.
+        </i>
+      </p>
       </form>
 
 
