@@ -9,7 +9,7 @@ class Apartment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["title", "description", "image", "address", "latitude", "longitude", "rooms", "bathrooms", "beds", "square_meters", "visibility"];
+    protected $fillable = ["title", "description", "image", "address", "street", "house_number", "city", "postal_code", "latitude", "longitude", "rooms", "bathrooms", "beds", "square_meters", "visibility"];
 
     public function user()
     {
@@ -45,6 +45,4 @@ class Apartment extends Model
             return $this->image ? url('storage/' . $this->image) : 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
         }
     }
-    
-
 }

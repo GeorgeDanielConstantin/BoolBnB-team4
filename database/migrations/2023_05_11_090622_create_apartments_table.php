@@ -16,11 +16,15 @@ return new class extends Migration
         Schema::create('apartments', function (Blueprint $table) {
 
             $table->id();
-            
+
             $table->string('title', 60);
             $table->text('description')->nullable();
             $table->text('image')->nullable();
-            $table->string('address', 70);
+            $table->string('address');
+            $table->string('street', 200)->nullable();
+            $table->smallInteger('house_number')->unsigned()->nullable();
+            $table->string('city', 100)->nullable();
+            $table->integer('postal_code')->unsigned()->nullable();
             $table->string('latitude', 18);
             $table->string('longitude', 18);
             $table->integer('rooms')->unsigned();
@@ -28,7 +32,7 @@ return new class extends Migration
             $table->integer('beds')->unsigned();
             $table->integer('square_meters')->unsigned();
             $table->boolean('visibility')->default(0);
-        
+
             // timestamps() genera le colonne created_at ed updated_at
             $table->timestamps();
         });

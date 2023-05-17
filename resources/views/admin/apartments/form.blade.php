@@ -51,10 +51,45 @@
         <div class="col-md-2 text-end">
           <label for="address" class="form-label">Indirizzo</label>
         </div>
-        <div class="col-md-10">
-          <input type="text" name="address" id="address" min="1" class="form-control @error('address') is-invalid @enderror"
-            value="{{ old('address', $apartment->address) }}" />
-          @error('address')
+        <div class="col-md-3">
+          <label for="street">Via</label>
+          <br>
+          <input type="text" name="street" id="street"  class="form-control @error('street') is-invalid @enderror"
+            value="{{ old('street', $apartment->street) }}" />
+          @error('street')
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+        <div class="col-md-1">
+          <label for="house_number">N° Civico</label>
+          <br>
+          <input type="text" name="house_number" id="house_number"  class="form-control @error('house_number') is-invalid @enderror"
+            value="{{ old('house_number', $apartment->house_number) }}" />
+          @error('house_number')
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+        <div class="col-md-3">
+          <label for="city">Città</label>
+          <br>
+          <input type="text" name="city" id="city"  class="form-control @error('city') is-invalid @enderror"
+            value="{{ old('city', $apartment->city) }}" />
+          @error('city')
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
+        <div class="col-md-3">
+          <label for="postal_code">CAP</label>
+          <br>
+          <input type="text" name="postal_code" id="postal_code"  class="form-control @error('postal_code') is-invalid @enderror"
+            value="{{ old('postal_code', $apartment->postal_code) }}" />
+          @error('postal_code')
             <div class="invalid-feedback">
               {{ $message }}
             </div>
