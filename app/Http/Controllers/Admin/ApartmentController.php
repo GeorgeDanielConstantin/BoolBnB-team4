@@ -64,6 +64,7 @@ class ApartmentController extends Controller
         } else {
             // $data['image'] = 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
         }
+        
 
 
 
