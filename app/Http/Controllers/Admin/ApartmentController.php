@@ -62,7 +62,7 @@ class ApartmentController extends Controller
             $img_path = Storage::put('uploads/apartments', $data['image']);
             $data['image'] = $img_path;
         } else {
-            $data['image'] = 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
+            // $data['image'] = 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
         }
 
 
@@ -151,8 +151,14 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
+        // Delete image from storage
+        if($apartment->image) Storage::delete($apartment->image);
+        $apartment->image = null;
+        $apartment->save();
+
         $apartment->delete();
         return redirect()->route('admin.apartments.index');
+
     }
 
     private function validation($data)

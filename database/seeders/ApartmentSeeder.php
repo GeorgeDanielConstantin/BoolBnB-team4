@@ -67,7 +67,7 @@ class ApartmentSeeder extends Seeder
             ),
             3 => 
             array (
-                'user_id' => '2',
+                'user_id' => '1',
                 'title' => 'The Chromotherapy House, Venice',
                 'description' => 'Are you looking for a quiet and energetic place to spend an unforgettable holiday in Venice? it\'s dedicated to the benefit of our guests: find new energy in the Chromotherapy apartment!   Chromotherapy is a beautiful 80sm apartment at the second floor, overlooking a quiet and romantic canal. It is composed by entrance, a queen bedroom, a triple one, a big living/dining room with woodden beams and a comfortable sofas, a large kitchen and a bathroom. This new beautiful flat is dedicated to who needs a very quiet but energetic place to stay: we took inspiration from the benefit of chromotherapy, and chose a particular color for each room: yellow in the living room(convivial), orange for the double bed bedroom (energy, love), lilac for the other bedroom (creativity).   The house has recently been renovated (2013) and air conditioning is available in every room with a personal thermostat. The house is eco - friendly: a card for saving energy is provided to enter the apartment, so when you l',
                 'image' => 'https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/airbnb-listings/files/197d747e122e0b5af9bb5be53482c25b',
@@ -82,7 +82,7 @@ class ApartmentSeeder extends Seeder
             ),
             4 => 
             array (
-                'user_id' => '2',
+                'user_id' => '1',
                 'title' => 'Venice 4 You Via Abruzzo 4',
                 'description' => 'Completely renovated apartment, quiet and very bright with small wooded park behind. Newly furnished in 15-20 minutes by bus from Venice (bus stop in front of the apartment with a through every ten minutes and the ticket cost € 1.50). Equipped with every comfort; Bed linen and towels provided and you need to take a shower on arrival; air conditioning, kitchen equipped with every comfort and a table with six seats, wi fi. I don\'t live there but I am available for any help you may need! Facing the Park Hotel Ai Pini.Parcheggio reserved free enclosed with gate electric opening (for those coming by car is a big saving because parking in Venice is very expensive). Great bakery / ice cream shop / cafe in front for excellent breakfasts or to end the evening.  Excellent starting point to visit Venice, Treviso, Padua and Verona. After visiting Venice, a few kilometers you can find the Brenta Riviera with its beautiful and historic Venetian villas or Jesolo with its beach and local entertainment',
                 'image' => 'https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/airbnb-listings/files/7f299a76986678d72d7e76aea9381abf',
