@@ -28,6 +28,9 @@
             </div>
         </div>
     @endforeach
+    <div class="col-12">
+        {{ $apartments->links() }}
+    </div>
 </div>
 
 
