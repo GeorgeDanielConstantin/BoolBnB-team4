@@ -50,7 +50,7 @@ class ApartmentController extends Controller
         $data = $this->validation($request->all());
 
         //API KEY MIA - DANIELE
-        $response = Http::get('https://api.tomtom.com/search/2/geocode/' . $data['address'] . '.json?key=RRPZC1QxF3OriyrpAx5Cbd2ap0dpAhAk');
+        $response = Http::get('https://api.tomtom.com/search/2/geocode/' . $data['street'] . " " . $data['house_number'] . ", " . $data['city'] . ", " . $data['postal_code'] .   '.json?key=RRPZC1QxF3OriyrpAx5Cbd2ap0dpAhAk');
         $jsonData = $response->json();
         $results = $jsonData['results'];
         $position = $results[0]['position'];
@@ -70,6 +70,7 @@ class ApartmentController extends Controller
         $user_id = Auth::user()->id;
         $apartment = new Apartment;
         $apartment->fill($data);
+        $apartment->address = $data['street'] . " " . $data['house_number'] . ", " . $data['city'] . ", " . $data['postal_code'];
         $apartment->latitude = $position['lat'];
         $apartment->longitude = $position['lon'];
         $apartment->user_id = $user_id;
@@ -102,7 +103,7 @@ class ApartmentController extends Controller
         $services = Service::all();
         $apartment_services = $apartment->service->pluck('id')->toArray();
         return view('admin.apartments.form', compact('apartment', 'services', 'apartment_services'))
-        ->with('message_content', "Apartment $apartment->id creato con successo");
+            ->with('message_content', "Apartment $apartment->id creato con successo");
     }
 
     /**
@@ -116,7 +117,7 @@ class ApartmentController extends Controller
     {
         $data = $this->validation($request->all());
 
-        $response = Http::get('https://api.tomtom.com/search/2/geocode/' . $data['address'] . '.json?key=RRPZC1QxF3OriyrpAx5Cbd2ap0dpAhAk');
+        $response = Http::get('https://api.tomtom.com/search/2/geocode/' . $data['street'] . " " . $data['house_number'] . ", " . $data['city'] . ", " . $data['postal_code'] .   '.json?key=RRPZC1QxF3OriyrpAx5Cbd2ap0dpAhAk');
         $jsonData = $response->json();
         $results = $jsonData['results'];
         $position = $results[0]['position'];
@@ -125,9 +126,10 @@ class ApartmentController extends Controller
         if (Arr::exists($data, 'image')) {
             $img_path = Storage::put('uploads/apartments', $data['image']);
             $data['image'] = $img_path;
-        } 
+        }
 
         $apartment->fill($data);
+        $apartment->address = $data['street'] . " " . $data['house_number'] . ", " . $data['city'] . ", " . $data['postal_code'];
         $apartment->latitude = $position['lat'];
         $apartment->longitude = $position['lon'];
         $apartment->save();
@@ -138,7 +140,7 @@ class ApartmentController extends Controller
             $apartment->service()->detach();
 
         return redirect()->route('admin.apartments.show', compact('apartment'))
-        ->with('message_content', "Post $apartment->id modificato con successo");
+            ->with('message_content', "Post $apartment->id modificato con successo");
     }
 
     /**
@@ -161,7 +163,7 @@ class ApartmentController extends Controller
                 'title' => 'required|max:60',
                 'description' => 'min:5',
                 'image' => 'image|mimes:jpg,png,jpeg,gif,svg',
-                'address' => 'required|max:70',
+                'address' => '',
                 'latitude' => 'max:18',
                 'longitude' => 'max:18',
                 'rooms' => 'required|min:1',
@@ -169,7 +171,11 @@ class ApartmentController extends Controller
                 'beds' => 'required|min:1',
                 'square_meters' => 'required|min:1',
                 'visibility' => '',
-                'services' => 'nullable|exists:services,id'
+                'services' => 'nullable|exists:services,id',
+                'street' => 'required|max:200',
+                'house_number' => 'required',
+                'city' => 'required|max:100',
+                'postal_code' => 'required',
             ],
 
             [
@@ -181,8 +187,8 @@ class ApartmentController extends Controller
                 'image.image' => 'Must be an image.',
                 'image.mimes' => 'The image must be JPG, PNG, JPEG, GIF or SVG format.',
 
-                'address.required' => 'The address is required.',
-                'address.max' => 'The address must have a maximum of 70 characters.',
+                //'address.required' => 'The address is required.',
+                //'address.max' => 'The address must have a maximum of 70 characters.',
 
                 'latitude.required' => 'The latitude is required.',
                 'latitude.max' => 'The latitude must have a maximum of 18 characters.',
@@ -205,7 +211,17 @@ class ApartmentController extends Controller
                 'square_meters.min' => 'The square_meters must be at least 1',
 
                 'visibility.required' => 'The visibility is required.',
-                'services.exists' => 'I servizi selezionati non sono validi'
+                'services.exists' => 'I servizi selezionati non sono validi',
+
+                'street.required' => 'The street is required.',
+                'street.max' => 'The street must have a maximum of 200 characters.',
+
+                'house_number.required' => 'The house_number is required.',
+
+                'city.required' => 'The city is required.',
+                'city.max' => 'The city must have a maximum of 100 characters.',
+
+                'postal_code.required' => 'The postal_code is required.',
 
             ]
         )->validate();
