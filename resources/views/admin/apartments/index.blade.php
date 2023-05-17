@@ -8,10 +8,10 @@
 
 @section('content')
 <a class="btn btn-primary my-3 "  href="{{ route('admin.apartments.create') }}" role="button" >Add apartment</a>
-<div class="row row-cols-2">
+<div class="row g-3 row-cols-2">
     @foreach ($apartments as $apartment)
     <div class="col">
-    <div class="card my-3">
+    <div class="card h-100 my-3">
 
             {{-- @dump($apartment->image)
                 @dump(str_starts_with($apartment->image, 'http')) --}}
@@ -28,7 +28,7 @@
             </div>
         </div>
     @endforeach
-    <div class="col-12">
+    <div class="col-12 mt-5">
         {{ $apartments->links() }}
     </div>
 </div>
