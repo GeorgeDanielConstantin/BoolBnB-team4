@@ -62,7 +62,7 @@ class ApartmentController extends Controller
             $img_path = Storage::put('uploads/apartments', $data['image']);
             $data['image'] = $img_path;
         } else {
-            $data['image'] = 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
+            // $data['image'] = 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
         }
 
 
