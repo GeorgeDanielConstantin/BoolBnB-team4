@@ -8,7 +8,7 @@ use App\Models\Apartment;
 use Illuminate\Support\Facades\Auth;
 
 
-class PostController extends Controller
+class ApartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +19,9 @@ class PostController extends Controller
     {
         $user_id = Auth::user();
 
-        $apartments = Apartment::where('visibility', true)
-            ->where('user_id', $user_id->id)
-            ->orderBy('updated_at', 'DESC')
-            ->paginate(6);
+        $apartments = Apartment::all();
+
+
 
         foreach ($apartments as $apartment) {
             $apartment->image = $apartment->getImageUri();
