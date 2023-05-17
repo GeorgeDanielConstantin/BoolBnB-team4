@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ApartmentController;
+use App\Http\Controllers\Api\MessagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//route apartments
+Route::apiResource('apartments', ApartmentController::class)->except('store', 'update', 'destroy');
+
+//route messages
+Route::get('apartment/{apartment_id}/messages', [MessagesController::class, 'getMessagesByApartment']);
+Route::post('messages', [MessagesController::class, 'store']);
