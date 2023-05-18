@@ -18,8 +18,8 @@
 
         
         <div class="row mb-3">
-            @dump("Latitudine: " . $apartment->latitude)
-            @dump("Longitudine: " . $apartment->longitude)
+            {{-- @dump("Latitudine: " . $apartment->latitude)
+            @dump("Longitudine: " . $apartment->longitude) --}}
             <div class="col-md-3 text-end">
                 <label for="title" class="form-label"><strong>Nome Appartamento</strong></label>
             </div>

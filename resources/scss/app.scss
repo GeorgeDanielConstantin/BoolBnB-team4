@@ -20,3 +20,12 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.fit-cover {
+    object-fit: cover;
+}
