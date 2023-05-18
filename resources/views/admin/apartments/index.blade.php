@@ -10,13 +10,15 @@
 <a class="btn btn-primary my-3 "  href="{{ route('admin.apartments.create') }}" role="button" >Add apartment</a>
 <div class="row row-cols-2">
     @foreach ($apartments as $apartment)
-    <div class="col">
+    <div class="col d-flex">
     <div class="card my-3">
 
             {{-- @dump($apartment->image)
                 @dump(str_starts_with($apartment->image, 'http')) --}}
-                <img src="{{ $apartment->getImageUri() }}" class="card-img-top" alt="...">
-                <div class="card-body d-flex flex-column mt-auto flex-grow-0">
+                <div class="wrapper">
+                    <img src="{{ $apartment->getImageUri() }}" class="card-img-top fit-cover h-100" alt="...">
+                </div>
+                <div class="card-body d-flex flex-column flex-grow-0 mt-auto">
                     <h5 class="card-title mb-auto">{{ $apartment->title }}</h5>
                     <p class="card-text">{{ $apartment->address }}</p>
                     <div class="mt-auto">
