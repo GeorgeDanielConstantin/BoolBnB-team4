@@ -36,12 +36,13 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $apartment = Apartment::where('id', $id);
-        if (!$apartment) return response(null, 404);
+        $apartments = Apartment::where('id', 'LIKE', $id)->get();
 
-        $apartment->image = $apartment->getImageUri();
+        foreach ($apartments as $apartment) {
+            $apartment->image = $apartment->getImageUri();
+        }
 
         return response()->json($apartment);
     }

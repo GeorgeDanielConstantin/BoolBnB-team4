@@ -19,6 +19,8 @@ use App\Http\Controllers\Api\MessagesController;
 //route apartments
 Route::apiResource('apartments', ApartmentController::class)->except('store', 'update', 'destroy');
 Route::get('apartments/search/{city}', [ApartmentController::class, 'search']);
+Route::get('apartments/search/{id}', [ApartmentController::class, 'show']);
+
 
 //route messages
 //Route::get('apartment/{apartment_id}/messages', [MessagesController::class, 'getMessagesByApartment']);
