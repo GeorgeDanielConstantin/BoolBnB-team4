@@ -95,6 +95,7 @@
                 <div class="col-md-8">
                   <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
                     autocomplete="new-password" minlength="8">
+                    <span id="password-error" style="color: red;"></span>
                 </div>
               </div>
 
@@ -111,21 +112,44 @@
       </div>
     </div>
   </div>
-@endsection
 
-<!-- @section('script')
+  <script>
+  // const form = document.getElementById('registration-form');
+  // const emailInput = document.getElementById('email');
+  // const emailError = document.getElementById('email-error');
 
-<script>
-    const form = document.getElementById('registration-form');
-    const emailInput = document.getElementById('email');
-    const emailError = document.getElementById('email-error');
+  // form.addEventListener('submit', function(event) {
+  //     if (!emailInput.validity.valid) {
+  //         event.preventDefault();
+  //         emailError.textContent = 'Please enter a valid email address.';
+  //     }
+  // });
 
-    form.addEventListener('submit', function(event) {
-        if (!emailInput.validity.valid) {
-            event.preventDefault();
-            emailError.textContent = 'Please enter a valid email address.';
-        }
-    });
+  const form = document.querySelector('form');
+  const passwordField = document.getElementById('password');
+  const confirmPasswordField = document.getElementById('password-confirm');
+
+  const passwordError = document.getElementById('password-error');
+
+  // Function to check if the passwords match
+  function validatePassword() {
+      if (passwordField.value !== confirmPasswordField.value) {
+          passwordError.innerText = 'Passwords do not match';
+          return false;
+      } else {
+          passwordError.innerText = '';
+          return true;
+      }
+  }
+
+  form.addEventListener('submit', function (event) {
+    if (!validatePassword()) {
+      event.preventDefault(); // Prevent form submission
+    }
+  });
+
+  // Attach an event listener to the confirm password field
+  confirmPasswordField.addEventListener('keyup', validatePassword);
+
 </script>
-
-@endsection -->
+@endsection
