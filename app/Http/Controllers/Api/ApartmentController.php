@@ -62,7 +62,9 @@ class ApartmentController extends Controller
         //     ->with('title', 'description', 'image')
         //     ->get();
 
-        $apartments = Apartment::where('city', 'LIKE', $city . '%')->get();
+        $apartments = Apartment::where('city', 'LIKE', $city . '%')
+            ->orWhere('street', 'LIKE', $city . '%')
+            ->get();
 
         foreach ($apartments as $apartment) {
             $apartment->image = $apartment->getImageUri();
