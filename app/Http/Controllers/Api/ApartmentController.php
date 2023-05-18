@@ -45,4 +45,30 @@ class ApartmentController extends Controller
 
         return response()->json($apartment);
     }
+
+    /**
+     * Display the specified resource filtered by .
+     *
+     * @param  string  $city
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request, $city)
+    {
+
+
+
+        // $apartments = Apartment::where('city', $city)
+        //     ->with('title', 'description', 'image')
+        //     ->get();
+
+        $apartments = Apartment::where('city', $city)->get();
+
+        foreach ($apartments as $apartment) {
+            $apartment->image = $apartment->getImageUri();
+        }
+
+
+
+        return response()->json(compact('apartments'));
+    }
 }
