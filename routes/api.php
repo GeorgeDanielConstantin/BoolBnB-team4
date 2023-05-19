@@ -20,6 +20,7 @@ use App\Http\Controllers\Api\MessagesController;
 Route::apiResource('apartments', ApartmentController::class)->except('store', 'update', 'destroy');
 Route::get('apartments/search/{city}', [ApartmentController::class, 'search']);
 Route::get('apartments/search/{id}', [ApartmentController::class, 'show']);
+Route::apiResource('services', ServiceController::class, 'index');
 
 
 //route messages
