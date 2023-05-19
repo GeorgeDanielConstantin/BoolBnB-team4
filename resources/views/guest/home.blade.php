@@ -1,10 +1,14 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
+    rel="stylesheet"
+  />
+
 @extends('layouts.app')
 @section('content')
-  <div class="container jumbotron d-flex flex-column align-items-center justify-content-center text-center">
-    <img class="my-1" src="{{ Vite::asset('resources/img/logo.png') }}" alt="" height="150" width="150">
-    <h1 class="my-1">
-      Laravel 9
-      <span class="fs-6 fw-light text-muted"> - Bootstrap 'n Auth</span>
-    </h1>
-  </div>
+  <div class="col-12 homecont text-center d-flex justify-content-center align-items-center flex-column  ">
+    <h1 class="">BENVENUTO IN BOOLBNB PREMIUM</h1>
+    <p class="text-white">Dove potrai gestire i tuoi appartamenti in maniera facile e veloce</p>
+</div>
 @endsection
