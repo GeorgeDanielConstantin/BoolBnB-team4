@@ -1,5 +1,41 @@
 @import "./partials/bootstrap_loader.scss";
 
+*{
+    font-family:'Fjalla One', sans-serif; 
+}
+
+body{
+    background-color:  #fbf9fc !important;
+}
+
+.showcard{
+    border: transparent;
+}
+
+.showcard strong{
+    color: black
+}
+
+.showcard p{
+   transition:all 0.6s;
+}
+
+.showcard p:hover{
+    transform: scale(1.04);
+}
+
+
+
+.showimage:hover{
+    transform: scale(1.08);
+}
+
+.showimage{
+   border-radius: 20px;
+   transition: all 0.6s;
+}
+
+
 main {
     min-height: 100vh;
     padding-top: 70px;
