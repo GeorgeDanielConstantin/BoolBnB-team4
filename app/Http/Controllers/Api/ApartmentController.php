@@ -38,10 +38,10 @@ class ApartmentController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $apartments = Apartment::where('id', 'LIKE', $id)->get();
+        $apartment = Apartment::with('service', 'messages')->findOrFail($id);
 
-        foreach ($apartments as $apartment) {
-            $apartment->image = $apartment->getImageUri();
+        if (!$apartment) {
+            return response()->json(['error' => 'Appartamento non trovato'], 404);
         }
 
         return response()->json($apartment);
