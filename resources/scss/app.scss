@@ -56,7 +56,7 @@ body{
 
 main {
     min-height: 100vh;
-    padding-top: 70px;
+    
 }
 
 .jumbotron {
@@ -191,3 +191,25 @@ a {
   font-weight: 600;
   font-size: 16px;
 }
+
+.homecont{
+  height: 100vh;
+  width: 100%;
+  background-image:url(https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: cover;
+ 
+  
+}
+
+.homecont h1 {
+  font-size: 160px;
+  color: white;
+  font-weight: 600;
+  transition: 0.5s;
+  font-size: 5vw;
+}
+.homecont h1:hover {
+  -webkit-text-stroke: 2px white;
+  color: transparent;
+}
+

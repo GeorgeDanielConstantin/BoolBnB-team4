@@ -1,26 +1,15 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
+    rel="stylesheet"
+  />
+
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h2 class="fs-4 text-secondary my-4">
-        {{ __('Dashboard') }}
-    </h2>
-    <div class="row justify-content-center">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">{{ __('User Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="col-12 homecont text-center d-flex justify-content-center align-items-center flex-column  ">
+    <h1 class="">BENVENUTO IN BOOLBNB PREMIUM</h1>
+    <p class="text-white">Dove potrai gestire i tuoi appartamenti in maniera facile e veloce</p>
 </div>
 @endsection
