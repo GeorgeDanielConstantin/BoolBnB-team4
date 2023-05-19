@@ -4,6 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Service;
+use App\Models\Message;
+use App\Models\ApartmentSponsor;
+use App\Models\View;
+
+use App\Models\User;
+
+
+
 
 class Apartment extends Model
 {
@@ -16,7 +25,7 @@ class Apartment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function message()
+    public function messages()
     {
         return $this->hasMany(Message::class);
     }
@@ -32,7 +41,7 @@ class Apartment extends Model
 
     public function service()
     {
-        return $this->belongsToMany(Service::class);
+        return $this->belongsToMany(Service::class, 'apartment_service', 'apartment_id', 'service_id');
     }
 
 

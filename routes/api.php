@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApartmentController;
 use App\Http\Controllers\Api\ServiceController;
-use App\Http\Controllers\Api\MessagesController;
+use App\Http\Controllers\Api\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +20,6 @@ use App\Http\Controllers\Api\MessagesController;
 //route apartments
 Route::apiResource('apartments', ApartmentController::class)->except('store', 'update', 'destroy');
 Route::get('apartments/search/{city}', [ApartmentController::class, 'search']);
-Route::get('apartments/search/{id}', [ApartmentController::class, 'show']);
+Route::get('apartments/{id}', [ApartmentController::class, 'show']);
 Route::apiResource('services', ServiceController::class);
-
-
-//route messages
-//Route::get('apartment/{apartment_id}/messages', [MessagesController::class, 'getMessagesByApartment']);
-//Route::post('messages', [MessagesController::class, 'store']);
+Route::post('messages', [MessageController::class, 'store']);
