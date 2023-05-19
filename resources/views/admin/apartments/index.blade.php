@@ -1,3 +1,5 @@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     @extends('layouts.app')
 
 
@@ -8,31 +10,41 @@
 
 @section('content')
 <a class="btn btn-primary my-3 "  href="{{ route('admin.apartments.create') }}" role="button" >Add apartment</a>
-<div class="row g-3 row-cols-2">
+<div class="container">
+<div class="d-flex flex-row gap-3 flex-wrap">
     @foreach ($apartments as $apartment)
-    <div class="col d-flex">
-    <div class="card my-3">
-
-            {{-- @dump($apartment->image)
-                @dump(str_starts_with($apartment->image, 'http')) --}}
-                <div class="wrapper">
-                    <img src="{{ $apartment->getImageUri() }}" class="card-img-top fit-cover h-100" alt="...">
-                </div>
-                <div class="card-body d-flex flex-column flex-grow-0 mt-auto">
-                    <h5 class="card-title mb-auto">{{ $apartment->title }}</h5>
-                    <p class="card-text">{{ $apartment->address }}</p>
-                    <div class="mt-auto">
-                        <a href="{{ route('admin.apartments.show', $apartment) }}" class="btn btn-primary">Details</a>
+      <div class="card">
+           <div class="imgBx">
+             <img src="{{ $apartment->getImageUri() }}" alt="house">
+             <input type="checkbox">
+             <div class="heart">
+             <i class="fas fa-heart"></i>
+           </div>
+        </div>
+        <div class="price-section">
+         <h2>{{ $apartment->title }}</h2>
+         <h3>{{ $apartment->address }}</h3>
+        </div>
+        <div class="info-section">
+         <div class="beds">
+         <h5><i class="fas fa-bed"></i> <span>{{ $apartment->beds }}</span> Bed</h5>
+        </div>
+       <div class="baths">
+        <h5><i class="fas fa-bath"></i> <span>{{ $apartment->bathrooms }}</span> Bathrooms</h5>
+       </div>
+      </div>
+      <div class="contact">
+       <a href="{{ route('admin.apartments.show', $apartment) }}" class="btn btn-primary">Details</a>
                         <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-primary">Edit</a>
                         <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-apartment-modal-{{ $apartment->id }}">Delete</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
+      </div>
     @endforeach
+  </div>
     <div class="col-12 mt-5">
         {{ $apartments->links() }}
     </div>
+</div>
 </div>
 
 

@@ -19,8 +19,8 @@
     @include('layouts.partials._navbar')
   </header>
 
-  <main>
-    <div class="container">
+  <main class="">
+    <div class="">
 
       <div class="d-flex justify-content-between align-items-start">
         <h1>
