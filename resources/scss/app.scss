@@ -17,18 +17,28 @@ body{
 
 .showcard{
     border: transparent;
+    width: 95vw;
+    margin: auto;
+    height: 140vh;
 }
 
 .showcard strong{
-    color: black
+    color: black;
+    font-size: 1vw;
+    
 }
 
 .showcard p{
    transition:all 0.6s;
+   font-size: 1vw;
 }
 
 .showcard p:hover{
     transform: scale(1.04);
+}
+
+.showdescription{
+  font-size: 1vw;
 }
 
 
@@ -73,27 +83,27 @@ a {
     object-fit: cover;
 }
 
-.card {
+.cardindex {
   width: 350px;
   border-radius: 15px;
   box-shadow: 0px 0px 15px rgba(0, 0 ,0, 0.1);
   overflow: hidden;
 }
-.card .imgBx {
+.cardindex .imgBx {
   position: relative;
   width: 100%;
 }
-.card .imgBx img {
+.cardindex .imgBx img {
   width: 100%;
 }
-.card .imgBx .heart i{
+.cardindex .imgBx .heart i{
   position: absolute;
   top: 10px;
   right: 20px;
   color: #fff;
   font-size: 20px;
 }
-.card .imgBx input {
+.cardindex .imgBx input {
   position: absolute;
   top: 0;
   left: 0;
