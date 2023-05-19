@@ -13,9 +13,9 @@
   <section class="showcard card py-2 ">
     <div class="card-body">
 
-        <figure class="float-end ms-5 mb-3">
+        <figure class="float-end ms-5 mb-1">
          
-                <img src="{{ $apartment->getImageUri() }}" class="img-fluid showimage" alt="..." width="100%">
+                <img src="{{ $apartment->getImageUri() }}" class="img-fluid showimage" alt="..." width="80%">
           
             <figcaption>
                 <p class="text-secondary m-0"><strong></strong></p>
@@ -23,7 +23,7 @@
         </figure>
 
         
-        <div class="row mb-3 ">
+        <div class="row mb-1 ">
             {{-- @dump("Latitudine: " . $apartment->latitude)
             @dump("Longitudine: " . $apartment->longitude) --}}
             <div class="col-md-3 text-end">
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-1">
             <div class="col-md-3 text-end">
                 <label for="address" class="form-label"><strong>Indirizzo </strong></label>
             </div>
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-1">
             <div class="col-md-3 text-end">
                 <label for="rooms" class="form-label"><strong>Numero di Stanze </strong></label>
             </div>
@@ -52,7 +52,7 @@
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-1">
             <div class="col-md-3 text-end">
                 <label for="beds" class="form-label"><strong>Numero di letti </strong></label>
             </div>
@@ -61,7 +61,7 @@
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-1">
             <div class="col-md-3 text-end">
                 <label for="bathrooms" class="form-label"><strong>Numero di bagni </strong></label>
             </div>
@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-1">
             <div class="col-md-3 text-end">
                 <label for="square_meters" class="form-label"><strong>Metri quadrati </strong></label>
             </div>
@@ -79,7 +79,7 @@
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-1">
             <div class="col-md-3 text-end">
                 <label for="visibility" class="form-label"><strong>Visibilità </strong></label>
             </div>
@@ -88,22 +88,25 @@
             </div>
         </div>
 
-        <div class="row mb-3">
-            <div class="col-md-3 text-end">
+        <div class="d-flex flex-column col-12 mr-5 ">
+            <div class="text-start ">
                 <label for="description" class="form-label"><strong>Descrizione Appartamento </strong></label>
             </div>
-            <div class="col-md-5">
-                <p class="text-muted">{{$apartment->description}}</p>
+            <div class="col-12 text-center p-3">
+                <p class="text-muted showdescription">{{$apartment->description}}</p>
             </div>
+            
         </div>
 
-        <div class="row mb-3">
-            <div class="col-md-3 text-end">
+        
+
+        <div class="row mb-1 p-3">
+            <div class="">
                 <label for="description" class="form-label"><strong>Servizi</strong></label>
             </div>
-            <ul class="col-md-5 mx-2">
+            <ul class="mx-2 ">
                 @forelse ($apartment->service as $service)
-                <li>
+                <li class="">
                     <span class="text-muted">
                         {{$service->type}} 
                     </span>
