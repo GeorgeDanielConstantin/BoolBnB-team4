@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('image')->nullable();
             $table->string('address');
             $table->string('street', 200)->nullable();
-            $table->smallInteger('house_number')->unsigned()->nullable();
+            $table->string('house_number')->nullable();
             $table->string('city', 100)->nullable();
             $table->integer('postal_code')->unsigned()->nullable();
             $table->string('latitude', 18);
