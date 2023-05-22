@@ -1,4 +1,4 @@
-<nav class="navbar  navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="{{ route('homepage') }}">
         BoolBnB
