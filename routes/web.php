@@ -43,6 +43,9 @@ Route::middleware('auth')
             Route::resource('apartments', ApartmentController::class)->middleware('can:update,apartment')->except(['index', 'create', 'store']);
             // # Messages route
             Route::resource('messages', MessagesController::class)->only(['index', 'show']);
+
+            // Sponsor route
+            
         }
 
     );
