@@ -110,7 +110,7 @@ class ApartmentController extends Controller
                 'name' => 'required|string|max:60',
                 'surname' => 'required|string|max:60',
                 'email' => 'required|string|max:255|email',
-                'text' => 'required|string|max:65535',
+                'message' => 'required|string|max:65535',
             ],
             [
                 'name.required' => "The name is required",
@@ -126,9 +126,9 @@ class ApartmentController extends Controller
                 'email.max' => "The email must have a maximum of 255 characters.",
                 'email.email' => "The email address must be valid",
 
-                'text.required' => "The text is required",
-                'text.string' => "Text must be a text",
-                'text.max' => "The text must have a maximum of 255 characters.",
+                'message.required' => "The text is required",
+                'message.string' => "Text must be a text",
+                'message.max' => "The text must have a maximum of 255 characters.",
             ]
         )->validate();
         return $validator;
