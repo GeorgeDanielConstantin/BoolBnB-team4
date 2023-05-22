@@ -46,6 +46,8 @@ Route::middleware('auth')
 
             // Sponsor route
             Route::get('/process-payment', [SponsorController::class, 'showPaymentForm'])->name('payment.form');
+            Route::post('/process-payment', [SponsorController::class, 'processPayment']);
+            Route::get('/payment-success', [SponsorController::class, 'showPaymentSuccess'])->name('payment.success');
         }
 
     );

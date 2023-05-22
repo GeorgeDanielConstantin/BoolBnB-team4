@@ -34,7 +34,7 @@ class SponsorController extends Controller
 
     if ($result->success) {
         // Pagamento riuscito
-        return redirect('.admin.payment.success')->with('success', 'Pagamento effettuato con successo!');
+        return redirect('.admin.payment.payment-success')->with('success', 'Pagamento effettuato con successo!');
     } else {
         // Pagamento fallito
         return redirect()->back()->with('error', 'Pagamento fallito. Riprova.');
@@ -43,7 +43,7 @@ class SponsorController extends Controller
 
 public function showPaymentSuccess()
 {
-    return view('/admin/payment-success');
+    return view('.admin.payment.payment-success')->with('success', 'Pagamento effettuato con successo!');
 }
 
 
