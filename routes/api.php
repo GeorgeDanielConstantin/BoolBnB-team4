@@ -21,3 +21,6 @@ Route::apiResource('apartments', ApartmentController::class)->except('store', 'u
 Route::get('apartments/search/{city}', [ApartmentController::class, 'search']);
 Route::get('apartments/{id}', [ApartmentController::class, 'show']);
 Route::post('apartments/{id}/messages', [ApartmentController::class, 'storeMessage']);
+
+
+Route::post('messages', [MessageController::class, 'store']);
