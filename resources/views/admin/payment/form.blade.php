@@ -5,6 +5,8 @@
 </div>
 @endif
 
+
+
 <form action="/admin/process-payment" method="POST">
     @csrf
     <label for="amount">Importo:</label>

@@ -10,10 +10,10 @@
 
 @section('content')
 <a class="btn btn-primary my-3 "  href="{{ route('admin.apartments.create') }}" role="button" >Add apartment</a>
-<div class="container">
+<div class="">
 <div class="d-flex flex-row gap-3 flex-wrap">
     @foreach ($apartments as $apartment)
-      <div class="cardindex">
+      <div class="cardindex z-index-0">
            <div class="imgBx">
              <img src="{{ $apartment->getImageUri() }}" alt="house">
              <input type="checkbox">

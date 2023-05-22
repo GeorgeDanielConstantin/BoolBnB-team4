@@ -20,13 +20,19 @@
   </header>
 
   <main class="">
-    <div class="">
+    <div class="container">
 
       <div class="d-flex justify-content-between align-items-start">
-        <h1>
+        <h1 class="my-3">
           @yield('title')
         </h1>
       </div>
+
+      @if (session('message_content'))
+      <div class="alert alert-{{ session('message_type') ? session('message_type') : 'success' }}">
+        {{ session('message_content') }}
+      </div>
+    @endif
 
       <div class="py-0">
         @yield('content')
