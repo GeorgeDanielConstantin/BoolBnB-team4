@@ -104,24 +104,32 @@
         
 
         <div class="row mb-1 p-3">
-            <div class="">
-                <label for="description" class="form-label"><strong>Servizi</strong></label>
-            </div>
-            <ul class="mx-2 ">
-                @forelse ($apartment->service as $service)
-                <li class="">
-                    <span class="text-muted">
-                        {{$service->type}} 
-                    </span>
-                    <span class="text-muted" >
-                        {{$service->name}}
-                    </span>    
-                </li>
+            <div class="col-6">
 
-                @empty
-                Nessun servizio
-                @endforelse
-            </ul>
+                <div class="">
+                    <label for="description" class="form-label"><strong>Servizi</strong></label>
+                </div>
+                <ul class="mx-2 ">
+                    @forelse ($apartment->service as $service)
+                    <li class="">
+                        <span class="text-muted">
+                            {{$service->type}} 
+                        </span>
+                        <span class="text-muted" >
+                            {{$service->name}}
+                        </span>    
+                    </li>
+                    
+                    @empty
+                    Nessun servizio
+                    @endforelse
+                </ul>
+            </div>
+
+            <div class="col-6">
+                <a href="{{ route('admin.apartments.sponsorship', $apartment) }}">Scegli Sponsorizzazione</a>
+
+            </div>
         </div>
         
     </div>

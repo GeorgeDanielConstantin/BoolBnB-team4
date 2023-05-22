@@ -45,9 +45,12 @@ Route::middleware('auth')
             Route::resource('messages', MessagesController::class)->only(['index', 'show']);
 
             // Sponsor route
-            Route::get('/process-payment', [SponsorController::class, 'showPaymentForm'])->name('payment.form');
-            Route::post('/process-payment', [SponsorController::class, 'processPayment']);
-            Route::get('/payment-success', [SponsorController::class, 'showPaymentSuccess'])->name('payment.success');
+            // Route::get('/process-payment', [SponsorController::class, 'showPaymentForm'])->name('payment.form');
+            // Route::post('/process-payment', [SponsorController::class, 'processPayment']);
+            // Route::get('/payment-success', [SponsorController::class, 'showPaymentSuccess'])->name('payment.success');
+            Route::get('/apartments/{apartment}/sponsorship', [SponsorController::class, 'showSponsorshipForm'])->name('apartments.sponsorship');
+            Route::post('/apartments/{apartment}/sponsorship', [SponsorController::class, 'processSponsorship'])->name('apartments.sponsorship.process');
+
         }
 
     );
