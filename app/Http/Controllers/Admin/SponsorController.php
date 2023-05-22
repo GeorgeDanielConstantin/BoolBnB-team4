@@ -1,85 +1,51 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use App\Models\Sponsor;
 use Illuminate\Http\Request;
+use Braintree\Gateway;
 
 class SponsorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    public function showPaymentForm()
+{
+    return view('admin.payment.form');
+}
+    // Effettua la configurazione del gateway di Braintree
+    public function processPayment(Request $request)
+{
+    $amount = $request->input('amount');
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    $gateway = new Gateway([ 
+        'environment' => env('BRAINTREE_ENV'),
+        'merchantId' =>  env('BRAINTREE_MERCHANT_ID'),
+        'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
+        'privateKey' => env('BRAINTREE_PRIVATE_KEY')
+    ]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    $result = $gateway->transaction()->sale([
+        'amount' => $amount, // Importo da addebitare
+        'paymentMethodNonce' => 'nonce-from-the-client',
+        'options' => [
+            'submitForSettlement' => true
+        ]
+    ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Sponsor  $sponsor
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Sponsor $sponsor)
-    {
-        //
+    if ($result->success) {
+        // Pagamento riuscito
+        return redirect('/admin/payment-success')->with('success', 'Pagamento effettuato con successo!');
+    } else {
+        // Pagamento fallito
+        return redirect()->back()->with('error', 'Pagamento fallito. Riprova.');
     }
+}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Sponsor  $sponsor
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Sponsor $sponsor)
-    {
-        //
-    }
+public function showPaymentSuccess()
+{
+    return view('.admin.payment.payment-success')->with('success', 'Pagamento effettuato con successo!');
+}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sponsor  $sponsor
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Sponsor $sponsor)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Sponsor  $sponsor
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Sponsor $sponsor)
-    {
-        //
-    }
+
 }

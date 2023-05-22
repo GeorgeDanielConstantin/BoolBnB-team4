@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Admin\SponsorController;
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\MessagesController;
@@ -43,6 +43,11 @@ Route::middleware('auth')
             Route::resource('apartments', ApartmentController::class)->middleware('can:update,apartment')->except(['index', 'create', 'store']);
             // # Messages route
             Route::resource('messages', MessagesController::class)->only(['index', 'show']);
+
+            // Sponsor route
+            Route::get('/process-payment', [SponsorController::class, 'showPaymentForm'])->name('payment.form');
+            Route::post('/process-payment', [SponsorController::class, 'processPayment']);
+            Route::get('/payment-success', [SponsorController::class, 'showPaymentSuccess'])->name('payment.success');
         }
 
     );
