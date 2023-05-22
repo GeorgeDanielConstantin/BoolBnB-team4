@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Admin\SponsorController;
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\MessagesController;
@@ -45,7 +45,7 @@ Route::middleware('auth')
             Route::resource('messages', MessagesController::class)->only(['index', 'show']);
 
             // Sponsor route
-            
+            Route::get('/process-payment', [SponsorController::class, 'showPaymentForm'])->name('payment.form');
         }
 
     );
