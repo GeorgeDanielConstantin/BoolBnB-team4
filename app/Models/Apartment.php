@@ -49,6 +49,8 @@ class Apartment extends Model
         return $this->hasMany(Image::class);
     }
 
+   
+
 
     // GETTERS
     public function getImageUri()

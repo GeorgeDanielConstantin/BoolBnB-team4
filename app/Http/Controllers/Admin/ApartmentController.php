@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Service;
+use DateTime;
 
 class ApartmentController extends Controller
 {
@@ -90,6 +91,15 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
+        // Controlla se la visibilità è scaduta
+    $currentDateTime = new DateTime();
+    $visibilityExpiration = new DateTime($apartment->visibility_expiration);
+    if ($apartment->visibility_expiration && $currentDateTime > $visibilityExpiration) {
+        // La visibilità è scaduta, quindi impostiamo la visibilità a false
+        $apartment->visibility = false;
+        $apartment->save();
+    }
+
         return view('admin.apartments.show', compact('apartment'));
     }
 
