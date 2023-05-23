@@ -26,11 +26,11 @@ public function processSponsorship(Request $request, Apartment $apartment)
 
     // Imposta l'importo in base al tipo di sponsorizzazione
     if ($sponsorshipType === 'basic') {
-        $amount = 10;
+        $amount = 2.99;
     } elseif ($sponsorshipType === 'standard') {
-        $amount = 20;
+        $amount = 5.99;
     } elseif ($sponsorshipType === 'premium') {
-        $amount = 30;
+        $amount = 9.99;
     }
 
     $gateway = new Gateway([ 
