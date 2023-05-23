@@ -315,7 +315,7 @@
       
       <div class="row">
         <div class="offset-2 col-8">
-          <input type="submit" class="btn btn-primary" value="Add apartment" />
+          <input type="submit" class="btn btn-primary" value="Save" />
         </div>
       </div>
       <p class="my-4">

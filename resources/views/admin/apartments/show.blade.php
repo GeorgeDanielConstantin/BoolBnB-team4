@@ -127,7 +127,7 @@
             </div>
 
             <div class="col-6">
-                <a href="{{ route('admin.apartments.sponsorship', $apartment) }}">Scegli Sponsorizzazione</a>
+                <a class="btn btn-primary" href="{{ route('admin.apartments.sponsorship', $apartment) }}">Scegli Sponsorizzazione</a>
 
             </div>
         </div>
