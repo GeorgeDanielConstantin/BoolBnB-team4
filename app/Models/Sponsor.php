@@ -9,7 +9,8 @@ class Sponsor extends Model
 {
     use HasFactory;
 
-    public function user() {
+    public function apartmentSponsor()
+    {
         return $this->belongsTo(ApartmentSponsor::class);
     }
 }
