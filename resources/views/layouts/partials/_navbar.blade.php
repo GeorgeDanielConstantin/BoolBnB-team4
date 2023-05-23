@@ -16,12 +16,16 @@
             <a class="nav-link" href="{{ route('homepage') }}">{{ __('Home') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('admin.apartments.index') }}">{{ __('Apartments') }}</a>
+            <a class="nav-link" href="{{route('admin.apartments.index') }}">{{ __('Your Apartments') }}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('admin.messages.index') }}">{{ __('Messages') }}</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:5174/apartments/">{{ __('Apartments') }}</a>
+          </li>
         </ul>
+
 
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ml-auto">
