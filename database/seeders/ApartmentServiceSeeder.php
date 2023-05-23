@@ -17,12 +17,15 @@ class ApartmentServiceSeeder extends Seeder
      * @return void
      */
     public function run()
-        {
-            $apartments = Apartment::all(); 
-            $services = Service::all()->pluck('id');
+    {
+        $apartments = Apartment::all();
+        $services = Service::all()->pluck('id')->toArray();
 
-            foreach($apartments as $apartment) {
-            $apartment->service()->attach($services);
+        foreach ($apartments as $apartment) {
+            $randomNumber = rand(1, 12);
+            $randomServices = collect($services)->random($randomNumber);
+
+            $apartment->service()->attach($randomServices);
         }
     }
 }

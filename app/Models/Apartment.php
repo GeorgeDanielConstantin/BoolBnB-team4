@@ -8,7 +8,7 @@ use App\Models\Service;
 use App\Models\Message;
 use App\Models\ApartmentSponsor;
 use App\Models\View;
-
+use App\Models\Image;
 use App\Models\User;
 
 
@@ -42,6 +42,11 @@ class Apartment extends Model
     public function service()
     {
         return $this->belongsToMany(Service::class, 'apartment_service', 'apartment_id', 'service_id');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
 
 

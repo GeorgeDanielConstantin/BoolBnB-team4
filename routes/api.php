@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApartmentController;
+use App\Http\Controllers\Api\UserController;
+
 
 
 /*
@@ -21,6 +23,7 @@ Route::apiResource('apartments', ApartmentController::class)->except('store', 'u
 Route::get('apartments/search/{city}', [ApartmentController::class, 'search']);
 Route::get('apartments/{id}', [ApartmentController::class, 'show']);
 Route::post('apartments/{id}/messages', [ApartmentController::class, 'storeMessage']);
+Route::get('/user', [UserController::class, 'getUser'])->middleware('auth');
 
 
 Route::post('messages', [MessageController::class, 'store']);
