@@ -1,9 +1,11 @@
 <?php
+
 use App\Http\Controllers\Admin\SponsorController;
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\MessagesController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\ChartController;
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use App\Models\Apartment;
 use App\Models\Message;
@@ -44,13 +46,15 @@ Route::middleware('auth')
             // # Messages route
             Route::resource('messages', MessagesController::class)->only(['index', 'show']);
 
+            // # route chart
+            Route::get('chart', [ChartController::class, 'index']); //
+
             // Sponsor route
             // Route::get('/process-payment', [SponsorController::class, 'showPaymentForm'])->name('payment.form');
             // Route::post('/process-payment', [SponsorController::class, 'processPayment']);
             // Route::get('/payment-success', [SponsorController::class, 'showPaymentSuccess'])->name('payment.success');
             Route::get('/apartments/{apartment}/sponsorship', [SponsorController::class, 'showSponsorshipForm'])->name('apartments.sponsorship');
             Route::post('/apartments/{apartment}/sponsorship', [SponsorController::class, 'processSponsorship'])->name('apartments.sponsorship.process');
-
         }
 
     );
