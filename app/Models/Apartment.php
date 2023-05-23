@@ -10,6 +10,7 @@ use App\Models\ApartmentSponsor;
 use App\Models\View;
 use App\Models\Image;
 use App\Models\User;
+use Carbon\Carbon;
 
 
 
@@ -58,5 +59,20 @@ class Apartment extends Model
         } else {
             return $this->image ? url('storage/' . $this->image) : 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
         }
+    }
+
+    public function updateVisibility()
+    {
+        $currentDate = Carbon::now();
+
+        $latestSponsorship = $this->apartmentsponsor()->latest('ending_date')->first();
+
+        if ($latestSponsorship && $latestSponsorship->ending_date > $currentDate) {
+            $this->visibility = true;
+        } else {
+            $this->visibility = false;
+        }
+
+        $this->save();
     }
 }
