@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Apartment;
+use App\Models\Message;
 use App\Policies\ApartmentPolicy;
+use App\Policies\MessagePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -18,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
         Apartment::class => ApartmentPolicy::class,
+        Message::class => MessagePolicy::class,
     ];
 
     /**
