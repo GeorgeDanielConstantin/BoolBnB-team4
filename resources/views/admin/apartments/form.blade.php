@@ -243,7 +243,7 @@
       </div>
 
 
-      <div class="row mb-3">
+      {{-- <div class="row mb-3">
         <div class="col-md-2 text-end">
           <label for="visibility" class="form-label">Visibility</label>
         </div>
@@ -258,7 +258,7 @@
             </div>
           @enderror
         </div>
-      </div>
+      </div> --}}
 
       <div class="row mb-3">
         <div class="col-md-2 text-end">
