@@ -16,6 +16,8 @@
   <section class="showcard card py-2 ">
     <div class="card-body">
 
+        
+
         <figure class="float-end ms-5 mb-1">
          
                 <img src="{{ $apartment->getImageUri() }}" class="img-fluid showimage" alt="..." width="80%">
@@ -84,10 +86,18 @@
 
         <div class="row mb-1">
             <div class="col-md-3 text-end">
-                <label for="visibility" class="form-label"><strong>Visibilità </strong></label>
+                <label for="visibility" class="form-label">
+                    <strong>Sponsered untill</strong>
+                </label>
             </div>
-            <div class="col-md-5">
-                <p class="text-muted">{{$apartment->visibility}}</p>
+            <div class="col-md-5 d-flex">
+                <p class="text-muted">
+                    @if ($apartment->apartmentsponsor->isNotEmpty())
+                    {{ $apartment->apartmentsponsor->last()->ending_date }}
+                    @else Not sponsored
+                    @endif
+                </p>
+                <a class="btn btn-primary btn-sm ms-3" href="{{ route('admin.apartments.sponsorship', $apartment) }}"> Add sponsorship</a>
             </div>
         </div>
 
@@ -126,10 +136,7 @@
                 </ul>
             </div>
 
-            <div class="col-6">
-                <a class="btn btn-primary" href="{{ route('admin.apartments.sponsorship', $apartment) }}">Scegli Sponsorizzazione</a>
-
-            </div>
+        
         </div>
         
     </div>

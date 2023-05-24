@@ -16,8 +16,15 @@ class SponsorController extends Controller
   
     public function showSponsorshipForm(Apartment $apartment)
 {
+    // Verifica se l'utente autenticato è il proprietario dell'appartamento
+    if ($apartment->user_id !== auth()->id()) {
+        return redirect()->back()->with('error', 'Accesso non autorizzato');
+    }
+
+    // L'utente è autorizzato, visualizza il modulo di sponsorizzazione
     return view('admin.sponsorship.form', compact('apartment'));
 }
+
 
 
 public function processSponsorship(Request $request, Apartment $apartment)
@@ -55,29 +62,28 @@ public function processSponsorship(Request $request, Apartment $apartment)
     if ($result->success) {
         // Pagamento riuscito
 
-        $apartmentSponsor = new ApartmentSponsor();
-        $apartmentSponsor->starting_date = now();
+        $currentSponsorship = $apartment->apartmentsponsor()->where('ending_date', '>', now())->latest()->first();
 
-        if ($sponsorshipType === 'basic') {
-            $expiration = now()->addSeconds($visibilityDuration);
-        } elseif ($sponsorshipType === 'standard') {
-            $expiration = now()->addSeconds($visibilityDuration);
-        } elseif ($sponsorshipType === 'premium') {
-            $expiration = now()->addSeconds($visibilityDuration);
+        if ($currentSponsorship) {
+            // Esiste una sponsorizzazione attiva
+            $currentExpiration = Carbon::parse($currentSponsorship->ending_date);
+            $newExpiration = $currentExpiration->addSeconds($visibilityDuration);
+        } else {
+            // Non esiste una sponsorizzazione attiva
+            $newExpiration = now()->addSeconds($visibilityDuration);
         }
 
-        $apartmentSponsor->ending_date = $expiration;
+        $apartmentSponsor = new ApartmentSponsor();
+        $apartmentSponsor->starting_date = now();
+        $apartmentSponsor->ending_date = $newExpiration;
 
-$apartment->apartmentsponsor()->save($apartmentSponsor);
+        $apartment->apartmentsponsor()->save($apartmentSponsor);
 
-$apartment->visibility = true;
-$apartment->save();
+        $apartment->visibility = true;
+        $apartment->save();
 
-$delayInSeconds = now()->diffInSeconds($expiration);
-UpdateVisibilityJob::dispatch($apartmentSponsor)->delay($delayInSeconds);
-
-        
-
+        $delayInSeconds = now()->diffInSeconds($newExpiration);
+        UpdateVisibilityJob::dispatch($apartmentSponsor)->delay($delayInSeconds);
 
         return redirect()->route('admin.apartments.show', $apartment)->with('success', 'Pagamento effettuato con successo!');
     } else {
@@ -85,6 +91,7 @@ UpdateVisibilityJob::dispatch($apartmentSponsor)->delay($delayInSeconds);
         return redirect()->back()->with('error', 'Pagamento fallito. Riprova.');
     }
 }
+
 
 
 
