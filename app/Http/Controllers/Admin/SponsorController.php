@@ -7,7 +7,6 @@ use App\Models\Sponsor;
 use App\Models\ApartmentSponsor;
 use Illuminate\Http\Request;
 use Braintree\Gateway;
-use League\Flysystem\Visibility;
 use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 use Carbon\Carbon;
 use App\Jobs\UpdateVisibilityJob;
@@ -69,13 +68,13 @@ public function processSponsorship(Request $request, Apartment $apartment)
 
         $apartmentSponsor->ending_date = $expiration;
 
-        $apartment->apartmentsponsor()->save($apartmentSponsor);
+$apartment->apartmentsponsor()->save($apartmentSponsor);
 
-        $apartment->visibility = true;
-        $apartment->save();
+$apartment->visibility = true;
+$apartment->save();
 
-        $delayInSeconds = now()->diffInSeconds($expiration);
-        UpdateVisibilityJob::dispatch($apartmentSponsor)->delay($delayInSeconds);
+$delayInSeconds = now()->diffInSeconds($expiration);
+UpdateVisibilityJob::dispatch($apartmentSponsor)->delay($delayInSeconds);
 
         
 
