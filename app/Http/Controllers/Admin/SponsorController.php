@@ -16,8 +16,15 @@ class SponsorController extends Controller
   
     public function showSponsorshipForm(Apartment $apartment)
 {
+    // Verifica se l'utente autenticato è il proprietario dell'appartamento
+    if ($apartment->user_id !== auth()->id()) {
+        return redirect()->back()->with('error', 'Accesso non autorizzato');
+    }
+
+    // L'utente è autorizzato, visualizza il modulo di sponsorizzazione
     return view('admin.sponsorship.form', compact('apartment'));
 }
+
 
 
 public function processSponsorship(Request $request, Apartment $apartment)
@@ -75,10 +82,6 @@ $apartment->save();
 
 $delayInSeconds = now()->diffInSeconds($expiration);
 UpdateVisibilityJob::dispatch($apartmentSponsor)->delay($delayInSeconds);
-
-        
-
-
         return redirect()->route('admin.apartments.show', $apartment)->with('success', 'Pagamento effettuato con successo!');
     } else {
         // Pagamento fallito
