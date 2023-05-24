@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 
 
 class UserController extends Controller
@@ -65,19 +66,17 @@ class UserController extends Controller
         //
     }
 
-    public function getUser(Request $request)
+    public function getUser()
     {
-
-        if (Auth::check()) {
-        $user = Auth::user();
-        $userData = [
-            'name' => $user->name,
-            'surname' => $user->surname,
-            'email' => $user->email,
-        ];
-
-        return response()->json($userData);
-    }
-
+        if (auth()->check()) {
+            $user = Auth::user();
+            return response()->json($user);
+        } else {
+            return response()->json(['error' => 'User not authenticated'], 401);
+        }
+    
 }
+    
 }
+    
+
