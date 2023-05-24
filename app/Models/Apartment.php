@@ -10,6 +10,8 @@ use App\Models\ApartmentSponsor;
 use App\Models\View;
 use App\Models\Image;
 use App\Models\User;
+use Carbon\Carbon;
+use App\Jobs\UpdateVisibilityJob;
 
 
 
@@ -59,4 +61,17 @@ class Apartment extends Model
             return $this->image ? url('storage/' . $this->image) : 'https://www.frosinonecalcio.com/wp-content/uploads/2021/09/default-placeholder.png';
         }
     }
+
+    public function scheduleVisibilityUpdate()
+{
+    $latestSponsorship = $this->apartmentsponsor()->latest('ending_date')->first();
+
+    if ($latestSponsorship && $latestSponsorship->ending_date > Carbon::now()) {
+        $nextVisibilityUpdate = $latestSponsorship->ending_date;
+    } else {
+        $nextVisibilityUpdate = Carbon::now();
+    }
+
+    UpdateVisibilityJob::dispatch()->delay($nextVisibilityUpdate);
+}
 }
