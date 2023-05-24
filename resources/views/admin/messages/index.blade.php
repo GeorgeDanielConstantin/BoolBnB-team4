@@ -26,7 +26,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">ID</th>
+                <th scope="col">Appartamento</th>
                 <th scope="col">Email</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Cognome</th>
@@ -38,7 +38,7 @@
         <tbody class="receivedmessage">
             @forelse($messages as $message)
                 <tr>
-                    <th scope="row">{{$message->apartment_id}}</th>
+                    <th scope="row">{{$message->apartment->title}}</th>
                     <td>{{$message->email}}</td>
                     <td>{{$message->name}}</td>
                     <td>{{$message->surname}}</td>
