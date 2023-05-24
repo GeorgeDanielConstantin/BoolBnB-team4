@@ -30,6 +30,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Cognome</th>
+                <th scope="col">Data</th>
                 <th scope="col">Testo</th>
                 <th scope="col">Action</th>
             </tr>
@@ -37,10 +38,11 @@
         <tbody class="receivedmessage">
             @forelse($messages as $message)
                 <tr>
-                    <th scope="row">{{$message->id}}</th>
+                    <th scope="row">{{$message->apartment_id}}</th>
                     <td>{{$message->email}}</td>
                     <td>{{$message->name}}</td>
                     <td>{{$message->surname}}</td>
+                    <td>{{$message->created_at}}</td>
                     <td>{{$message->getAbstract()}}</td>
                     <td>
                         <a href="{{route('admin.messages.show', $message)}}" title="Mostra il messaggio">

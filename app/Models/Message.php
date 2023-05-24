@@ -11,12 +11,14 @@ class Message extends Model
     protected $fillable = ["email", "name", "surname", "message"];
 
 
-    public function apartment() {
+    public function apartment()
+    {
         return $this->belongsTo(Apartment::class);
     }
 
 
-    public function getAbstract($max = 40) {
-        return substr($this->message, 0 , $max) . "...";
+    public function getAbstract($max = 40)
+    {
+        return substr($this->message, 0, $max) . "...";
     }
 }

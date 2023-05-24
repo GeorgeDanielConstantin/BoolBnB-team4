@@ -17,24 +17,16 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, Apartment $apartment)
+    public function index(Request $request)
     {
         $user = Auth::user();
-        $apartment_id = $request->input('apartment_id');
 
         $messages = Message::whereHas('apartment', function ($query) use ($user) {
-            $query->where('user_id', '=', $user->id)
-                ->orderBy('created_at', 'desc');
-            });
-
-        if ($apartment_id) {
-            $messages = $messages->where('apartment_id', $apartment_id);
-        }
-
-        $messages = $messages->get();
+            $query->where('user_id', $user->id);
+        })
+            ->orderBy('created_at', 'desc')->get();
 
         return view('admin.messages.index', compact('messages'));
-
     }
 
     /**
@@ -46,16 +38,5 @@ class MessagesController extends Controller
     public function show(Message $message, Apartment $apartment)
     {
         return view('admin.messages.show', compact('message', 'apartment'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Messages  $messages
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Message $message)
-    {
-        //
     }
 }
