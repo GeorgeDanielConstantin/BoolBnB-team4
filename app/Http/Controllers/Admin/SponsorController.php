@@ -10,6 +10,7 @@ use Braintree\Gateway;
 use League\Flysystem\Visibility;
 use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 use Carbon\Carbon;
+use App\Jobs\UpdateVisibilityJob;
 
 class SponsorController extends Controller
 {
@@ -28,13 +29,13 @@ public function processSponsorship(Request $request, Apartment $apartment)
     // Imposta l'importo in base al tipo di sponsorizzazione
     if ($sponsorshipType === 'basic') {
         $amount = 2.99;
-        $visibilityDuration = 24; // Durata in ore per la sponsorizzazione basic
+        $visibilityDuration = 30; // Durata in secondi per la sponsorizzazione basic
     } elseif ($sponsorshipType === 'standard') {
         $amount = 5.99;
-        $visibilityDuration = 72; // Durata in ore per la sponsorizzazione standard
+        $visibilityDuration = 72 * 3600; // Durata in secondi per la sponsorizzazione standard (72 ore)
     } elseif ($sponsorshipType === 'premium') {
         $amount = 9.99;
-        $visibilityDuration = 144; // Durata in ore per la sponsorizzazione premium
+        $visibilityDuration = 144 * 3600; // Durata in secondi per la sponsorizzazione premium (144 ore)
     }
 
     $gateway = new Gateway([
@@ -59,11 +60,11 @@ public function processSponsorship(Request $request, Apartment $apartment)
         $apartmentSponsor->starting_date = now();
 
         if ($sponsorshipType === 'basic') {
-            $expiration = now()->addDay(1);
+            $expiration = now()->addSeconds($visibilityDuration);
         } elseif ($sponsorshipType === 'standard') {
-            $expiration = now()->addDay(3);
+            $expiration = now()->addSeconds($visibilityDuration);
         } elseif ($sponsorshipType === 'premium') {
-            $expiration = now()->addDay(6);
+            $expiration = now()->addSeconds($visibilityDuration);
         }
 
         $apartmentSponsor->ending_date = $expiration;
@@ -73,11 +74,19 @@ public function processSponsorship(Request $request, Apartment $apartment)
         $apartment->visibility = true;
         $apartment->save();
 
+        $delayInSeconds = now()->diffInSeconds($expiration);
+        UpdateVisibilityJob::dispatch($apartmentSponsor)->delay($delayInSeconds);
+
+        
+
+
         return redirect()->route('admin.apartments.show', $apartment)->with('success', 'Pagamento effettuato con successo!');
     } else {
         // Pagamento fallito
         return redirect()->back()->with('error', 'Pagamento fallito. Riprova.');
     }
 }
+
+
 
 }

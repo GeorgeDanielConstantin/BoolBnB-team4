@@ -11,6 +11,7 @@ use App\Models\View;
 use App\Models\Image;
 use App\Models\User;
 use Carbon\Carbon;
+use App\Jobs\UpdateVisibilityJob;
 
 
 
@@ -61,18 +62,16 @@ class Apartment extends Model
         }
     }
 
-    public function updateVisibility()
-    {
-        $currentDate = Carbon::now();
+    public function scheduleVisibilityUpdate()
+{
+    $latestSponsorship = $this->apartmentsponsor()->latest('ending_date')->first();
 
-        $latestSponsorship = $this->apartmentsponsor()->latest('ending_date')->first();
-
-        if ($latestSponsorship && $latestSponsorship->ending_date > $currentDate) {
-            $this->visibility = true;
-        } else {
-            $this->visibility = false;
-        }
-
-        $this->save();
+    if ($latestSponsorship && $latestSponsorship->ending_date > Carbon::now()) {
+        $nextVisibilityUpdate = $latestSponsorship->ending_date;
+    } else {
+        $nextVisibilityUpdate = Carbon::now();
     }
+
+    UpdateVisibilityJob::dispatch()->delay($nextVisibilityUpdate);
+}
 }
