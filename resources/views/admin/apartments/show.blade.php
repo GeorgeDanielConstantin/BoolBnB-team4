@@ -17,128 +17,157 @@
     <div class="card-body">
 
         
+        <div class="row">
 
-        <figure class="float-end ms-5 mb-1">
-         
-                <img src="{{ $apartment->getImageUri() }}" class="img-fluid showimage" alt="..." width="80%">
-          
-            <figcaption>
-                <p class="text-secondary m-0"><strong></strong></p>
-            </figcaption>
-        </figure>
 
-        
-        <div class="row mb-1 ">
-            {{-- @dump("Latitudine: " . $apartment->latitude)
-            @dump("Longitudine: " . $apartment->longitude) --}}
-            <div class="col-md-3 text-end">
-                <label for="title" class="form-label"><strong>Nome Appartamento </strong></label>
+            <div class="col-6">
+                
+                <div class="row">
+                    <div class="col-md-5 text-end">
+                        <p class="bold">Apartment name</p>
+                    </div>
+                    <div class="col-md-7">
+                        <p class="text-muted">{{$apartment->title}}</p>
+                    </div>
+                    
+                    <div class="col-md-5 text-end">
+                        <p class="bold">Address</p>
+                    </div>
+                    <div class="col-md-7">
+                        <p class="text-muted">{{$apartment->address}}</p>
+                    </div>
+                
+                    <div class="col-md-5 text-end">
+                        <p class="bold">Bedrooms</p>
+                    </div>
+                    <div class="col-md-7">
+                        <p class="text-muted">{{$apartment->rooms}}</p>
+                    </div>
+               
+                    <div class="col-md-5 text-end">
+                        <p class="bold">Bedrooms </p>
+                    </div>
+                    <div class="col-md-7">
+                        <p class="text-muted">{{$apartment->rooms}}</p>
+                    </div>
+                
+                    <div class="col-md-5 text-end">
+                        <p class="bold">Beds </p>
+                    </div>
+                    <div class="col-md-7">
+                        <p class="text-muted">{{$apartment->beds}}</p>
+                    </div>
+                    
+                    <div class="col-md-5 text-end">
+                        <p class="bold">Bathrooms </p>
+                    </div>
+                    <div class="col-md-7">
+                        <p class="text-muted">{{$apartment->bathrooms}}</p>
+                    </div>
+                    
+            
+                    <div class="col-md-5 text-end">
+                        <p class="bold">Square meters</p>
+                    </div>
+                    <div class="col-md-7">
+                        <p class="text-muted">{{$apartment->square_meters}}</p>
+                    </div>
+                
+                    <div class="col-md-5 text-end">
+                        <p class="bold">
+                            Sponsered untill
+                        </p>
+                    </div>
+                    <div class="col-md-7 d-flex">
+                        <p class="text-muted">
+                            @if ($apartment->apartmentsponsor->isNotEmpty())
+                              @php
+                                $endingDate = \Carbon\Carbon::parse($apartment->apartmentsponsor->last()->ending_date);
+                                $now = \Carbon\Carbon::now();
+                              @endphp
+                              @if ($endingDate > $now)
+                                {{ $endingDate->format('d-m-Y H:i') }}
+                              @else
+                                Sponsorship expired 
+                              @endif
+                            @else
+                              Not sponsored
+                            @endif
+                          </p>
+                          
+                        </div>
+                        
+                        <div class="col-5 offset-5">
+                            <a class="btn btn-primary btn-sm" href="{{ route('admin.apartments.sponsorship', $apartment) }}">
+                                @if ($apartment->visibility)
+                                    Extend sponsorship
+                                @else 
+                                    Add sponsorship
+                                @endif
+                            </a>
+                            
+                        </div>
+                    
+                        
+                </div>
             </div>
-            <div class="col-md-5">
-                <p class="text-muted">{{$apartment->title}}</p>
+
+
+            <div class="col-6">
+                <figure class="">
+                    <img src="{{ $apartment->getImageUri() }}" class="w-100 showimage max-20 fit-cover" alt="...">
+                <figcaption>
+                    <p class="text-secondary m-0"><strong></strong></p>
+                </figcaption>
+            </figure>
             </div>
+
+
+
         </div>
 
-        <div class="row mb-1">
-            <div class="col-md-3 text-end">
-                <label for="address" class="form-label"><strong>Indirizzo </strong></label>
-            </div>
-            <div class="col-md-5">
-                <p class="text-muted">{{$apartment->address}}</p>
-            </div>
-        </div>
+        <hr>
 
-        <div class="row mb-1">
-            <div class="col-md-3 text-end">
-                <label for="rooms" class="form-label"><strong>Numero di Stanze </strong></label>
+        <div class="d-flex flex-column col-12 mt-3">
+            <div class="text-center mb-2">
+                <span class="bold ">About this place</span>
             </div>
-            <div class="col-md-5">
-                <p class="text-muted">{{$apartment->rooms}}</p>
-            </div>
-        </div>
-
-        <div class="row mb-1">
-            <div class="col-md-3 text-end">
-                <label for="beds" class="form-label"><strong>Numero di letti </strong></label>
-            </div>
-            <div class="col-md-5">
-                <p class="text-muted">{{$apartment->beds}}</p>
-            </div>
-        </div>
-
-        <div class="row mb-1">
-            <div class="col-md-3 text-end">
-                <label for="bathrooms" class="form-label"><strong>Numero di bagni </strong></label>
-            </div>
-            <div class="col-md-5">
-                <p class="text-muted">{{$apartment->bathrooms}}</p>
-            </div>
-        </div>
-
-        <div class="row mb-1">
-            <div class="col-md-3 text-end">
-                <label for="square_meters" class="form-label"><strong>Metri quadrati </strong></label>
-            </div>
-            <div class="col-md-5">
-                <p class="text-muted">{{$apartment->square_meters}}</p>
-            </div>
-        </div>
-
-        <div class="row mb-1">
-            <div class="col-md-3 text-end">
-                <label for="visibility" class="form-label">
-                    <strong>Sponsered untill</strong>
-                </label>
-            </div>
-            <div class="col-md-5 d-flex">
-                <p class="text-muted">
-                    @if ($apartment->apartmentsponsor->isNotEmpty())
-                    {{ $apartment->apartmentsponsor->last()->ending_date }}
-                    @else Not sponsored
-                    @endif
-                </p>
-                <a class="btn btn-primary btn-sm ms-3" href="{{ route('admin.apartments.sponsorship', $apartment) }}"> Add sponsorship</a>
-            </div>
-        </div>
-
-        <div class="d-flex flex-column col-12 mr-5 ">
-            <div class="text-start ">
-                <label for="description" class="form-label"><strong>Descrizione Appartamento </strong></label>
-            </div>
-            <div class="col-12 text-center p-3">
+            <div class="col-12 text-center ">
                 <p class="text-muted showdescription">{{$apartment->description}}</p>
             </div>
             
         </div>
-
         
+         <hr>
 
-        <div class="row mb-1 p-3">
-            <div class="col-6">
+      <div class="row">
+        <div class="col-12">
 
-                <div class="">
-                    <label for="description" class="form-label"><strong>Servizi</strong></label>
-                </div>
-                <ul class="mx-2 ">
-                    @forelse ($apartment->service as $service)
-                    <li class="">
-                        <span class="text-muted">
-                            {{$service->type}} 
-                        </span>
-                        <span class="text-muted" >
-                            {{$service->name}}
-                        </span>    
-                    </li>
-                    
-                    @empty
-                    Nessun servizio
-                    @endforelse
-                </ul>
+          <div class="text-center mb-2">
+            <span class="form-label">Amenities</span>
+          </div>
+          <div class="row">
+            @forelse ($apartment->service as $service)
+            <div class="col-md-3">
+              <span class="me-2">
+                {!!$service->icon!!}
+              </span>
+              <span>
+               
+                  <span class="text-muted">
+                     {{$service->name}}
+                    </span>
+                </span>
             </div>
 
-        
+            @empty
+            <div class="col-md-12">Nessun servizio</div>
+            @endforelse
+          </div>
         </div>
+      </div>
         
     </div>
   </section>
+  
 @endsection

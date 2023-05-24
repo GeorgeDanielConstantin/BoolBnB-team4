@@ -5,6 +5,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -19,7 +28,7 @@
     @include('layouts.partials._navbar')
   </header>
 
-  <main class="">
+  <main>
     <div class="container">
 
       <div class="d-flex justify-content-between align-items-start">
@@ -27,16 +36,16 @@
           @yield('title')
         </h1>
       </div>
-
+      
       @if (session('message_content'))
-      <div class="alert alert-{{ session('message_type') ? session('message_type') : 'success' }}">
-        {{ session('message_content') }}
-      </div>
-    @endif
-
-      <div class="py-0">
-        @yield('content')
-      </div>
+          <div class="alert alert-{{ session('message_type') ? session('message_type') : 'success' }}">
+            {{ session('message_content') }}
+          </div>
+        @endif
+      
+      @yield('content')
+      
+      
     </div>
   </main>
 
