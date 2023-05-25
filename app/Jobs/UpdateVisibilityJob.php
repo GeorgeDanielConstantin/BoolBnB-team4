@@ -33,12 +33,13 @@ class UpdateVisibilityJob implements ShouldQueue
      * @return void
      */
     public function handle()
-    {
-        // Verifica se l'ending_date è inferiore o uguale alla data attuale
-        if ($this->apartmentSponsor->ending_date <= now()) {
-            // Aggiorna la visibility a false
-            $this->apartmentSponsor->apartment->visibility = false;
-            $this->apartmentSponsor->apartment->save();
-        }
+{
+    // Verifica se l'ending_date è inferiore o uguale alla data attuale
+    if ($this->apartmentSponsor->ending_date <= now()) {
+        // Aggiorna la visibility a false
+        $this->apartmentSponsor->apartment->visibility = false;
+        $this->apartmentSponsor->apartment->save();
     }
+}
+
 }
