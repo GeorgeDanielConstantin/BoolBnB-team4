@@ -83,6 +83,7 @@
                             @if ($apartment->apartmentsponsor->isNotEmpty())
                               @php
                                 $endingDate = \Carbon\Carbon::parse($apartment->apartmentsponsor->last()->ending_date);
+                                $endingDate->timezone('Europe/Rome');
                                 $now = \Carbon\Carbon::now();
                               @endphp
                               @if ($endingDate > $now)
