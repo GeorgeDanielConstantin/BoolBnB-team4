@@ -32,9 +32,9 @@
 <a class="btn btn-primary my-3 "  href="{{ route('admin.apartments.create') }}" role="button" >Add apartment</a>
 
 <div class="">
-    <div data-aos="flip-up"  class="d-flex flex-row gap-3 flex-wrap">
+    <div data-aos="flip-up"  class="d-flex flex-row gap-3 flex-wrap justify-content-between">
         @foreach ($apartments as $apartment)
-            <div class="cardindex z-index-0" >
+            <div class="cardindex z-index-0 mb-3" >
                 <div class="imgBx" style="height: 15rem;">
                     <img class="h-100 fit-cover" src="{{ $apartment->getImageUri() }}" alt="house">
                     <input type="checkbox">
@@ -72,36 +72,7 @@
 
 
 
-{{-- <table class="table">
-  
-    <div class="">
-    <tbody class="indexcard d-flex flex-row flex-wrap align-items-center gap-5 text-center">
-        @foreach ($apartments as $apartment)
-        <tr class="card p-5 text-center bg-info">
-            <th class="text-light" scope="row">{{ $apartment->id }}</th>
-            <td class="text-secondary">{{ $apartment->title }}</td>
-            <td><img src="{{$apartment->image}}" alt="" width="400px" height="300px" ></td>
-            <!--<td class="descriptionindex">{{ $apartment->description }}</td>-->
-            <td class="text-light">{{ $apartment->address }}</td>
-            <!--<td class="text-secondary">{{ $apartment->latitude }}</td>
-            <td class="text-secondary">{{ $apartment->longitude }}</td>-->
-            <!--<td class="text-light">Stanze:{{ $apartment->rooms }}</td>
-            <td class="text-light">Bagni:{{ $apartment->bathrooms }}</td>
-            <td class="text-light">Letti{{ $apartment->beds }}</td>-->
-            <td class="text-light">Metri quadri:{{ $apartment->square_meters }}</td>
-            <td class="text-light">Visibilità:{{ $apartment->visibility }}</td>
-             <td class="d-flex flex-row gap-3 align-items-center justify-content-center">
-                <a href="{{ route('admin.apartments.show', $apartment) }}"> <i class="fa-solid fa-circle-info"></i> </a>
-                <a href="{{ route('admin.apartments.create') }}" role="button" ><i class="fa-solid fa-square-plus"></i></a>
-                <a href="{{ route('admin.apartments.edit', $apartment) }}"><i class="fa-solid fa-pen-to-square"></i></a>
-            </td>
-        </tr>
-        
-        @endforeach
-    </tbody>
-    </div>
-    
-</table> --}}
+
 
 @endsection
 
