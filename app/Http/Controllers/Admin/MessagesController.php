@@ -30,42 +30,28 @@ class MessagesController extends Controller
 
         return view('admin.messages.index', compact('messages', 'apartment'));
     }
-    public function getApartmentTitle($apartment_id)
-    {
-        try {
-            $apartment = Apartment::findOrFail($apartment_id);
-            $apartmentTitle = $apartment->title;
 
-            return $apartmentTitle;
-        } catch (\Exception $e) {
-            // Handle the exception, e.g., show an error message or redirect
-            return 'Apartment title not found';
-        }
-    }
-
-    public function getMessageApartmentTitle($messageId)
-    {
-        try {
-            $message = Message::findOrFail($messageId);
-            $apartmentId = $message->apartment_id;
-
-            $apartmentTitle = $this->getApartmentTitle($apartmentId);
-
-            return view('admin.messages.index', compact('apartmentTitle'));
-        } catch (\Exception $e) {
-            // Handle the exception, e.g., show an error message or redirect
-            return 'Apartment title not found';
-        }
-    }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Messages  $messages
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
     public function show(Message $message, Apartment $apartment)
     {
         return view('admin.messages.show', compact('message', 'apartment'));
+    }
+
+    /**
+     * 
+     *
+     * @param  \App\Models\Message  $message
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Message $message)
+    {
+        $message->delete();
+        return redirect()->route('admin.messages.index');
     }
 }

@@ -53,9 +53,9 @@
        </div>
       </div>
       <div class="contact">
-       <a href="{{ route('admin.apartments.show', $apartment) }}" class="btn btn-primary">Details</a>
-                        <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-primary">Edit</a>
-                        <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-apartment-modal-{{ $apartment->id }}">Delete</a>
+        <a href="{{ route('admin.apartments.show', $apartment) }}" class="btn btn-primary">Details</a>
+        <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-primary">Edit</a>
+        <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-apartment-modal-{{ $apartment->id }}">Delete</a>
       </div>
       </div>
     @endforeach

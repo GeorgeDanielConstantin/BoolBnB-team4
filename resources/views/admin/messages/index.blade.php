@@ -32,7 +32,8 @@
                 <th scope="col">Cognome</th>
                 <th scope="col">Data</th>
                 <th scope="col">Testo</th>
-                <th scope="col">Action</th>
+                <th scope="col">Actions</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody class="receivedmessage">
@@ -45,10 +46,10 @@
                     <td>{{$message->created_at}}</td>
                     <td>{{$message->getAbstract()}}</td>
                     <td>
-                        <a href="{{route('admin.messages.show', $message)}}" title="Mostra il messaggio">
-                            Mostra il messaggio
-                        </a>
+                        <a href="{{route('admin.messages.show', $message)}}" title="Mostra il messaggio"> Mostra </a>
+                        
                     </td>
+                    <td><a href="{{ route('admin.messages.edit', $message) }}" data-bs-toggle="modal" data-bs-target="#delete-message-modal-{{ $message->id }}">Elimina</a></td>
                 </tr>
                 @empty
                 <tr>
@@ -61,6 +62,32 @@
     
 </section>
 
+@endsection
+
+@section('modals')
+    @foreach ($messages as $message)
+        <div class="modal fade" id="delete-message-modal-{{ $message->id }}" tabindex="-1" aria-labelledby="delete-message-modal-{{ $message->id }}-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="delete-message-modal-{{ $message->id }}-label">Elimina il messaggio di <strong>{{ $message->name }} {{ $message->surname }}</strong> </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Questo messaggio sarà eliminato. Sei sicuro?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, annulla</button>
+                    <form method="POST" action="{{ route('admin.messages.destroy', $message)}}">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Sì, elimina</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection
 
 </body>
