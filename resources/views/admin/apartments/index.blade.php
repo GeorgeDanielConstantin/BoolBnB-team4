@@ -69,52 +69,9 @@
 </div>
 
 
-{{-- <div class="">
-    <div data-aos="flip-up"  class="d-flex flex-row gap-3 flex-wrap justify-content-between">
-        @foreach ($apartments as $apartment)
-            <div class="cardindex z-index-0 mb-3" >
-                <div class="imgBx" style="height: 15rem;">
-                    <img class="h-100 fit-cover" src="{{ $apartment->getImageUri() }}" alt="house">
-                    <input type="checkbox">
-                    <div class="heart">
-                        <i class="fas fa-heart""></i>
-                    </div>
-                </div>
-                <div class="price-section">
-                    <h2>{{ $apartment->title }}</h2>
-                    <h3>{{ $apartment->address }}</h3>
-                </div>
-
-                
-                <div class="info-section">
-                    <div class="beds">
-                    <h5><i class="fas fa-bed"></i> <span>{{ $apartment->beds }}</span> Bed</h5>
-                    </div>
-                    <div class="baths">
-                    <h5><i class="fas fa-bath"></i> <span>{{ $apartment->bathrooms }}</span> Bathrooms</h5>
-                    </div>
-                </div>
-            <div class="contact">
-            <a href="{{ route('admin.apartments.show', $apartment) }}" class="btn btn-primary">Details</a>
-                <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-primary">Edit</a>
-                <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-apartment-modal-{{ $apartment->id }}">Delete</a>
-            </div>
-            </div>
-        @endforeach
-    </div>
-    <div class="col-12 mt-5">
-        {{ $apartments->links() }}
-    </div>
-</div> --}}
-</div>
-
-
-
-
-
+{{ $apartments->links() }}
 @endsection
 
-{{ $apartments->links() }}
 
 
 
