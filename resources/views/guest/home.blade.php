@@ -3,7 +3,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
     rel="stylesheet"
+
   />
+  <link rel="icon" type="image/svg+xml" href="/images/BBnB_logo.png" />
 
 @extends('layouts.app')
 @section('content')

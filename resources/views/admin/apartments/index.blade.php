@@ -1,80 +1,67 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/svg+xml" href="/images/BBnB_logo.png" />
     <title>Your Apartments</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
-    rel="stylesheet"
-  />
-
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     @extends('layouts.app')
-
-
-
     @section('title', 'Apartments list')
+    @section('content')
+
+        <a class="btn btn-primary my-3 "  href="{{ route('admin.apartments.create') }}" role="button" >Add apartment</a>
+
+        <div class="row">
+            @foreach ($apartments as $apartment)
+            <div class="col-md-4">
+                <div class="cardindex z-index-0 mb-5 w-100 @if ($apartment->visibility === 1) bg-primary bg-opacity-25 @endif">
+                    <div class="imgBx" style="height: 15rem;">
+                        <img class="h-100 fit-cover" src="{{ $apartment->getImageUri() }}" alt="house">
+                        <input type="checkbox">
+                        <div class="heart">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="price-section">
+                        <h2>{{ $apartment->title }}</h2>
+                        <h3>{{ $apartment->address }}</h3>
+                    </div>
+                    <div class="info-section d-flex justify-content-around">
+                        <div class="bed">
+                            <i class="fas fa-bed"></i> <h5><span>{{ $apartment->beds }}</span> Bed</h5>
+                        </div>
+                        <div class="baths">
+                            <i class="fas fa-bath"></i> <h5><span>{{ $apartment->bathrooms }}</span> Bathrooms</h5>
+                        </div>
+                        @if ($apartment->visibility === 1)
+                        <div class="sponsor">
+                            <i class="fas fa-smile"></i> <h5><span></span> Sponsor</h5>
+                        </div>
+                        @endif
+                        
+                    </div>
+                    <div class="contact">
+                        <a href="{{ route('admin.apartments.show', $apartment) }}" class="btn btn-primary">Details</a>
+                        <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-apartment-modal-{{ $apartment->id }}">Delete</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         
-
-
-@section('content')
-
-<a class="btn btn-primary my-3 "  href="{{ route('admin.apartments.create') }}" role="button" >Add apartment</a>
-
-
-<div class="row">
-    @foreach ($apartments as $apartment)
-    <div class="col-md-4">
-        <div class="cardindex z-index-0 mb-5 w-100 @if ($apartment->visibility === 1) bg-primary bg-opacity-25 @endif">
-            <div class="imgBx" style="height: 15rem;">
-                <img class="h-100 fit-cover" src="{{ $apartment->getImageUri() }}" alt="house">
-                <input type="checkbox">
-                <div class="heart">
-                    <i class="fas fa-heart"></i>
-                </div>
-            </div>
-            <div class="price-section">
-                <h2>{{ $apartment->title }}</h2>
-                <h3>{{ $apartment->address }}</h3>
-            </div>
-            <div class="info-section d-flex justify-content-around">
-                <div class="bed">
-                    <i class="fas fa-bed"></i> <h5><span>{{ $apartment->beds }}</span> Bed</h5>
-                </div>
-                <div class="baths">
-                    <i class="fas fa-bath"></i> <h5><span>{{ $apartment->bathrooms }}</span> Bathrooms</h5>
-                </div>
-                @if ($apartment->visibility === 1)
-                <div class="sponsor">
-                    <i class="fas fa-smile"></i> <h5><span></span> Sponsor</h5>
-                </div>
-                @endif
-                
-            </div>
-            <div class="contact">
-                <a href="{{ route('admin.apartments.show', $apartment) }}" class="btn btn-primary">Details</a>
-                <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-primary">Edit</a>
-                <a href="{{ route('admin.apartments.edit', $apartment) }}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-apartment-modal-{{ $apartment->id }}">Delete</a>
-            </div>
         </div>
-    </div>
-    @endforeach
-   
-</div>
 
 
-{{ $apartments->links() }}
-@endsection
+        {{ $apartments->links() }}
+    @endsection
 
 
 
