@@ -1,17 +1,17 @@
-<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="{{ route('homepage') }}">
+<nav class="navbar navbar-expand-lg fixed-top bg-light d-flex justify-content-between">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="http://localhost:5174">
         BoolBnB
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left Side Of Navbar -->
-        <ul class="navbar-nav me-auto">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="{{ route('homepage') }}">{{ __('Home') }}</a>
           </li>
@@ -19,10 +19,13 @@
             <a class="nav-link" href="{{route('admin.apartments.index') }}">{{ __('Your Apartments') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('admin.messages.index') }}">{{ __('Messages') }}</a>
+            <a class="nav-link" href="http://localhost:5174/apartments/">{{ __('Apartments') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost:5174/apartments/">{{ __('Apartments') }}</a>
+            <a class="nav-link" href="http://localhost:5174/ourteam/">{{ __('Our Team') }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.messages.index') }}">{{ __('Messages') }}</a>
           </li>
         </ul>
 
