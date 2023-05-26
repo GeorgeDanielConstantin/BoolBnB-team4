@@ -18,7 +18,7 @@
 }
 // Layouts app
 header {
-    height: 3.5rem;
+    height: 3rem;
 }
 
 body {
@@ -35,20 +35,14 @@ body {
 
 .showcard strong {
     color: black;
-    font-size: 1vw;
 }
 
 .showcard p {
     transition: all 0.6s;
-    font-size: 1vw;
 }
 
 .showcard p:hover {
     transform: scale(1.04);
-}
-
-.showdescription {
-    font-size: 1vw;
 }
 
 .showimage:hover {
