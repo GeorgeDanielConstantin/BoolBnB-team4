@@ -1,6 +1,7 @@
 @extends('layouts.app')
-
+<div class="container">
 @section('title', 'Sponsorship of the apartment: '. $apartment->title)
+
 {{-- 
 <form action="{{ route('admin.apartments.sponsorship.process', $apartment) }}" method="POST">
     @csrf
@@ -14,8 +15,9 @@
     <button type="submit">Scegli Sponsorizzazione</button>
 </form> --}}
 
+
 @section('content')
-    
+
 @if (session('error'))
 <div class="alert alert-danger" role="alert">
         {{ session('error') }}
@@ -86,5 +88,5 @@
         });
     });
 </script>
-
+</div>
 @endsection

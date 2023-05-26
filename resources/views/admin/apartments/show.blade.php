@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<div class="container">
 @section('title', $apartment->title)
 
 @section('content')
@@ -180,5 +180,5 @@
         
     </div>
   </section>
-  
+ </div>
 @endsection
