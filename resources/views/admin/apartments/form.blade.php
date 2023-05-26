@@ -1,15 +1,5 @@
 
-@extends('layouts.app')
-<div class="container">
-@section('title', $apartment->id ? 'Edit Apartment: ' . $apartment->title : 'Add new Apartment')
 
-@section('actions')
-  <div>
-Expand
-message.txt
-12 KB
-form blade
-﻿
 @extends('layouts.app')
 <div class="container">
 @section('title', $apartment->id ? 'Edit Apartment: ' . $apartment->title : 'Add new Apartment')

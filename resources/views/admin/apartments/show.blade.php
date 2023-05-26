@@ -20,68 +20,76 @@
 
         
         <div class="row">
+            <div class="col-12 d-md-none ">
+                <figure class="">
+                    <img src="{{ $apartment->getImageUri() }}" class="w-100 showimage max-20 fit-cover" alt="...">
+                <figcaption>
+                    <p class="text-secondary m-0"><strong></strong></p>
+                </figcaption>
+            </figure>
+            </div>
 
 
-            <div class="col-6">
+            <div class="col-md-6">
                 
                 <div class="row">
-                    <div class="col-md-5 text-end">
+                    <div class="col-md-5 text-center text-md-start">
                         <p class="bold">Apartment name</p>
                     </div>
                     <div class="col-md-7">
-                        <p class="text-muted">{{$apartment->title}}</p>
+                        <p class="text-muted text-center text-md-start">{{$apartment->title}}</p>
                     </div>
                     
-                    <div class="col-md-5 text-end">
+                    <div class="col-md-5 text-center text-md-end">
                         <p class="bold">Address</p>
                     </div>
                     <div class="col-md-7">
-                        <p class="text-muted">{{$apartment->address}}</p>
+                        <p class="text-muted text-center text-md-start">{{$apartment->address}}</p>
                     </div>
                 
-                    <div class="col-md-5 text-end">
+                    <div class="col-md-5 text-center text-md-end">
                         <p class="bold">Bedrooms</p>
                     </div>
                     <div class="col-md-7">
-                        <p class="text-muted">{{$apartment->rooms}}</p>
+                        <p class="text-muted text-center text-md-start">{{$apartment->rooms}}</p>
                     </div>
                
-                    <div class="col-md-5 text-end">
+                    <div class="col-md-5 text-center text-md-end">
                         <p class="bold">Bedrooms </p>
                     </div>
                     <div class="col-md-7">
-                        <p class="text-muted">{{$apartment->rooms}}</p>
+                        <p class="text-muted text-center text-md-start">{{$apartment->rooms}}</p>
                     </div>
                 
-                    <div class="col-md-5 text-end">
+                    <div class="col-md-5 text-center text-md-end">
                         <p class="bold">Beds </p>
                     </div>
                     <div class="col-md-7">
-                        <p class="text-muted">{{$apartment->beds}}</p>
+                        <p class="text-muted text-center text-md-start">{{$apartment->beds}}</p>
                     </div>
                     
-                    <div class="col-md-5 text-end">
+                    <div class="col-md-5 text-center text-md-end">
                         <p class="bold">Bathrooms </p>
                     </div>
                     <div class="col-md-7">
-                        <p class="text-muted">{{$apartment->bathrooms}}</p>
+                        <p class="text-muted text-center text-md-start">{{$apartment->bathrooms}}</p>
                     </div>
                     
             
-                    <div class="col-md-5 text-end">
+                    <div class="col-md-5 text-center text-md-end">
                         <p class="bold">Square meters</p>
                     </div>
                     <div class="col-md-7">
-                        <p class="text-muted">{{$apartment->square_meters}}</p>
+                        <p class="text-muted text-center text-md-start">{{$apartment->square_meters}}</p>
                     </div>
                 
-                    <div class="col-md-5 text-end">
+                    <div class="col-md-5 text-center text-md-end">
                         <p class="bold">
                             Sponsered untill
                         </p>
                     </div>
-                    <div class="col-md-7 d-flex">
-                        <p class="text-muted">
+                    <div class="col-md-7 d-flex justify-content-center justify-content-md-start">
+                        <p class="text-muted  ">
                             @if ($apartment->apartmentsponsor->isNotEmpty())
                               @php
                                 $endingDate = \Carbon\Carbon::parse($apartment->apartmentsponsor->last()->ending_date);
@@ -100,7 +108,7 @@
                           
                         </div>
                        
-                        <div class="col-5 offset-5">
+                        <div class="col-md-5 offset-md-5 text-center text-md-start">
                            
                             <a class="btn btn-primary btn-sm mb-4" href="{{ route('admin.apartments.sponsorship', $apartment) }}">
                                 @if ($apartment->visibility)
@@ -124,7 +132,7 @@
             </div>
 
 
-            <div class="col-6">
+            <div class="col-6 d-none d-md-block">
                 <figure class="">
                     <img src="{{ $apartment->getImageUri() }}" class="w-100 showimage max-20 fit-cover" alt="...">
                 <figcaption>
@@ -141,7 +149,7 @@
 
         <div class="d-flex flex-column col-12 mt-3">
             <div class="text-center mb-2">
-                <span class="bold display-1">About this place</span>
+                <span class="bold h3">About this place</span>
             </div>
             <div class="col-12 text-center ">
                 <p class="text-muted showdescription">{{$apartment->description}}</p>
@@ -155,7 +163,7 @@
         <div class="col-12">
 
           <div class="text-center mb-2">
-            <span class="form-label">Amenities</span>
+            <span class="form-label h3">Amenities</span>
           </div>
           <div class="row">
             @forelse ($apartment->service as $service)

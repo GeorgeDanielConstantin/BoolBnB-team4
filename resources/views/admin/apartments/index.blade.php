@@ -24,7 +24,7 @@
 
 <div class="row apartment-box">
     @foreach ($apartments as $apartment)
-    <div class="col-md-4 d-flex">
+    <div class="col-lg-4  col-md-6 d-flex">
             <div class="cardindex z-index-0 mb-5 w-100 d-flex flex-column" >
                 <div class="imgBx" style="height: 15rem;">
                     <img class="h-100 fit-cover" src="{{ $apartment->getImageUri() }}" alt="house">
