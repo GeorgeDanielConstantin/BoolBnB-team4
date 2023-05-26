@@ -37,11 +37,14 @@
     }
 }
 .body-index-apartment {
-    height: 100vh;
-    width: 100%;
-    background-color: #fbf9fc;
-    background-size: cover;
-    background-repeat: no-repeat;
+    // height: 100vh;
+    // width: 100%;
+    // background: rgb(211, 211, 211);
+    // background: linear-gradient(
+    //     0deg,
+    //     rgba(211, 211, 211, 1) 15%,
+    //     rgba(255, 255, 255, 1) 100%
+    // );
 }
 // Layouts app
 header {
@@ -49,7 +52,7 @@ header {
 }
 
 body {
-    background-color: #fbf9fc !important;
+    // background-color: #fbf9fc !important;
 }
 
 .showcard {

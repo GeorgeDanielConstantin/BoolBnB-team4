@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg fixed-top bg-light d-flex justify-content-between">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="http://localhost:5174">
         BoolBnB
       </a>
