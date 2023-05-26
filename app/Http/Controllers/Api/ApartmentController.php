@@ -89,6 +89,7 @@ class ApartmentController extends Controller
         //     ->get();
 
         $apartments = Apartment::where('city', 'LIKE', $city . '%')
+            ->orWhere('address', 'LIKE', $city . '%')
             ->orWhere('street', 'LIKE', $city . '%')
             ->with('service')
             ->get();
