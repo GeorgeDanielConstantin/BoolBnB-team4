@@ -16,6 +16,12 @@
 
 @section('content')
     
+@if (session('error'))
+<div class="alert alert-danger" role="alert">
+        {{ session('error') }}
+    </div>
+@endif
+
 
 
 <form action="{{ route('admin.apartments.sponsorship.process', $apartment) }}" method="POST" id="sponsorship-form">

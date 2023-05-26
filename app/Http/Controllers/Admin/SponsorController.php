@@ -33,7 +33,7 @@ class SponsorController extends Controller
         // Imposta l'importo in base al tipo di sponsorizzazione
         if ($sponsorshipType === 'basic') {
             $amount = 2.99;
-            $visibilityDuration = 30; // Durata in secondi per la sponsorizzazione basic
+            $visibilityDuration = 24 * 3600; // Durata in secondi per la sponsorizzazione basic (24 ore)
         } elseif ($sponsorshipType === 'standard') {
             $amount = 5.99;
             $visibilityDuration = 72 * 3600; // Durata in secondi per la sponsorizzazione standard (72 ore)
@@ -83,10 +83,10 @@ class SponsorController extends Controller
             $delayInSeconds = now()->diffInSeconds($newExpiration);
             UpdateVisibilityJob::dispatch($apartmentSponsor)->delay($delayInSeconds);
 
-            return redirect()->route('admin.apartments.show', $apartment)->with('success', 'Pagamento effettuato con successo!');
+            return redirect()->route('admin.apartments.show', $apartment)->with('success', 'Successful payment!');
         } else {
             // Pagamento fallito
-            return redirect()->back()->with('error', 'Pagamento fallito. Riprova.');
+            return redirect()->back()->with('error', 'Payment failed, please try again!');
         }
     }
 }

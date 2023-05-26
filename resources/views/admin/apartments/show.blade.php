@@ -13,6 +13,8 @@
 
 
 
+
+
   <section class="showcard card py-2 ">
     <div class="card-body">
 
@@ -97,18 +99,26 @@
                           </p>
                           
                         </div>
-                        
+                       
                         <div class="col-5 offset-5">
-                            <a class="btn btn-primary btn-sm" href="{{ route('admin.apartments.sponsorship', $apartment) }}">
+                           
+                            <a class="btn btn-primary btn-sm mb-4" href="{{ route('admin.apartments.sponsorship', $apartment) }}">
                                 @if ($apartment->visibility)
                                     Extend sponsorship
                                 @else 
                                     Add sponsorship
                                 @endif
                             </a>
-                            
+                            <div class="">
+                                @if (session('success'))
+                                <div class="alert alert-success text-center">
+                                    {{ session('success') }}
+                                </div>
+                                @endif
+                            </div>
                         </div>
-                    
+                        
+                      
                         
                 </div>
             </div>
@@ -131,7 +141,7 @@
 
         <div class="d-flex flex-column col-12 mt-3">
             <div class="text-center mb-2">
-                <span class="bold ">About this place</span>
+                <span class="bold display-1">About this place</span>
             </div>
             <div class="col-12 text-center ">
                 <p class="text-muted showdescription">{{$apartment->description}}</p>
