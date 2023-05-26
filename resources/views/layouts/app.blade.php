@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+  <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="utf-8">
@@ -36,23 +36,23 @@
   </header>
 
   <main>
-    <div class="container">
+    <div class="">
 
       <div class="d-flex justify-content-between align-items-start">
         <h1 class="my-3">
           @yield('title')
         </h1>
       </div>
-      
+
       @if (session('message_content'))
           <div class="alert alert-{{ session('message_type') ? session('message_type') : 'success' }}">
             {{ session('message_content') }}
           </div>
         @endif
-      
+
       @yield('content')
-      
-      
+
+
     </div>
   </main>
 

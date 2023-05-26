@@ -27,12 +27,12 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Appartamento</th>
+                <th scope="col">Apartment</th>
                 <th scope="col">Email</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Cognome</th>
-                <th scope="col">Data</th>
-                <th scope="col">Testo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Date</th>
+                <th scope="col">Text</th>
                 <th scope="col">Actions</th>
                 <th scope="col"></th>
             </tr>
@@ -44,17 +44,18 @@
                     <td>{{$message->email}}</td>
                     <td>{{$message->name}}</td>
                     <td>{{$message->surname}}</td>
-                    <td>{{$message->created_at}}</td>
+                    <td>{{$message->created_at->format('d-m-Y H:i')}}</td>
                     <td>{{$message->getAbstract()}}</td>
                     <td>
-                        <a href="{{route('admin.messages.show', $message)}}" title="Mostra il messaggio"> Mostra </a>
+                        <a href="{{route('admin.messages.show', $message)}}" title="Mostra il messaggio"> Show </a>
                         
                     </td>
-                    <td><a href="{{ route('admin.messages.edit', $message) }}" data-bs-toggle="modal" data-bs-target="#delete-message-modal-{{ $message->id }}">Elimina</a></td>
+                    <td><a href="{{ route('admin.messages.edit', $message) }}" data-bs-toggle="modal" data-bs-target="#delete-message-modal-{{ $message->id }}">
+                    Delete</a></td>
                 </tr>
                 @empty
                 <tr>
-                    <td scope="row">Nessun risultato</td>
+                    <td scope="row">No message received</td>
                 </tr>
             @endforelse
         </tbody>

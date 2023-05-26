@@ -1,5 +1,17 @@
-@extends('layouts.app')
 
+@extends('layouts.app')
+<div class="container">
+@section('title', $apartment->id ? 'Edit Apartment: ' . $apartment->title : 'Add new Apartment')
+
+@section('actions')
+  <div>
+Expand
+message.txt
+12 KB
+form blade
+﻿
+@extends('layouts.app')
+<div class="container">
 @section('title', $apartment->id ? 'Edit Apartment: ' . $apartment->title : 'Add new Apartment')
 
 @section('actions')
@@ -19,7 +31,7 @@
 @section('content')
 
   @include('layouts.partials.errors')
-
+  
   <section class="card py-2">
     <div class="card-body">
 
@@ -336,7 +348,9 @@
       @endif --}}
     </div>
   </section>
+  </div>
 @endsection
+
 
 @section('scripts')
 
