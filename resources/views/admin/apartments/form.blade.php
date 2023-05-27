@@ -34,8 +34,8 @@
 
       @csrf
 
-      <div class="row mb-3">
-        <div class="col-md-2 text-end">
+      <div class="row mb-4 mb-md-3">
+        <div class="col-md-2 text-center text-md-end">
           <label for="title" class="form-label">Name*</label>
         </div>
         <div class="col-md-10">
@@ -53,12 +53,11 @@
         </div>
       </div>
 
-      <div class="row mb-3">
-        <div class="col-md-2 text-end">
+      <div class="row mb-4 mb-md-3">
+        <div class="col-md-2 text-center text-md-end">
           <label for="address" class="form-label">Address*</label>
         </div>
-        <div class="col-md-3">
-          
+        <div class="col-md-3 mb-2 mb-md-0">
           <input type="text" 
           name="street" 
           id="street"  
@@ -72,8 +71,8 @@
             </div>
           @enderror
         </div>
-        <div class="col-md-1">
-          
+
+        <div class="col-md-1 mb-2 mb-md-0">
           <input type="text" 
           name="house_number" 
           id="house_number"  
@@ -86,8 +85,8 @@
             </div>
           @enderror
         </div>
-        <div class="col-md-3">
-          
+
+        <div class="col-md-3 mb-2 mb-md-0">
           <input type="text" 
           name="city" 
           id="city"  
@@ -117,8 +116,8 @@
         </div>
       </div>
 
-      <div class="row mb-3">
-        <div class="col-md-2 text-end">
+      <div class="row mb-4 mb-md-3">
+        <div class="col-md-2 text-center text-md-end">
           <label for="rooms" class="form-label">Bedrooms*</label>
         </div>
         <div class="col-md-10">
@@ -137,8 +136,8 @@
         </div>
       </div>
 
-      <div class="row mb-3">
-        <div class="col-md-2 text-end">
+      <div class="row mb-4 mb-md-3">
+        <div class="col-md-2 text-center text-md-end">
           <label for="beds" class="form-label">Beds*</label>
         </div>
         <div class="col-md-10">
@@ -157,8 +156,8 @@
         </div>
       </div>
 
-      <div class="row mb-3">
-        <div class="col-md-2 text-end">
+      <div class="row mb-4 mb-md-3">
+        <div class="col-md-2 text-center text-md-end">
           <label for="bathrooms" class="form-label">Bathrooms*</label>
         </div>
         <div class="col-md-10">
@@ -177,8 +176,8 @@
         </div>
       </div>
 
-      <div class="row mb-3">
-        <div class="col-md-2 text-end">
+      <div class="row mb-4 mb-md-3">
+        <div class="col-md-2 text-center text-md-end">
           <label for="square_meters" class="form-label">Square meters*</label>
         </div>
         <div class="col-md-10">
@@ -217,25 +216,30 @@
         </div>
       </div> --}}
 
-      <div class="row mb-3">
-        <div class="col-md-2 text-end">
+      <div class="row mb-4 mb-md-3">
+        <div class="col-lg-2 col-md-2 text-center text-md-end">
           <label class="form-label">Amenities</label>
         </div>
-        <div class="col-md-10">
-          <div class="form-check @error('services') is-invalid @enderror p-0">
-
-            @foreach ($services as $service)
-              <input type="checkbox" 
-              id="service-{{ $service->id }}" 
-              value="{{ $service->id }}" 
-              name="services[]"
-              class="form-check-control" @if (in_array($service->id, old('services', $apartment_services ?? []))) checked @endif>
-              <label for="service-{{ $service->id }}">{{ $service->name }}</label>
-              <br>
+        <div class="col-lg-10 col-md-10">
+          <div class="row">
+            @php
+              $servicesChunks = $services->chunk(ceil($services->count() / 3));
+            @endphp
+            @foreach ($servicesChunks as $chunk)
+              <div class="col-lg-4 col-sm-6  ">
+                @foreach ($chunk as $service)
+                  <div class="form-check ps-0">
+                    <input type="checkbox" 
+                      id="service-{{ $service->id }}" 
+                      value="{{ $service->id }}" 
+                      name="services[]"
+                      class="form-check-control" @if (in_array($service->id, old('services', $apartment_services ?? []))) checked @endif>
+                    <label for="service-{{ $service->id }}">{{ $service->name }}</label>
+                  </div>
+                @endforeach
+              </div>
             @endforeach
-
           </div>
-
           @error('services')
             <div class="invalid-feedback">
               {{ $message }}
@@ -243,6 +247,9 @@
           @enderror
         </div>
       </div>
+      
+      
+      
 
 
       {{-- <div class="row mb-3">
@@ -262,11 +269,11 @@
         </div>
       </div> --}}
 
-      <div class="row mb-3">
-        <div class="col-md-2 text-end">
+      <div class="row mb-4 mb-md-3">
+        <div class="col-md-2 text-center text-md-end">
           <label for="image" class="form-label">Imagine</label>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 mb-2 mb-md-0">
           <input type="file" 
             name="image" 
             id="image" 
@@ -295,7 +302,7 @@
       {{-- TO DO LISTA DI SERVIZI AGGIUNTIVI --}}
 
       <div class="row mb-3">
-        <div class="col-md-2 text-end">
+        <div class="col-md-2 text-center text-md-end">
           <label for="description" class="form-label">Description*</label>
         </div>
         <div class="col-md-10">
@@ -316,7 +323,7 @@
       
       
       <div class="row">
-        <div class="offset-2 col-8">
+        <div class="offset-2 col-8 text-center text-md-start">
           <input type="submit" class="btn btn-primary" value="Save" />
         </div>
       </div>
