@@ -33,62 +33,62 @@
             <div class="col-md-6">
                 
                 <div class="row">
-                    <div class="col-md-5 text-center text-md-start">
+                    <div class="col-5  text-end">
                         <p class="bold">Apartment name</p>
                     </div>
-                    <div class="col-md-7">
-                        <p class="text-muted text-center text-md-start">{{$apartment->title}}</p>
+                    <div class="col-7">
+                        <p class="text-muted  text-start">{{$apartment->title}}</p>
                     </div>
                     
-                    <div class="col-md-5 text-center text-md-end">
+                    <div class="col-5 text-end">
                         <p class="bold">Address</p>
                     </div>
-                    <div class="col-md-7">
-                        <p class="text-muted text-center text-md-start">{{$apartment->address}}</p>
+                    <div class="col-7">
+                        <p class="text-muted  text-start">{{$apartment->address}}</p>
                     </div>
                 
-                    <div class="col-md-5 text-center text-md-end">
+                    <div class="col-5 text-end">
                         <p class="bold">Bedrooms</p>
                     </div>
-                    <div class="col-md-7">
-                        <p class="text-muted text-center text-md-start">{{$apartment->rooms}}</p>
+                    <div class="col-7">
+                        <p class="text-muted text-start">{{$apartment->rooms}}</p>
                     </div>
                
-                    <div class="col-md-5 text-center text-md-end">
+                    <div class="col-5 text-end">
                         <p class="bold">Bedrooms </p>
                     </div>
-                    <div class="col-md-7">
-                        <p class="text-muted text-center text-md-start">{{$apartment->rooms}}</p>
+                    <div class="col-7">
+                        <p class="text-muted text-start">{{$apartment->rooms}}</p>
                     </div>
                 
-                    <div class="col-md-5 text-center text-md-end">
+                    <div class="col-5 text-end">
                         <p class="bold">Beds </p>
                     </div>
-                    <div class="col-md-7">
-                        <p class="text-muted text-center text-md-start">{{$apartment->beds}}</p>
+                    <div class="col-7">
+                        <p class="text-muted text-start">{{$apartment->beds}}</p>
                     </div>
                     
-                    <div class="col-md-5 text-center text-md-end">
+                    <div class="col-5  text-end">
                         <p class="bold">Bathrooms </p>
                     </div>
-                    <div class="col-md-7">
-                        <p class="text-muted text-center text-md-start">{{$apartment->bathrooms}}</p>
+                    <div class="col-7">
+                        <p class="text-muted text-start">{{$apartment->bathrooms}}</p>
                     </div>
                     
             
-                    <div class="col-md-5 text-center text-md-end">
+                    <div class="col-5  text-end">
                         <p class="bold">Square meters</p>
                     </div>
-                    <div class="col-md-7">
-                        <p class="text-muted text-center text-md-start">{{$apartment->square_meters}}</p>
+                    <div class="col-7">
+                        <p class="text-muted text-start">{{$apartment->square_meters}}</p>
                     </div>
                 
-                    <div class="col-md-5 text-center text-md-end">
+                    <div class="col-5  text-end">
                         <p class="bold">
                             Sponsered untill
                         </p>
                     </div>
-                    <div class="col-md-7 d-flex justify-content-center justify-content-md-start">
+                    <div class="col-7 d-flex justify-content-start">
                         <p class="text-muted  ">
                             @if ($apartment->apartmentsponsor->isNotEmpty())
                               @php
@@ -108,7 +108,7 @@
                           
                         </div>
                        
-                        <div class="col-md-5 offset-md-5 text-center text-md-start">
+                        <div class="col-md-5 offset-5  text-start">
                            
                             <a class="btn btn-primary btn-sm mb-4" href="{{ route('admin.apartments.sponsorship', $apartment) }}">
                                 @if ($apartment->visibility)
@@ -167,7 +167,7 @@
           </div>
           <div class="row">
             @forelse ($apartment->service as $service)
-            <div class="col-md-3">
+            <div class=" col-md-4 col-lg-3 col-sm-6">
               <span class="me-2">
                 {!!$service->icon!!}
               </span>
@@ -180,7 +180,7 @@
             </div>
 
             @empty
-            <div class="col-md-12">Nessun servizio</div>
+            <div class="col-md-12">No amenities</div>
             @endforelse
           </div>
         </div>
