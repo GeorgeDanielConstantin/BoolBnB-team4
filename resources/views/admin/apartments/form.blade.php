@@ -226,7 +226,7 @@
               $servicesChunks = $services->chunk(ceil($services->count() / 3));
             @endphp
             @foreach ($servicesChunks as $chunk)
-              <div class="col-lg-4 col-sm-6  ">
+              <div class="col-md-4 col-lg-3 col-sm-6  ">
                 @foreach ($chunk as $service)
                   <div class="form-check ps-0">
                     <input type="checkbox" 
