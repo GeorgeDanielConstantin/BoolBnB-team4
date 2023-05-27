@@ -30,8 +30,8 @@
     @csrf
 
     <!-- Aggiungi il campo di input per l'importo -->
-    <div class="form-group">
-        <label for="sponsorship_type">Tipo di sponsorizzazione</label>
+    <div class="form-group ">
+        <label class="mb-3" for="sponsorship_type">Type of sponsorship</label>
         <select name="sponsorship_type" id="sponsorship_type" class="form-control form-select">
             <option value="basic">Basic - 2.99 € for 24 hours of sponsorship</option>
             <option value="standard">Standard - 5.99 € for 72 hours of sponsorship</option>
@@ -43,10 +43,10 @@
     <div id="dropin-container"></div>
 
     <!-- Aggiungi il pulsante per avviare il pagamento -->
-    <button type="button" id="submit-button" class="btn btn-primary">Avvia Pagamento</button>
+    <button type="button" id="submit-button" class="btn btn-primary">Start Payment</button>
 
     <!-- Aggiungi il pulsante per confermare il pagamento -->
-    <button type="button" id="confirm-button" class="btn btn-success" style="display: none;">Conferma Pagamento</button>
+    <button type="button" id="confirm-button" class="btn btn-success" style="display: none;">Confirm Payment</button>
 </form>
 
 <script src="https://js.braintreegateway.com/web/dropin/1.37.0/js/dropin.js"></script>
