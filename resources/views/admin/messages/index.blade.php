@@ -17,7 +17,7 @@
 
 @section('content')
 
-<section class="container chat-box mt-5">
+<section class="container-fluid chat-box mt-5">
 
     <h1>Messaggi ricevuti</h1>
 
