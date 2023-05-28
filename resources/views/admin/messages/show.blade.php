@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Messaggio da {{$message->email}}</title>
+    
 
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,6 +15,7 @@
   />
 </head>
 <body class="messagebody">
+    @section('title', 'Messaggio da ' . $message->email)
     @extends('layouts.app')
 
 @section('content')

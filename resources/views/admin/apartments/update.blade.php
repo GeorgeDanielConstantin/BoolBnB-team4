@@ -1,3 +1,4 @@
+@section('title')
 <form action="{{ route('apartments.update') }}" method="POST">
     @method('PUT') @csrf
 

@@ -1,4 +1,5 @@
 <div>
+@section('title')
 <h1 class="text-center">INSERISCI I DATI DEL TUO APPARTAMENTO</h1>
 <form action="{{ route('apartments.store') }}" method="POST">
     @csrf
