@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/svg+xml" href="/images/BBnB_logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/images/home-icon.png" />
     <title>Your Apartments</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,7 +25,7 @@
 <div class="row apartment-box">
     @foreach ($apartments as $apartment)
     <div class="col-lg-4  col-md-6 d-flex">
-            <div class="cardindex z-index-0 mb-5 w-100 d-flex flex-column" >
+            <div class="cardindex z-index-0 mb-5 w-100 d-flex flex-column @if($apartment->visibility) bg-primary bg-opacity-25 @endif" >
                 <div class="imgBx" style="height: 15rem;">
                     <img class="h-100 fit-cover" src="{{ $apartment->getImageUri() }}" alt="house">
                     <input type="checkbox">
@@ -42,13 +42,19 @@
                     </div>
                     
                     
-                    <div class="info-section">
-                        <div class="beds">
-                            <h5><i class="fas fa-bed"></i> <span>{{ $apartment->beds }}</span> Bed</h5>
+                    <div class="info-section d-flex justify-content-around">
+                        <div class="bed">
+                            <h5><i class="fas fa-bed"></i> <span>{{ $apartment->beds }}</span> Beds</h5>
                         </div>
                         <div class="baths">
                             <h5><i class="fas fa-bath"></i> <span>{{ $apartment->bathrooms }}</span> Bathrooms</h5>
                         </div>
+                        @if ($apartment->visibility)
+                        <div class="sponsor">
+                            <h5><i class="fa-solid fa-face-smile"></i> Sponsor</h5>
+                        </div>
+                        @endif
+                        
                     </div>
                     <div class="contact">
                         <a href="{{ route('admin.apartments.show', $apartment) }}" class="btn btn-primary">Details</a>
