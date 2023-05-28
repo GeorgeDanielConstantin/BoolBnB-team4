@@ -38,7 +38,7 @@
                         <p class="bold">Apartment name</p>
                     </div>
                     <div class="col-7">
-                        <p class="text-muted  text-start">{{$apartment->title}}</p>
+                        <p class="text-muted text-start">{{$apartment->title}}</p>
                     </div>
                     
                     <div class="col-5 text-end">

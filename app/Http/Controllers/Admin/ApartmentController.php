@@ -79,7 +79,7 @@ class ApartmentController extends Controller
 
         if (Arr::exists($data, "services")) $apartment->service()->attach($data["services"]);
         return redirect()->route('admin.apartments.show', $apartment)
-            ->with('message_content', "Apartment $apartment->id creato con successo");
+            ->with('message_content', "Apartment $apartment->title successfully created!");
     }
 
     /**
@@ -104,7 +104,7 @@ class ApartmentController extends Controller
         $services = Service::all();
         $apartment_services = $apartment->service->pluck('id')->toArray();
         return view('admin.apartments.form', compact('apartment', 'services', 'apartment_services'))
-            ->with('message_content', "Apartment $apartment->id creato con successo");
+            ->with('message_content', "Apartment - $apartment->id - creato con successo");
     }
 
     /**
@@ -141,7 +141,7 @@ class ApartmentController extends Controller
             $apartment->service()->detach();
 
         return redirect()->route('admin.apartments.show', compact('apartment'))
-            ->with('message_content', "Post $apartment->id modificato con successo");
+            ->with('message_content', "Apartment - $apartment->title - successfully edited");
     }
 
     /**
