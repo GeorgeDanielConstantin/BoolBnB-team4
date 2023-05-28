@@ -12,14 +12,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet" />
 </head>
 <body class="messagebody">
-@section('title', 'Messages')
+{{-- @section('title', 'Messages') --}}
 @extends('layouts.app')
 
 @section('content')
 
 <section class="container-fluid chat-box mt-5">
 
-    <h1>Messaggi ricevuti</h1>
+    <h1>Message received</h1>
 
     <table class="table">
         <thead>
@@ -69,18 +69,18 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="delete-message-modal-{{ $message->id }}-label">Elimina il messaggio di <strong>{{ $message->name }} {{ $message->surname }}</strong> </h1>
+                    <h1 class="modal-title fs-5" id="delete-message-modal-{{ $message->id }}-label">Delete message from -<strong>{{ $message->name }} {{ $message->surname }}</strong> - </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Questo messaggio sarà eliminato. Sei sicuro?
+                    This message will be deleted. <br> Are you sure?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, annulla</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <form method="POST" action="{{ route('admin.messages.destroy', $message)}}">
                         @method('delete')
                         @csrf
-                        <button type="submit" class="btn btn-primary">Sì, elimina</button>
+                        <button type="submit" class="btn btn-danger">Confirm</button>
                     </form>
                 </div>
                 </div>

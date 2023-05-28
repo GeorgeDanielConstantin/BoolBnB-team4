@@ -90,18 +90,18 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="delete-apartment-modal-{{ $apartment->id }}-label">Elimina l'appartamento n°{{ $apartment->id }}</h1>
+                    <h1 class="modal-title fs-5" id="delete-apartment-modal-{{ $apartment->id }}-label">Delete aparment - {{ $apartment->title }} -</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    L'appartamento <strong>{{ $apartment->title }}</strong> sarà eliminato. Sei sicuro?
+                    The apartment <strong>{{ $apartment->title }}</strong> Will be deleted. <br> Are you sure?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, annulla</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <form method="POST" action="{{ route('admin.apartments.destroy', $apartment)}}">
                         @method('delete')
                         @csrf
-                        <button type="submit" class="btn btn-primary">Sì, elimina</button>
+                        <button type="submit" class="btn btn-danger">Confirm</button>
                     </form>
                 </div>
                 </div>

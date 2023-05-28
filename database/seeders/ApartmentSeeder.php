@@ -36,7 +36,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 2,
-                'square_meters' => 538,
+                'square_meters' => 50,
                 'visibility' => 0,
             ),
             1 => 
@@ -55,7 +55,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 1,
-                'square_meters' => 807,
+                'square_meters' => 80,
                 'visibility' => 0,
             ),
             2 => 
@@ -74,7 +74,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 6,
-                'square_meters' => 861,
+                'square_meters' => 82,
                 'visibility' => 0,
             ),
             3 => 
@@ -93,7 +93,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 5,
-                'square_meters' => 915,
+                'square_meters' => 90,
                 'visibility' => 0,
             ),
             4 => 
@@ -112,7 +112,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 5,
-                'square_meters' => 861,
+                'square_meters' => 80,
                 'visibility' => 0,
             ),
             5 => 
@@ -131,7 +131,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 1,
-                'square_meters' => 592,
+                'square_meters' => 58,
                 'visibility' => 0,
             ),
             6 => 
@@ -150,7 +150,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 2,
                 'beds' => 6,
-                'square_meters' => 1938,
+                'square_meters' => 180,
                 'visibility' => 0,
             ),
             7 => 
@@ -169,7 +169,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 3,
-                'square_meters' => 753,
+                'square_meters' => 73,
                 'visibility' => 0,
             ),
             8 => 
@@ -188,7 +188,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 2,
                 'beds' => 4,
-                'square_meters' => 753,
+                'square_meters' => 73,
                 'visibility' => 0,
             ),
             9 => 
@@ -207,7 +207,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 4,
-                'square_meters' => 1076,
+                'square_meters' => 100,
                 'visibility' => 0,
             ),
             10 => 
@@ -226,7 +226,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 6,
-                'square_meters' => 624,
+                'square_meters' => 60,
                 'visibility' => 0,
             ),
             11 => 
@@ -245,7 +245,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 4,
-                'square_meters' => 237,
+                'square_meters' => 22,
                 'visibility' => 0,
             ),
             12 => 
@@ -264,7 +264,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 2,
                 'beds' => 4,
-                'square_meters' => 969,
+                'square_meters' => 93,
                 'visibility' => 0,
             ),
             13 => 
@@ -283,7 +283,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 2,
-                'square_meters' => 646,
+                'square_meters' => 62,
                 'visibility' => 0,
             ),
             14 => 
@@ -302,7 +302,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 2,
-                'square_meters' => 2153,
+                'square_meters' => 210,
                 'visibility' => 0,
             ),
             15 => 
@@ -321,7 +321,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 2,
                 'beds' => 4,
-                'square_meters' => 431,
+                'square_meters' => 42,
                 'visibility' => 0,
             ),
             16 => 
@@ -340,7 +340,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 1,
-                'square_meters' => 753,
+                'square_meters' => 74,
                 'visibility' => 0,
             ),
             17 => 
@@ -359,7 +359,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 1,
-                'square_meters' => 129,
+                'square_meters' => 12,
                 'visibility' => 0,
             ),
             18 => 
@@ -378,7 +378,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 2,
-                'square_meters' => 1184,
+                'square_meters' => 110,
                 'visibility' => 0,
             ),
             19 => 
@@ -397,7 +397,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 2,
                 'beds' => 3,
-                'square_meters' => 861,
+                'square_meters' => 83,
                 'visibility' => 0,
             ),
             20 => 
@@ -416,7 +416,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 2,
                 'beds' => 3,
-                'square_meters' => 700,
+                'square_meters' => 65,
                 'visibility' => 0,
             ),
             21 => 
@@ -435,7 +435,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 4,
                 'beds' => 5,
-                'square_meters' => 1292,
+                'square_meters' => 120,
                 'visibility' => 0,
             ),
             22 => 
@@ -454,7 +454,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 1,
                 'beds' => 1,
-                'square_meters' => 861,
+                'square_meters' => 84,
                 'visibility' => 0,
             ),
             23 => 
@@ -473,7 +473,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 2,
                 'beds' => 6,
-                'square_meters' => 1550,
+                'square_meters' => 150,
                 'visibility' => 0,
             ),
             24 => 
@@ -492,7 +492,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 2,
                 'beds' => 6,
-                'square_meters' => 1184,
+                'square_meters' => 110,
                 'visibility' => 0,
             ),
             25 => 
@@ -511,7 +511,7 @@ class ApartmentSeeder extends Seeder
                 'rooms' => 3,
                 'bathrooms' => 2,
                 'beds' => 1,
-                'square_meters' => 269,
+                'square_meters' => 25,
                 'visibility' => 0,
             ),
         ));
