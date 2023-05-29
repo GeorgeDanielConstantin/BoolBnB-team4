@@ -211,11 +211,9 @@ a {
 }
 
 .homecont h1 {
-    font-size: 160px;
     color: white;
     font-weight: 600;
     transition: 0.5s;
-    font-size: 5vw;
 }
 .homecont h1:hover {
     -webkit-text-stroke: 2px white;
@@ -472,7 +470,7 @@ svg {
     width: 100%;
     // height: 500px;
     overflow: auto;
-    height: 80vh;
+    // height: 80vh;
     padding: 30px;
     display: grid;
     grid-template-columns: 1fr;

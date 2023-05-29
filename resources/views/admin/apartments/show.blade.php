@@ -55,12 +55,6 @@
                         <p class="text-muted text-start">{{$apartment->rooms}}</p>
                     </div>
                
-                    <div class="col-5 text-end">
-                        <p class="bold">Bedrooms </p>
-                    </div>
-                    <div class="col-7">
-                        <p class="text-muted text-start">{{$apartment->rooms}}</p>
-                    </div>
                 
                     <div class="col-5 text-end">
                         <p class="bold">Beds </p>

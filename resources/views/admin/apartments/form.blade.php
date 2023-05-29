@@ -271,7 +271,7 @@
 
       <div class="row mb-4 mb-md-3">
         <div class="col-md-2 text-center text-md-end">
-          <label for="image" class="form-label">Imagine</label>
+          <label for="image" class="form-label">Picture</label>
         </div>
         <div class="col-md-8 mb-2 mb-md-0">
           <input type="file" 

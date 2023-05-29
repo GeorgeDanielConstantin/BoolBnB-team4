@@ -15,13 +15,13 @@
   />
 </head>
 <body class="messagebody">
-    @section('title', 'Messaggio da ' . $message->email)
+    
     @extends('layouts.app')
 
 @section('content')
     <section class="container chat-box text-center mt-5">
 
-        <h1 class="my-4">Messaggio da {{$message->email}}</h1>
+        <h1 class="my-4">Message from  {{$message->email}}</h1>
 
         <div class="card">
             <div class="card-body">
